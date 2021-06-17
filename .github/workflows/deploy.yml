@@ -1,0 +1,56 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Fetch the release
+        run: |
+          chmod u+x ./jupyterlite-install.sh
+          ./jupyterlite-install.sh
+      - name: Copy the federated extensions
+        run: |
+          # TODO
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Create manifest and stage
+        run: |
+          chmod u+x ./deploy.sh
+          ./deploy.sh
+      - name: List the content of the app
+        run: |
+          tree dist
+      - name: Upload (dist)
+        uses: actions/upload-artifact@v2
+        with:
+          name: jupyterlite-demo dist ${{ github.run_number }}
+          path: ./dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+      - uses: actions/download-artifact@v2
+        with:
+          name: jupyterlite-demo dist ${{ github.run_number }}
+          path: ./dist
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: dist
