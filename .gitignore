@@ -1,4 +1,6 @@
 *.bundle.*
+_output/
+.jupyterlite.doit.db
 lib/
 node_modules/
 .yarn-packages/
