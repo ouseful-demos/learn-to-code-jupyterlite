@@ -1,0 +1,61 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.154396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.537547Z",
+      "mimetype": "application/vnd.ms-excel",
+      "name": "WHO POP TB all.xls",
+      "path": "1_Having_a_go_at_it/WHO POP TB all.xls",
+      "size": 40448,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.154396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.537547Z",
+      "mimetype": null,
+      "name": "Project_1.ipynb",
+      "path": "1_Having_a_go_at_it/Project_1.ipynb",
+      "size": 20955,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.154396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.537547Z",
+      "mimetype": "application/vnd.ms-excel",
+      "name": "WHO POP TB some.xls",
+      "path": "1_Having_a_go_at_it/WHO POP TB some.xls",
+      "size": 28160,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.154396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.537547Z",
+      "mimetype": null,
+      "name": "Exercises_1.ipynb",
+      "path": "1_Having_a_go_at_it/Exercises_1.ipynb",
+      "size": 44273,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2021-11-30T17:23:56.154396Z",
+  "format": "json",
+  "last_modified": "2021-11-30T17:23:56.154396Z",
+  "mimetype": null,
+  "name": "1_Having_a_go_at_it",
+  "path": "1_Having_a_go_at_it",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

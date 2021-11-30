@@ -1,0 +1,73 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.162396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.545547Z",
+      "mimetype": null,
+      "name": "Exercises_3.ipynb",
+      "path": "3_Combine_and_transform_data/Exercises_3.ipynb",
+      "size": 93176,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.162396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.545547Z",
+      "mimetype": "text/csv",
+      "name": "WB GDP 2013.csv",
+      "path": "3_Combine_and_transform_data/WB GDP 2013.csv",
+      "size": 8273,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.162396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.545547Z",
+      "mimetype": "text/csv",
+      "name": "WB POP 2013.csv",
+      "path": "3_Combine_and_transform_data/WB POP 2013.csv",
+      "size": 7012,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.162396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.545547Z",
+      "mimetype": "text/csv",
+      "name": "WB LE 2013.csv",
+      "path": "3_Combine_and_transform_data/WB LE 2013.csv",
+      "size": 8385,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2021-11-30T17:23:56.162396Z",
+      "format": null,
+      "last_modified": "2021-11-30T17:22:55.545547Z",
+      "mimetype": null,
+      "name": "Project_3.ipynb",
+      "path": "3_Combine_and_transform_data/Project_3.ipynb",
+      "size": 47981,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2021-11-30T17:23:56.162396Z",
+  "format": "json",
+  "last_modified": "2021-11-30T17:23:56.162396Z",
+  "mimetype": null,
+  "name": "3_Combine_and_transform_data",
+  "path": "3_Combine_and_transform_data",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

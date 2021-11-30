@@ -24,7 +24,7 @@ const LITE_ROOT_ATTR = 'jupyterLiteRoot';
 /**
  * The well-known filename that contains `#jupyter-config-data` and other goodies
  */
-const LITE_FILES = ['jupyter-lite.json'];
+const LITE_FILES = ['jupyter-lite.json', 'jupyter-lite.ipynb'];
 
 /**
  * And this link tag, used like so to load a bundle after configuration.
@@ -100,7 +100,15 @@ async function jupyterConfigData() {
 
   const configs = (await Promise.all(promises)).flat();
 
-  return (_JUPYTER_CONFIG = configs.reduce(mergeOneConfig));
+  let finalConfig = configs.reduce(mergeOneConfig);
+
+  // apply any final patches
+  finalConfig = dedupFederatedExtensions(finalConfig);
+
+  // hoist to cache
+  _JUPYTER_CONFIG = finalConfig;
+
+  return finalConfig;
 }
 
 /**
@@ -128,6 +136,17 @@ function mergeOneConfig(memo, config) {
     }
   }
   return memo;
+}
+
+function dedupFederatedExtensions(config) {
+  const originalList = Object.keys(config || {})['federated_extensions'] || [];
+  const named = {};
+  for (const ext of originalList) {
+    named[ext.name] = ext;
+  }
+  let allExtensions = [...Object.values(named)];
+  allExtensions.sort((a, b) => a.name.localeCompare(b.name));
+  return config;
 }
 
 /**
@@ -187,6 +206,10 @@ export function fixRelativeUrls(url, config) {
   let urlBase = new URL(url || here()).pathname;
   for (const [k, v] of Object.entries(config)) {
     if (k.endsWith('Url') && v.startsWith('./')) {
+      if (k === 'themesUrl') {
+        // themesUrls is joined in code with baseUrl, leave as-is
+        continue;
+      }
       config[k] = `${urlBase}${v.slice(2)}`;
     }
   }
@@ -210,7 +233,7 @@ function addFavicon(config) {
 async function main() {
   const config = await jupyterConfigData();
   if (config.baseUrl === new URL(here()).pathname) {
-    window.location.href = config.appUrl;
+    window.location.href = config.appUrl.replace(/\/?$/, '/index.html');
     return;
   }
   // rewrite the config

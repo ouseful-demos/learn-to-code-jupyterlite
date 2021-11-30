@@ -12,22 +12,21 @@ const styles = import('./style.js');
 
 const serverExtensions = [
   import('@jupyterlite/javascript-kernel-extension'),
-  import('@jupyterlite/p5-kernel-extension'),
   import('@jupyterlite/pyolite-kernel-extension'),
   import('@jupyterlite/server-extension')
 ];
 
 // custom list of disabled plugins
 const disabled = [
-  ...JSON.parse(PageConfig.getOption('disabledExtensions') || '[]'),
-  '@jupyterlab/apputils-extension:themes',
   '@jupyterlab/apputils-extension:workspaces',
+  '@jupyterlab/application-extension:logo',
+  '@jupyterlab/application-extension:main',
   '@jupyterlab/application-extension:tree-resolver',
-  // TODO: improve/replace resolver and main to avoid redirect issues
-  // @see https://github.com/jtpio/jupyterlite/issues/22
   '@jupyterlab/apputils-extension:resolver',
   '@jupyterlab/docmanager-extension:download',
-  '@jupyterlab/application-extension:main'
+  '@jupyterlab/filebrowser-extension:download',
+  '@jupyterlab/filebrowser-extension:share-file',
+  '@jupyterlab/help-extension:about'
 ];
 
 async function createModule(scope, module) {
@@ -51,6 +50,8 @@ async function main() {
   const federatedExtensionPromises = [];
   const federatedMimeExtensionPromises = [];
   const federatedStylePromises = [];
+  const litePluginsToRegister = [];
+  const liteExtensionPromises = [];
 
   // This is all the data needed to load and activate plugins. This should be
   // gathered by the server and put onto the initial page template.
@@ -62,6 +63,10 @@ async function main() {
   const federatedExtensionNames = new Set();
 
   extensions.forEach(data => {
+    if (data.liteExtension) {
+      liteExtensionPromises.push(createModule(data.name, data.extension));
+      return;
+    }
     if (data.extension) {
       federatedExtensionNames.add(data.name);
       federatedExtensionPromises.push(createModule(data.name, data.extension));
@@ -90,8 +95,8 @@ async function main() {
 
     let plugins = Array.isArray(exports) ? exports : [exports];
     for (let plugin of plugins) {
-      // skip the plugin (or extension) if disabled
       if (
+        PageConfig.Extension.isDisabled(plugin.id) ||
         disabled.includes(plugin.id) ||
         disabled.includes(plugin.id.split(':')[0])
       ) {
@@ -154,6 +159,26 @@ async function main() {
     }
   });
 
+  // Add the base serverlite extensions
+  const baseServerExtensions = await Promise.all(serverExtensions);
+  baseServerExtensions.forEach(p => {
+    for (let plugin of activePlugins(p)) {
+      litePluginsToRegister.push(plugin);
+    }
+  })
+
+  // Add the serverlite federated extensions.
+  const federatedLiteExtensions = await Promise.allSettled(liteExtensionPromises);
+  federatedLiteExtensions.forEach(p => {
+    if (p.status === "fulfilled") {
+      for (let plugin of activePlugins(p.value)) {
+        litePluginsToRegister.push(plugin);
+      }
+    } else {
+      console.error(p.reason);
+    }
+  });
+
   // Load all federated component styles and log errors for any that do not
   (await Promise.allSettled(federatedStylePromises)).filter(({status}) => status === "rejected").forEach(({reason}) => {
      console.error(reason);
@@ -161,7 +186,7 @@ async function main() {
 
   // create the in-browser JupyterLite Server
   const jupyterLiteServer = new JupyterLiteServer({});
-  jupyterLiteServer.registerPluginModules(await Promise.all(serverExtensions));
+  jupyterLiteServer.registerPluginModules(litePluginsToRegister);
   // start the server
   await jupyterLiteServer.start();
 
@@ -171,17 +196,19 @@ async function main() {
   // create a full-blown JupyterLab frontend
   const lab = new JupyterLab({
     mimeExtensions,
-    serviceManager
+    serviceManager,
+    disabled
   });
+  lab.name = 'JupyterLite';
 
   lab.registerPluginModules(pluginsToRegister);
 
   /* eslint-disable no-console */
   console.log('Starting app');
   await lab.start();
-  console.log('JupyterLite started, waiting for restore');
+  console.log(`${lab.name} started, waiting for restore`);
   await lab.restored;
-  console.log('JupyterLite restored');
+  console.log(`${lab.name} restored`);
 }
 
 main();

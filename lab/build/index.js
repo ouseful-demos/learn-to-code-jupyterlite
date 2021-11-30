@@ -12,22 +12,21 @@ const styles = import('./style.js');
 
 const serverExtensions = [
   import('@jupyterlite/javascript-kernel-extension'),
-  import('@jupyterlite/p5-kernel-extension'),
   import('@jupyterlite/pyolite-kernel-extension'),
   import('@jupyterlite/server-extension')
 ];
 
 // custom list of disabled plugins
 const disabled = [
-  ...JSON.parse(PageConfig.getOption('disabledExtensions') || '[]'),
-  '@jupyterlab/apputils-extension:themes',
   '@jupyterlab/apputils-extension:workspaces',
+  '@jupyterlab/application-extension:logo',
+  '@jupyterlab/application-extension:main',
   '@jupyterlab/application-extension:tree-resolver',
-  // TODO: improve/replace resolver and main to avoid redirect issues
-  // @see https://github.com/jtpio/jupyterlite/issues/22
   '@jupyterlab/apputils-extension:resolver',
   '@jupyterlab/docmanager-extension:download',
-  '@jupyterlab/application-extension:main'
+  '@jupyterlab/filebrowser-extension:download',
+  '@jupyterlab/filebrowser-extension:share-file',
+  '@jupyterlab/help-extension:about'
 ];
 
 async function createModule(scope, module) {
@@ -51,6 +50,8 @@ async function main() {
   const federatedExtensionPromises = [];
   const federatedMimeExtensionPromises = [];
   const federatedStylePromises = [];
+  const litePluginsToRegister = [];
+  const liteExtensionPromises = [];
 
   // This is all the data needed to load and activate plugins. This should be
   // gathered by the server and put onto the initial page template.
@@ -62,6 +63,10 @@ async function main() {
   const federatedExtensionNames = new Set();
 
   extensions.forEach(data => {
+    if (data.liteExtension) {
+      liteExtensionPromises.push(createModule(data.name, data.extension));
+      return;
+    }
     if (data.extension) {
       federatedExtensionNames.add(data.name);
       federatedExtensionPromises.push(createModule(data.name, data.extension));
@@ -90,8 +95,8 @@ async function main() {
 
     let plugins = Array.isArray(exports) ? exports : [exports];
     for (let plugin of plugins) {
-      // skip the plugin (or extension) if disabled
       if (
+        PageConfig.Extension.isDisabled(plugin.id) ||
         disabled.includes(plugin.id) ||
         disabled.includes(plugin.id.split(':')[0])
       ) {
@@ -103,16 +108,6 @@ async function main() {
 
   // Handle the mime extensions.
   const mimeExtensions = [];
-  if (!federatedExtensionNames.has('@jupyterlite/iframe-extension')) {
-    try {
-      let ext = require('@jupyterlite/iframe-extension');
-      for (let plugin of activePlugins(ext)) {
-        mimeExtensions.push(plugin);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
   if (!federatedExtensionNames.has('@jupyterlab/json-extension')) {
     try {
       let ext = require('@jupyterlab/json-extension');
@@ -123,9 +118,29 @@ async function main() {
       console.error(e);
     }
   }
+  if (!federatedExtensionNames.has('@jupyterlab/javascript-extension')) {
+    try {
+      let ext = require('@jupyterlab/javascript-extension');
+      for (let plugin of activePlugins(ext)) {
+        mimeExtensions.push(plugin);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
   if (!federatedExtensionNames.has('@jupyterlab/vega5-extension')) {
     try {
       let ext = require('@jupyterlab/vega5-extension');
+      for (let plugin of activePlugins(ext)) {
+        mimeExtensions.push(plugin);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  if (!federatedExtensionNames.has('@jupyterlite/iframe-extension')) {
+    try {
+      let ext = require('@jupyterlite/iframe-extension');
       for (let plugin of activePlugins(ext)) {
         mimeExtensions.push(plugin);
       }
@@ -147,26 +162,6 @@ async function main() {
   });
 
   // Handled the standard extensions.
-  if (!federatedExtensionNames.has('@jupyterlite/application-extension')) {
-    try {
-      let ext = require('@jupyterlite/application-extension');
-      for (let plugin of activePlugins(ext)) {
-        pluginsToRegister.push(plugin);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
-  if (!federatedExtensionNames.has('@jupyterlite/theme-extension')) {
-    try {
-      let ext = require('@jupyterlite/theme-extension');
-      for (let plugin of activePlugins(ext)) {
-        pluginsToRegister.push(plugin);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
   if (!federatedExtensionNames.has('@jupyterlab/application-extension')) {
     try {
       let ext = require('@jupyterlab/application-extension');
@@ -270,6 +265,16 @@ async function main() {
   if (!federatedExtensionNames.has('@jupyterlab/help-extension')) {
     try {
       let ext = require('@jupyterlab/help-extension');
+      for (let plugin of activePlugins(ext)) {
+        pluginsToRegister.push(plugin);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  if (!federatedExtensionNames.has('@jupyterlab/htmlviewer-extension')) {
+    try {
+      let ext = require('@jupyterlab/htmlviewer-extension');
       for (let plugin of activePlugins(ext)) {
         pluginsToRegister.push(plugin);
       }
@@ -447,9 +452,29 @@ async function main() {
       console.error(e);
     }
   }
+  if (!federatedExtensionNames.has('@jupyterlab/translation-extension')) {
+    try {
+      let ext = require('@jupyterlab/translation-extension');
+      for (let plugin of activePlugins(ext)) {
+        pluginsToRegister.push(plugin);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
   if (!federatedExtensionNames.has('@jupyterlab/ui-components-extension')) {
     try {
       let ext = require('@jupyterlab/ui-components-extension');
+      for (let plugin of activePlugins(ext)) {
+        pluginsToRegister.push(plugin);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  if (!federatedExtensionNames.has('@jupyterlite/application-extension')) {
+    try {
+      let ext = require('@jupyterlite/application-extension');
       for (let plugin of activePlugins(ext)) {
         pluginsToRegister.push(plugin);
       }
@@ -470,6 +495,26 @@ async function main() {
     }
   });
 
+  // Add the base serverlite extensions
+  const baseServerExtensions = await Promise.all(serverExtensions);
+  baseServerExtensions.forEach(p => {
+    for (let plugin of activePlugins(p)) {
+      litePluginsToRegister.push(plugin);
+    }
+  })
+
+  // Add the serverlite federated extensions.
+  const federatedLiteExtensions = await Promise.allSettled(liteExtensionPromises);
+  federatedLiteExtensions.forEach(p => {
+    if (p.status === "fulfilled") {
+      for (let plugin of activePlugins(p.value)) {
+        litePluginsToRegister.push(plugin);
+      }
+    } else {
+      console.error(p.reason);
+    }
+  });
+
   // Load all federated component styles and log errors for any that do not
   (await Promise.allSettled(federatedStylePromises)).filter(({status}) => status === "rejected").forEach(({reason}) => {
      console.error(reason);
@@ -477,7 +522,7 @@ async function main() {
 
   // create the in-browser JupyterLite Server
   const jupyterLiteServer = new JupyterLiteServer({});
-  jupyterLiteServer.registerPluginModules(await Promise.all(serverExtensions));
+  jupyterLiteServer.registerPluginModules(litePluginsToRegister);
   // start the server
   await jupyterLiteServer.start();
 
@@ -487,17 +532,19 @@ async function main() {
   // create a full-blown JupyterLab frontend
   const lab = new JupyterLab({
     mimeExtensions,
-    serviceManager
+    serviceManager,
+    disabled
   });
+  lab.name = 'JupyterLite';
 
   lab.registerPluginModules(pluginsToRegister);
 
   /* eslint-disable no-console */
   console.log('Starting app');
   await lab.start();
-  console.log('JupyterLite started, waiting for restore');
+  console.log(`${lab.name} started, waiting for restore`);
   await lab.restored;
-  console.log('JupyterLite restored');
+  console.log(`${lab.name} restored`);
 }
 
 main();
