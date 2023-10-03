@@ -35,6 +35,13 @@
       },
       {
         "extension": "./extension",
+        "liteExtension": true,
+        "load": "static/remoteEntry.6c8acd9edadac87f834e.js",
+        "name": "@jupyterlite/xeus-python-kernel",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
         "liteExtension": false,
         "load": "static/remoteEntry.145e469029155b53b350.js",
         "name": "@timkpaine/jupyterlab_miami_nights"
