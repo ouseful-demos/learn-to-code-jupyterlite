@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2023-10-03T12:47:50.490508Z",
+      "created": "2023-10-03T13:57:25.677890Z",
       "format": null,
-      "last_modified": "2023-10-03T12:47:50.490508Z",
+      "last_modified": "2023-10-03T13:57:25.677890Z",
       "mimetype": null,
       "name": "1_Having_a_go_at_it",
       "path": "1_Having_a_go_at_it",
@@ -14,9 +14,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-03T12:47:50.502508Z",
+      "created": "2023-10-03T13:57:25.689890Z",
       "format": null,
-      "last_modified": "2023-10-03T12:47:49.110509Z",
+      "last_modified": "2023-10-03T13:57:23.701865Z",
       "mimetype": "text/markdown",
       "name": "README.md",
       "path": "README.md",
@@ -26,9 +26,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-03T12:47:50.502508Z",
+      "created": "2023-10-03T13:57:25.689890Z",
       "format": null,
-      "last_modified": "2023-10-03T12:47:50.502508Z",
+      "last_modified": "2023-10-03T13:57:25.689890Z",
       "mimetype": null,
       "name": "4_Further_techniques",
       "path": "4_Further_techniques",
@@ -38,9 +38,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-03T12:47:50.498508Z",
+      "created": "2023-10-03T13:57:25.685890Z",
       "format": null,
-      "last_modified": "2023-10-03T12:47:50.498508Z",
+      "last_modified": "2023-10-03T13:57:25.685890Z",
       "mimetype": null,
       "name": "3_Combine_and_transform_data",
       "path": "3_Combine_and_transform_data",
@@ -50,9 +50,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-03T12:47:50.494508Z",
+      "created": "2023-10-03T13:57:25.681890Z",
       "format": null,
-      "last_modified": "2023-10-03T12:47:50.494508Z",
+      "last_modified": "2023-10-03T13:57:25.681890Z",
       "mimetype": null,
       "name": "2_Cleaning_up_our_act",
       "path": "2_Cleaning_up_our_act",
@@ -61,9 +61,9 @@
       "writable": true
     }
   ],
-  "created": "2023-10-03T12:47:50.502508Z",
+  "created": "2023-10-03T13:57:25.689890Z",
   "format": "json",
-  "last_modified": "2023-10-03T12:47:50.502508Z",
+  "last_modified": "2023-10-03T13:57:25.689890Z",
   "mimetype": null,
   "name": "",
   "path": "",
