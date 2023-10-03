@@ -4,5 +4,5 @@ channels:
   - conda-forge
 dependencies:
   - jupyterlab >=3.1.0a10,<4
-  - python >=3.8,<3.9
+  - python >=3.8
   - jupyterlab-drawio
