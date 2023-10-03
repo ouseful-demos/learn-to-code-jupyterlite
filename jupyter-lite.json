@@ -9,13 +9,13 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.f6574b55a223d23e7a04.js",
+        "load": "static/remoteEntry.a37e37c87d212fe85e13.js",
         "name": "@jupyter-widgets/jupyterlab-manager"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.bf6b3192a558615425cd.js",
+        "load": "static/remoteEntry.8a4c97071917cf84832f.js",
         "name": "@telamonian/theme-darcula"
       },
       {
@@ -27,27 +27,34 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.490fbd2bdf754b661d13.js",
+        "load": "static/remoteEntry.ade722230aea9b7793b2.js",
         "name": "bqplot"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.a36c9496965c4f592a15.js",
+        "load": "static/remoteEntry.9693baf6fc7fc4c880d2.js",
         "name": "ipycanvas"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.e9df3e4e9577abfc8848.js",
+        "load": "static/remoteEntry.2245c790a510bf1865ea.js",
         "name": "jupyter-matplotlib"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.1127d9a8a11e639c274b.js",
+        "load": "static/remoteEntry.56bf4b5dc66a26bcd462.js",
         "mimeExtension": "./mimeExtension",
         "name": "jupyterlab-plotly"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.aa1060b2d1221f8e5688.js",
+        "name": "jupyterlab_pygments",
+        "style": "./style"
       }
     ],
     "fullLabextensionsUrl": "./lab/extensions",
