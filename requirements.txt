@@ -12,4 +12,3 @@ plotly>=5
 theme-darcula
 xlrd
 jupyterlab_ou_brand_extension
-lzma
