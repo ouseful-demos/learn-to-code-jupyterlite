@@ -10,4 +10,4 @@ jupyterlite==0.1.0a16
 #plotly>=5,<6
 plotly>=5
 theme-darcula
-lzma
+xlrd
