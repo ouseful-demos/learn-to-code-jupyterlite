@@ -80,6 +80,13 @@
       {
         "extension": "./extension",
         "liteExtension": false,
+        "load": "static/remoteEntry.91537d272ddee019d9db.js",
+        "name": "jupyterlab_ou_brand_extension",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
         "load": "static/remoteEntry.aa1060b2d1221f8e5688.js",
         "name": "jupyterlab_pygments",
         "style": "./style"
