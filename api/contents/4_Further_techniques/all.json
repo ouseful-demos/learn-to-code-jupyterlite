@@ -1,0 +1,85 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.218633Z",
+      "mimetype": "text/csv",
+      "name": "comtrade_milk_uk_monthly_14.csv",
+      "path": "4_Further_techniques/comtrade_milk_uk_monthly_14.csv",
+      "size": 237389,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.214632Z",
+      "mimetype": "text/csv",
+      "name": "comtrade_milk_uk_jan_jul_15.csv",
+      "path": "4_Further_techniques/comtrade_milk_uk_jan_jul_15.csv",
+      "size": 102270,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.214632Z",
+      "mimetype": null,
+      "name": "Project_4.ipynb",
+      "path": "4_Further_techniques/Project_4.ipynb",
+      "size": 48809,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.844065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.210630Z",
+      "mimetype": null,
+      "name": "Bonus notebook - Sonification Demo.ipynb",
+      "path": "4_Further_techniques/Bonus notebook - Sonification Demo.ipynb",
+      "size": 13706,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.218633Z",
+      "mimetype": "text/html",
+      "name": "comtrade_pivot.html",
+      "path": "4_Further_techniques/comtrade_pivot.html",
+      "size": 67966,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.844065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:36:40.214632Z",
+      "mimetype": null,
+      "name": "Exercises_4.ipynb",
+      "path": "4_Further_techniques/Exercises_4.ipynb",
+      "size": 266937,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2023-10-03T14:38:01.848065Z",
+  "format": "json",
+  "last_modified": "2023-10-03T14:38:01.848065Z",
+  "mimetype": null,
+  "name": "4_Further_techniques",
+  "path": "4_Further_techniques",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,73 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.836064Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:38:01.836064Z",
+      "mimetype": null,
+      "name": "1_Having_a_go_at_it",
+      "path": "1_Having_a_go_at_it",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:37:59.406363Z",
+      "mimetype": "text/markdown",
+      "name": "README.md",
+      "path": "README.md",
+      "size": 1674,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.848065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:38:01.848065Z",
+      "mimetype": null,
+      "name": "4_Further_techniques",
+      "path": "4_Further_techniques",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.844065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:38:01.844065Z",
+      "mimetype": null,
+      "name": "3_Combine_and_transform_data",
+      "path": "3_Combine_and_transform_data",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2023-10-03T14:38:01.840065Z",
+      "format": null,
+      "last_modified": "2023-10-03T14:38:01.840065Z",
+      "mimetype": null,
+      "name": "2_Cleaning_up_our_act",
+      "path": "2_Cleaning_up_our_act",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2023-10-03T14:38:01.848065Z",
+  "format": "json",
+  "last_modified": "2023-10-03T14:38:01.848065Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
