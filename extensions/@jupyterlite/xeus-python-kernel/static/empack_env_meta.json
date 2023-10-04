@@ -44,6 +44,13 @@
             "filename": "python-fastjsonschema-2.16.2-pyhd8ed1ab_0.tar.gz"
         },
         {
+            "name": "wbdata",
+            "version": "0.3.0",
+            "build": "pip",
+            "filename_stem": "wbdata-0.3.0-pip",
+            "filename": "wbdata-0.3.0-pip.tar.gz"
+        },
+        {
             "name": "asttokens",
             "version": "2.1.0",
             "build": "pyhd8ed1ab_0",
