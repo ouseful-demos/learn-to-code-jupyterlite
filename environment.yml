@@ -8,3 +8,4 @@ dependencies:
   - xlrd
   - scipy
   - ipywidgets
+  - wbgapi
