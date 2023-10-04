@@ -6,3 +6,6 @@ dependencies:
   - pandas
   - matplotlib
   - xlrd
+  - scipy
+  - pandas_datareader
+  - ipywidgets
