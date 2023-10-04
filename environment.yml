@@ -8,8 +8,10 @@ dependencies:
   - xlrd
   - scipy
   - ipywidgets
-  - wbgapi
   - pip:
+    - appdirs
     - world_bank_data
+    - pandas-datareader
     - wbdata
     - wbpy
+    - wbgapi
