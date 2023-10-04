@@ -9,3 +9,6 @@ dependencies:
   - scipy
   - ipywidgets
   - wbgapi
+  - pip
+  - pip:
+    - world_bank_data
