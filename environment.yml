@@ -12,3 +12,4 @@ dependencies:
   - pip:
     - world_bank_data
     - wbdata
+    - wbpy
