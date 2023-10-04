@@ -142,11 +142,11 @@
             "filename": "importlib_resources-5.10.0-pyhd8ed1ab_0.tar.gz"
         },
         {
-            "name": "requests",
-            "version": "0.3.0",
-            "build": "py310h8bed8af_0",
-            "filename_stem": "requests-0.3.0-py310h8bed8af_0",
-            "filename": "requests-0.3.0-py310h8bed8af_0.tar.gz"
+            "name": "appdirs",
+            "version": "1.4.4",
+            "build": "pip",
+            "filename_stem": "appdirs-1.4.4-pip",
+            "filename": "appdirs-1.4.4-pip.tar.gz"
         },
         {
             "name": "stack_data",
@@ -198,13 +198,6 @@
             "filename": "jedi-0.18.1-pyhd8ed1ab_2.tar.gz"
         },
         {
-            "name": "wbgapi",
-            "version": "1.0.12",
-            "build": "pyhd8ed1ab_0",
-            "filename_stem": "wbgapi-1.0.12-pyhd8ed1ab_0",
-            "filename": "wbgapi-1.0.12-pyhd8ed1ab_0.tar.gz"
-        },
-        {
             "name": "requests-wasm-polyfill",
             "version": "0.3.0",
             "build": "h8bed8af_0",
@@ -233,13 +226,6 @@
             "filename": "traitlets-5.5.0-pyhd8ed1ab_0.tar.gz"
         },
         {
-            "name": "libyaml",
-            "version": "0.2.5",
-            "build": "h387d4f7_1",
-            "filename_stem": "libyaml-0.2.5-h387d4f7_1",
-            "filename": "libyaml-0.2.5-h387d4f7_1.tar.gz"
-        },
-        {
             "name": "python-dateutil",
             "version": "2.8.2",
             "build": "pyhd8ed1ab_0",
@@ -266,6 +252,13 @@
             "build": "pyhd8ed1ab_0",
             "filename_stem": "zipp-3.10.0-pyhd8ed1ab_0",
             "filename": "zipp-3.10.0-pyhd8ed1ab_0.tar.gz"
+        },
+        {
+            "name": "pandas_datareader",
+            "version": "0.10.0",
+            "build": "pip",
+            "filename_stem": "pandas_datareader-0.10.0-pip",
+            "filename": "pandas_datareader-0.10.0-pip.tar.gz"
         },
         {
             "name": "pkgutil-resolve-name",
@@ -415,6 +408,13 @@
             "filename": "pygments-2.13.0-pyhd8ed1ab_0.tar.gz"
         },
         {
+            "name": "wbgapi",
+            "version": "1.0.12",
+            "build": "pip",
+            "filename_stem": "wbgapi-1.0.12-pip",
+            "filename": "wbgapi-1.0.12-pip.tar.gz"
+        },
+        {
             "name": "matplotlib-inline",
             "version": "0.1.6",
             "build": "pyhd8ed1ab_0",
@@ -436,13 +436,6 @@
             "filename": "ipywidgets-8.0.7-py310h8bed8af_0.tar.gz"
         },
         {
-            "name": "tabulate",
-            "version": "0.9.0",
-            "build": "pyhd8ed1ab_1",
-            "filename_stem": "tabulate-0.9.0-pyhd8ed1ab_1",
-            "filename": "tabulate-0.9.0-pyhd8ed1ab_1.tar.gz"
-        },
-        {
             "name": "attrs",
             "version": "22.1.0",
             "build": "pyh71513ae_1",
@@ -455,13 +448,6 @@
             "build": "pyh1a96a4e_2",
             "filename_stem": "pexpect-4.8.0-pyh1a96a4e_2",
             "filename": "pexpect-4.8.0-pyh1a96a4e_2.tar.gz"
-        },
-        {
-            "name": "pyyaml",
-            "version": "6.0",
-            "build": "h8bed8af_0",
-            "filename_stem": "pyyaml-6.0-h8bed8af_0",
-            "filename": "pyyaml-6.0-h8bed8af_0.tar.gz"
         },
         {
             "name": "world_bank_data",

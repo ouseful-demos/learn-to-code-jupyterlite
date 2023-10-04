@@ -2,9 +2,9 @@
   "content": [
     {
       "content": null,
-      "created": "2023-10-04T15:47:50.455514Z",
+      "created": "2023-10-04T22:01:24.713556Z",
       "format": null,
-      "last_modified": "2023-10-04T15:46:19.014810Z",
+      "last_modified": "2023-10-04T21:59:30.329639Z",
       "mimetype": "text/csv",
       "name": "WB POP 2013.csv",
       "path": "3_Combine_and_transform_data/WB POP 2013.csv",
@@ -14,9 +14,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-04T15:47:50.451514Z",
+      "created": "2023-10-04T22:01:24.713556Z",
       "format": null,
-      "last_modified": "2023-10-04T15:46:19.010810Z",
+      "last_modified": "2023-10-04T21:59:30.325639Z",
       "mimetype": null,
       "name": "Exercises_3.ipynb",
       "path": "3_Combine_and_transform_data/Exercises_3.ipynb",
@@ -26,9 +26,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-04T15:47:50.455514Z",
+      "created": "2023-10-04T22:01:24.713556Z",
       "format": null,
-      "last_modified": "2023-10-04T15:46:19.010810Z",
+      "last_modified": "2023-10-04T21:59:30.329639Z",
       "mimetype": "text/csv",
       "name": "WB GDP 2013.csv",
       "path": "3_Combine_and_transform_data/WB GDP 2013.csv",
@@ -38,9 +38,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-04T15:47:50.455514Z",
+      "created": "2023-10-04T22:01:24.713556Z",
       "format": null,
-      "last_modified": "2023-10-04T15:46:19.010810Z",
+      "last_modified": "2023-10-04T21:59:30.329639Z",
       "mimetype": "text/csv",
       "name": "WB LE 2013.csv",
       "path": "3_Combine_and_transform_data/WB LE 2013.csv",
@@ -50,9 +50,9 @@
     },
     {
       "content": null,
-      "created": "2023-10-04T15:47:50.455514Z",
+      "created": "2023-10-04T22:01:24.713556Z",
       "format": null,
-      "last_modified": "2023-10-04T15:46:19.010810Z",
+      "last_modified": "2023-10-04T21:59:30.325639Z",
       "mimetype": null,
       "name": "Project_3.ipynb",
       "path": "3_Combine_and_transform_data/Project_3.ipynb",
@@ -61,9 +61,9 @@
       "writable": true
     }
   ],
-  "created": "2023-10-04T15:47:50.455514Z",
+  "created": "2023-10-04T22:01:24.713556Z",
   "format": "json",
-  "last_modified": "2023-10-04T15:47:50.455514Z",
+  "last_modified": "2023-10-04T22:01:24.713556Z",
   "mimetype": null,
   "name": "3_Combine_and_transform_data",
   "path": "3_Combine_and_transform_data",
