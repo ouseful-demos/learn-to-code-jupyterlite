@@ -10,7 +10,21 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.a37e37c87d212fe85e13.js",
+        "load": "static/remoteEntry.c3551e86769ef3973316.js",
+        "name": "@hadim/jupyter-archive",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.3ff26e696aa2c37cdbc7.js",
+        "name": "@ijmbarr/jupyterlab_spellchecker",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.1116b848a6f7126bf3e9.js",
         "name": "@jupyter-widgets/jupyterlab-manager"
       },
       {
@@ -26,12 +40,6 @@
         "mimeExtension": "./mimeExtension",
         "name": "@jupyterlab/geojson-extension",
         "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": true,
-        "load": "static/remoteEntry.9eb7d88df6e74e509742.js",
-        "name": "@jupyterlite/pyodide-kernel-extension"
       },
       {
         "extension": "./extension",
@@ -76,6 +84,13 @@
         "load": "static/remoteEntry.56bf4b5dc66a26bcd462.js",
         "mimeExtension": "./mimeExtension",
         "name": "jupyterlab-plotly"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.b4861d8944599b59ea1c.js",
+        "name": "jupyterlab-skip-traceback",
+        "style": "./style"
       },
       {
         "extension": "./extension",
@@ -376,13 +391,6 @@
     "fullMathjaxUrl": "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js",
     "fullStaticUrl": "./build",
     "licensesUrl": "./lab/api/licenses",
-    "litePluginSettings": {
-      "@jupyterlite/pyodide-kernel-extension:kernel": {
-        "pipliteUrls": [
-          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=d6259705de90ec1d2688f48036a8f16ae140b6607dee150901810daa493c632d"
-        ]
-      }
-    },
     "mathjaxConfig": "TeX-AMS_CHTML-full,Safe"
   },
   "jupyter-lite-schema-version": 0
