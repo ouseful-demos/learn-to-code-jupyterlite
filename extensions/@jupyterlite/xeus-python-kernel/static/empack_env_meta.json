@@ -184,6 +184,13 @@
             "filename": "xeus-python-shell-raw-0.5.0-pyhd8ed1ab_0.tar.gz"
         },
         {
+            "name": "pycountry",
+            "version": "22.3.5",
+            "build": "pip",
+            "filename_stem": "pycountry-22.3.5-pip",
+            "filename": "pycountry-22.3.5-pip.tar.gz"
+        },
+        {
             "name": "numpy",
             "version": "1.25.2",
             "build": "py310h6d2fff6_0",
@@ -287,6 +294,13 @@
             "build": "pyhd8ed1ab_0",
             "filename_stem": "packaging-21.3-pyhd8ed1ab_0",
             "filename": "packaging-21.3-pyhd8ed1ab_0.tar.gz"
+        },
+        {
+            "name": "tabulate",
+            "version": "0.9.0",
+            "build": "pip",
+            "filename_stem": "tabulate-0.9.0-pip",
+            "filename": "tabulate-0.9.0-pip.tar.gz"
         },
         {
             "name": "pyrsistent",
