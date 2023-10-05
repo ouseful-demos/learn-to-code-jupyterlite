@@ -3,7 +3,7 @@ jupyterlite-core==0.1.3
 jupyterlab~=3.5.1
 
 # Python kernels (optional)
-#jupyterlite-pyodide-kernel
+jupyterlite-pyodide-kernel
 jupyterlite-xeus-python
 
 # Language support (optional)
