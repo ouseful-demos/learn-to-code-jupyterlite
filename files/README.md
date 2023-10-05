@@ -2,6 +2,8 @@
 
 OpenLearn *Learn to Code for Data Analysis* notebooks via JupyterLite, deployed as a static site to GitHub Pages, for demo purposes.
 
+*Experimental site for running notebooks associated with the Open University OpenLearn course [Learn to code for data analysis](https://www.open.edu/openlearn/science-maths-technology/learn-code-data-analysis/content-section-overview?active-tab=description-tab).*
+
 ## Try it in your browser
 
 ➡️ **https://github.com/ouseful-demos/learn-to-code-jupyterlite**
