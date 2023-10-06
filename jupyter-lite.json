@@ -24,7 +24,7 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.1116b848a6f7126bf3e9.js",
+        "load": "static/remoteEntry.a37e37c87d212fe85e13.js",
         "name": "@jupyter-widgets/jupyterlab-manager"
       },
       {
@@ -46,13 +46,6 @@
         "liteExtension": true,
         "load": "static/remoteEntry.9eb7d88df6e74e509742.js",
         "name": "@jupyterlite/pyodide-kernel-extension"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": true,
-        "load": "static/remoteEntry.6c8acd9edadac87f834e.js",
-        "name": "@jupyterlite/xeus-python-kernel",
-        "style": "./style"
       },
       {
         "extension": "./extension",
