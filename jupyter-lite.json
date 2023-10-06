@@ -74,6 +74,13 @@
       {
         "extension": "./extension",
         "liteExtension": false,
+        "load": "static/remoteEntry.a0b8249f29f35c4273b6.js",
+        "name": "jupyterlab-myst",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
         "load": "static/remoteEntry.6a37df5d4590b29196a3.js",
         "name": "jupyterlab-night"
       },
