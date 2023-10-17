@@ -83,7 +83,7 @@ A __join__ is the merging of two tables on a common column. The resulting table 
 
 In a __logarithmic scale__ , each major tick represents a value that is the multiplication by some constant (usually 10) of the value of the previous major tick.
 
-A __method chain__ is an expression like `` context.method1(args1).method2(args2).method3(args3) `` where each method has and returns the same type of context, except possibly the last method, which can return any type of value.
+A __method chain__ is an expression like ``context.method1(args1).method2(args2).method3(args3)`` where each method has and returns the same type of context, except possibly the last method, which can return any type of value.
 
 The __p-value__ is an indication of the significance of the result. Usually a p-value below 0.05 is taken to mean the result is statistically significant.
 
@@ -119,11 +119,12 @@ A __test__ is some code that checks whether some other code works as expected, e
 
 ``col.apply(functionName)`` returns a new column, obtained by applying the given one-argument function to each cell in column ``col``.
 
+
 ``DataFrame(columns=listOfStrings, data=listOfLists)`` returns a new dataframe, given the data as a list of rows, each row being a list of values in column order.
 
-`` download(indicator=string, country='all', start=number, end=number) `` is a function in the pandas.io.wb module that downloads the World Bank data for the given indicator and all countries and country groups from the given start year to the given end year.
+``download(indicator=string, country='all', start=number, end=number)`` is a function in the pandas.io.wb module that downloads the World Bank data for the given indicator and all countries and country groups from the given start year to the given end year.
 
-`` merge(left=frame1, right=frame2, on=columnName, how=string) `` returns a new dataframe, obtained by joining the two frames on the columns with the given common name. The ``how`` argument can be one of ``‘left’, ‘right’, ‘inner’`` and ``'outer’.``
+``merge(left=frame1, right=frame2, on=columnName, how=string)`` returns a new dataframe, obtained by joining the two frames on the columns with the given common name. The ``how`` argument can be one of ``‘left’, ‘right’, ‘inner’`` and ``'outer’.``
 
 ``print()`` is a Python function that takes one or more expressions and prints their values on the screen in a single line.
 

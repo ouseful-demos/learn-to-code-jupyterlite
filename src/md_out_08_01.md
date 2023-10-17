@@ -200,7 +200,7 @@ The list of keys associated with the groups might then look like [(‘A’, 2015
 
 This may seem to you like a roundabout way of filtering the dataframe as you did in Week 2; but you’ll see that the ability to automatically group rows sets up the possibility of then processing those rows as separate ‘mini-dataframes’ and then combining the results back together.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 2 Grouping data
 
 
@@ -215,6 +215,7 @@ As you complete the tasks, think about these questions:
 * With the ability to group data so easily, what other sorts of questions would you like to be able to ask?
 
 <!-- #endregion -->
+```
 
 
 ## 1.2 Looking at apply and combine operations
@@ -435,7 +436,7 @@ The second index column containing the numbers 3, 1, 4 etc., contains the origin
 
 In Week 3 the ``apply()`` method was called on a column, to apply the given function to each cell. Here it was called on a grouped dataframe, to apply the given function to each group.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 3 Experimenting with split-apply-combine
 
 
@@ -450,6 +451,7 @@ As you complete the tasks, think about these questions:
 * When graphically comparing total trade flows from the leading partner countries to the World total, did it look as if any partners particularly dominated that area of trade? If you have time, find news reports discussing why this should be the case.
 
 <!-- #endregion -->
+```
 
 
 ## 1.4 Filtering groups
@@ -725,7 +727,7 @@ pivot_table(df,
 
 The ability to filter datasets based on group properties means that large datasets can more easily be limited to just those rows associated with groups of rows that are deemed to be relevant in some way.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 4 Filtering groups
 
 
@@ -736,4 +738,5 @@ Use the Exercise notebook 4 to practise filtering in Exercise 4.
 As you complete the tasks, think about other questions you could ask of your data using the filter command.
 
 <!-- #endregion -->
+```
 

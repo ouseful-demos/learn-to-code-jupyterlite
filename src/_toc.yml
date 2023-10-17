@@ -1,0 +1,57 @@
+format: jb-book
+root: index
+parts:
+
+  - caption: "Week 1: Having a go at it Part 1"
+    chapters:
+    - file: md_out_00_01
+    - file: md_out_00_02
+    - file: md_out_00_03
+  - caption: "Week 2: Having a go at it Part 2"
+    chapters:
+    - file: md_out_01_01
+    - file: md_out_01_02
+    - file: md_out_01_03
+    - file: md_out_01_04
+  - caption: "Week 3: Cleaning up our act Part 1"
+    chapters:
+    - file: md_out_02_01
+    - file: md_out_02_02
+    - file: md_out_02_03
+  - caption: "Week 4: Cleaning up our act Part 2"
+    chapters:
+    - file: md_out_03_01
+    - file: md_out_03_02
+    - file: md_out_03_03
+    - file: md_out_03_04
+    - file: md_out_03_05
+  - caption: "Week 4: Cleaning up our act Part 2"
+    chapters:
+    - file: md_out_04_01
+    - file: md_out_04_02
+    - file: md_out_04_03
+    - file: md_out_04_04
+    - file: md_out_04_05
+  - caption: "Week 5: Combine and transform data Part 1"
+    chapters:
+    - file: md_out_05_01
+    - file: md_out_05_02
+    - file: md_out_05_03
+  - caption: "Week 6: Combine and transform data Part 2"
+    chapters:
+    - file: md_out_06_01
+    - file: md_out_06_02
+    - file: md_out_06_03
+    - file: md_out_06_04
+  - caption: "Week 7: Further techniques Part 1"
+    chapters:
+    - file: md_out_07_01
+    - file: md_out_07_02
+    - file: md_out_07_03
+  - caption: "Week 8: Further techniques Part 2"
+    chapters:
+    - file: md_out_08_01
+    - file: md_out_08_02
+    - file: md_out_08_03
+    - file: md_out_08_04
+    - file: md_out_08_05

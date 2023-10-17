@@ -211,7 +211,7 @@ Or with the GDP data, if countries were assigned to economic groupings such as t
 
 This week you will learn how to split data into groups based on particular features of the data, and then generate information about each separate group, across all of the groups, at the same time.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 1 Grouping data
 
 
@@ -220,6 +220,7 @@ This week you will learn how to split data into groups based on particular featu
 Based on the data you have seen so far, or some other datasets you may be aware of, what other ways of grouping data can you think of, and why might grouping data that way be useful?
 
 <!-- #endregion -->
+```
 
 
 ## 1.2 Data that describes the world of trade
@@ -248,7 +249,7 @@ In the next section, you will find out about the Comtrade data.
 
 The Comtrade Data Extraction interface provides a user interface for selecting, previewing and exporting data from the Comtrade database.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 2 Exploring export data
 
 
@@ -290,6 +291,7 @@ For a particular category of goods, and a reporting period of a single month or 
 Does the range of goods and services listed within the database surprise you?
 
 <!-- #endregion -->
+```
 
 Keep the Comtrade webpage open as you’ll use it again in the next section.
 
@@ -388,6 +390,7 @@ Set the datatypes as shown using the ``dtype`` argument to ensure that the codes
 
 
 URL='http://comtrade.un.org/api/get?max=5000&type=C&freq=A&px=HS&ps=2014%2C2013%2C2012&r=826&p=all&rg=all&cc
+
 =0401%2C0402&fmt=csv'
 
 
@@ -414,7 +417,7 @@ The file will be saved in the same folder as the notebook.
 ## 1.5 Practice getting data
 
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 1 Getting data from API
 
 
@@ -426,7 +429,9 @@ Open the exercise notebook 4 and save it in the disk folder or the CoCalc projec
 
 Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter watch again the video in [Week 1 Exercise 1](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83251&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4).
 
+
 For the commodities and reporter you chose, find out which countries are the biggest partners in recent years in terms of import and export trade flows.
 
 <!-- #endregion -->
+```
 

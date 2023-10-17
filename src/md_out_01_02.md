@@ -55,7 +55,7 @@ __Figure 5__
 
 Here’s a quick project for you, which is about looking at TB deaths in *all* countries.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 1 The project
 
 
@@ -86,6 +86,7 @@ If you happen to know how to use a spreadsheet application, then you can do a pe
 You might like to share your experience of working on this project with friends, family or colleagues.
 
 <!-- #endregion -->
+```
 
 
 ## 2.2 Sharing your project notebook

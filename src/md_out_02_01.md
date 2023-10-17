@@ -72,7 +72,9 @@ Before anything can be done with a CSV file with pandas, the following import st
 
 ``In []:``
 
-`from pandas import *`
+```python
+from pandas import *
+```
 
 As you learned in Week 2, the import statement loads into memory all the code in the pandas module.
 
@@ -89,7 +91,7 @@ However the function can take many additional arguments (some of which you’ll 
 In the next step, find out about dataframes and the ‘dot’ notation.
 
 
-## 1.2 Dataframes and the ‘dot’ notation
+## 2.2 Dataframes and the ‘dot’ notation
 
 
 In Week 2 you learned that dataframes have methods, which are like functions, that can only be called in the context of a dataframe.
@@ -118,7 +120,7 @@ __Figure 3__
 
 A dataframe attribute is like a variable that can only be accessed in the context of a dataframe. One such attribute is ``columns ``which holds a dataframe’s column names.
 
-So the expression ``df.columns`` evaluates to the value of the ``columns ``attribute inside the dataframe ``df``. The following code will get and display the names of the columns in the dataframe ``df:``
+So the expression ``df.columns`` evaluates to the value of the ``columns``attribute inside the dataframe ``df``. The following code will get and display the names of the columns in the dataframe ``df:``
 
 ``In []:``
 
@@ -144,7 +146,7 @@ dtype='object')
 
 Dataframes can have hundreds or thousands of rows, so it is not practical to display a whole dataframe.
 
-However, there are a number of dataframe attributes and methods that allow you to get and display either a single row or a number of rows at a time. Three of the most useful methods are:`` iloc()``, ``head()`` and ``tail()``. Note that to distinguish methods and attributes, we write `()` after a method’s name.
+However, there are a number of dataframe attributes and methods that allow you to get and display either a single row or a number of rows at a time. Three of the most useful methods are:`` iloc()``,``head()`` and ``tail()``. Note that to distinguish methods and attributes, we write `()` after a method’s name.
 
 
 ![An image of a data algorithm](./ou_futurelearn_learn_to_code_fig_1041.jpg)
@@ -215,6 +217,7 @@ If you don’t give any argument, i.e. don’t put any number within those paren
 
 For example, executing the following code will get and display the first five rows in the dataframe ``df``.
 
+
 ``In []:``
 
 `df.head()`
@@ -224,7 +227,7 @@ For example, executing the following code will get and display the first five ro
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>Country</th>
 <th>Population (1000s)</th>
 <th>TB deaths</th>
@@ -273,7 +276,7 @@ And, executing the following code will get and display the first seven rows in t
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>Country</th>
 <th>Population (1000s)</th>
 <th>TB deaths</th>
@@ -347,7 +350,7 @@ If no argument is given, the last five rows of the dataframe are returned, other
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>Country</th>
 <th>Population (1000s)</th>
 <th>TB deaths</th>
@@ -476,7 +479,7 @@ However, pandas does provide a mechanism for you to get and display one or more 
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>__Country__</th>
 </tr>
 <tr>
@@ -515,7 +518,7 @@ To get a new dataframe with multiple columns you just need to put more column na
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>__Country__</th>
 <th>__Population (1000s)__</th>
 </tr>
@@ -549,7 +552,7 @@ To get a new dataframe with multiple columns you just need to put more column na
 
 The code has returned a new dataframe with just the ``'Country'`` and ``'Population (1000s)’`` columns.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 1 Dataframes and CSV files
 
 
@@ -559,9 +562,10 @@ Now that you’ve learned about CSV files and more about pandas you are ready to
 
 Open the exercise 2 notebook and the data file you used last week WHO POP TB all.csv and save it in the folder you created in Week 1.
 
-If you’re using Anaconda instead of CoCalc, remember that to open the notebook you’ll need to navigate to the notebook using Jupyter. Once it’s open, run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter watch again the video in [Week 1 Exercise 1.](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83246&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4) 
+If you’re using Anaconda instead of CoCalc, remember that to open the notebook you’ll need to navigate to the notebook using Jupyter. Once it’s open, run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter watch again the video in [Week 1 Exercise 1.](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83246&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4)
 
 <!-- #endregion -->
+```
 
 
 ---
@@ -646,7 +650,7 @@ As another example, to see the data for countries with over 80 million inhabitan
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>Country</th>
 <th>Population (1000s)</th>
 <th>TB deaths</th>
@@ -750,7 +754,7 @@ As another example, to see the data for countries with over 80 million inhabitan
 </tbody>
 </table>
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 2 Comparison operators
 
 
@@ -761,9 +765,10 @@ You are ready to complete Exercise 2 in the Exercise notebook 2.
 Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. 
 
 <!-- #endregion -->
+```
 
 
-## 1.6 Bitwise operators
+## 2.6 Bitwise operators
 
 
 To build more complicated expressions involving column comparisons, there are two bitwise operators.
@@ -790,11 +795,13 @@ will evaluate to a series containing Boolean values where the values are``True``
 
 will evaluate to ``True`` for all countries, because every country comes alphabetically after ‘``Latvia``’ (e.g. the ‘UK’) or before '``Sweden``' (e.g. ‘``Brazil``’).
 
+
 Note the round brackets around each comparison. Without them you will get an error.
 
 The whole expression with multiple comparisons has to be put within ``df[…]`` to get a dataframe with only those rows that match the condition.
 
 As a further example, using different columns, it is relatively easy to find the rows in ``df`` where '``Population (1000s)``' is greater than ``80000`` and where '``TB deaths``' are greater than `10000`.
+
 
 ``In []:``
 
@@ -805,7 +812,7 @@ As a further example, using different columns, it is relatively easy to find the
 <caption></caption>
 <tbody>
 <tr>
-<th> </th>
+<th></th>
 <th>Country</th>
 <th>Population (1000s)</th>
 <th>TB deaths</th>
@@ -886,7 +893,7 @@ df[(population > 80000) & (deaths > 10000)]
 ```
 
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 3 Bitwise operators
 
 
@@ -895,4 +902,5 @@ df[(population > 80000) & (deaths > 10000)]
 Complete Exercise 3 in the Exercise notebook 2.
 
 <!-- #endregion -->
+```
 

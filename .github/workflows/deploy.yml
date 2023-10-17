@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - '*'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,16 +22,21 @@ jobs:
       - name: Install the dependencies
         run: |
           python -m pip install -r requirements.txt
+      - name: Build Jupyter Book
+        run: |
+          python -m pip install jupyter-book thebe
+          jupyter book build src
+          cp -R src/_build/html/* dist/
       - name: Build the JupyterLite site
         run: |
           cp README.md content
-          jupyter lite build --contents content --output-dir dist
-          cp -R custom/* dist/
+          jupyter lite build --contents content --output-dir dist/jupyterlite
+          cp -R custom/* dist/jupyterlite/
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: jupyterlite-demo dist ${{ github.run_number }}
-          path: ./dist
+          path: ./dist/jupyterlite
 
   deploy:
     if: github.ref == 'refs/heads/main'

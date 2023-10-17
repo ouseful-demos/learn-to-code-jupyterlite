@@ -1,0 +1,19 @@
+# In _config.yml
+title: Learn to code for data analysis
+author: OpenLearn
+
+execute:
+  execute_notebooks: force
+
+html:
+  use_repository_button: true
+
+repository:
+  url                       : https://github.com/ouseful-demos/learn-to-code-jupyterlite  # Online location of your book
+  path_to_book              : src  # Optional path to your book, relative to the repository root
+  branch                    : main
+
+launch_buttons:
+  notebook_interface: "jupuyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url: "https://mybinder.org"
+  thebe: true

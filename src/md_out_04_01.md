@@ -28,6 +28,7 @@ Open the file London_2014.csv and save it in the disk folder or CoCalc project y
 
 __Do not be tempted to open this file with Excel__ as this application will attempt to localise the data in the file, i.e. use your country’s local data formats, which will make much of what follows rather incomprehensible! You can if you like open the file with a simple text editor, but __do not make any changes__.
 
+
 The CSV file can be loaded into a dataframe by executing the following code:
 
 ``In []:``
@@ -108,6 +109,7 @@ For example, there is a space after the comma between ``Max Humidity`` and ``Mea
 
 will cause a key error (see [Selecting a column](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83247&amp;targetdoc=Week+2%3A+Having+a+go+at+it+Part+2&amp;targetptr=1.3) ), as the column name is confusingly ``' Mean Humidity`` '.
 
+
 This can easily be rectified by adding another argument to the ``read_csv()`` function:
 
 `skipinitialspace=True`
@@ -172,6 +174,7 @@ Next, find out about extra characters and how to remove them.
 
 If you opened London_2014.csv in a text editor once again and looked at the last column name you would see that the name is'WindDirDegrees
 
+
 '.
 
 What has happened here is that when the dataset was exported from the Weather Underground website an html line break ``(
@@ -189,6 +192,7 @@ In fact, the problem is worse than this, let’s look at some values in the fina
 ``In []:``
 
 `london[['WindDirDegrees
+
 ']].head()`
 
 ``Out[]:``
@@ -197,7 +201,7 @@ In fact, the problem is worse than this, let’s look at some values in the fina
 <tbody>
 <tr>
 <th></th>
-<th>__ WindDirDegrees 
+<th>__WindDirDegrees
 __</th>
 </tr>
 <tr>
@@ -237,6 +241,7 @@ Once again I’m not going to edit the CSV file but rather fix the problem in th
 
 `
 london = london.rename(columns={'WindDirDegrees
+
 ':'WindDirDegrees'})
 `
 
@@ -249,6 +254,7 @@ Now I need to get rid of those pesky ``
 
 `
 london['WindDirDegrees'] = london['WindDirDegrees'].str.rstrip('
+
 ')
 `
 
@@ -522,6 +528,7 @@ dtype: object
 
 From the above output, we can confirm that the ``'WindDirDegrees'`` column type has been changed from ``object`` to ``int64`` and that the ``'GMT'`` column type has been changed from ``object`` to ``datetime64``.
 
+
 To make queries such as ‘Return the row where the date is 4 June 2014’ you’ll need to be able to create a ``datetime64`` value to represent June 4 2014. It cannot be:
 
 `london[london['GMT'] == '2014-1-3']`
@@ -580,7 +587,7 @@ __Figure 9__
 
 *Note that the right side of the table has been cropped to fit on the page. *
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 4 Display rows from dataframe
 
 
@@ -593,6 +600,7 @@ If you’re using Anaconda instead of CoCalc, remember that to open the notebook
 Once the notebook is open, run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter, watch again the video in [Week 1 Exercise 1.](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83247&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4)
 
 <!-- #endregion -->
+```
 
 
 ---

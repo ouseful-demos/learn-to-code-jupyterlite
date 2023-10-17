@@ -18,6 +18,7 @@ jupyter:
 To see if life expectancy grows when the GDP increases I will use a statistical measure known as the __Spearman rank correlation coefficient__.
 
 
+
 ![An image of many thread spools with threads drawn together below and twisted into one](./ou_futurelearn_learn_to_code_fig_1055.jpg)
 
 
@@ -71,7 +72,7 @@ Although there is a statistically significant direct correlation (life expectanc
 
 A perfect (direct or inverse) correlation doesn’t mean there is any cause-effect between the two indicators. A perfect direct correlation between life expectancy and GDP would only state that the higher the GDP, the higher the life expectancy. It would not state that the higher expectancy is due to the GDP. Correlation is not causation.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 10 Correlation
 
 
@@ -82,6 +83,7 @@ Calculate the correlation between GDP and population in Exercise 10 in the Exerc
 Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook.
 
 <!-- #endregion -->
+```
 
 
 ## 2.1 Scatterplots
@@ -201,7 +203,7 @@ The major tick marks in the x-axis go from 10 <sup xmlns:str="http://exslt.org/s
 
 Countries with a GDP around 10 thousand (10 <sup xmlns:str="http://exslt.org/strings">4</sup> ) millions of pounds have a wide range of life expectancies, from under 50 to over 80, but the range tends to shrink both for poorer and for richer countries. Countries with the lowest life expectancy are neither the poorest nor the richest, but those with highest expectancy are among the richer countries.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 11 Scatterplots
 
 
@@ -210,6 +212,7 @@ Countries with a GDP around 10 thousand (10 <sup xmlns:str="http://exslt.org/str
 Practise using Scatterplots in Exercise11 in the Exercise notebook 3.
 
 <!-- #endregion -->
+```
 
 
 ## 2.2 My project
@@ -230,7 +233,7 @@ Open Project 4: Life expectancy
 
 If you have time, extend my project to answer different questions or create your own project in the activity below.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 1
 <!--
             Heading:
@@ -264,4 +267,5 @@ If you have more time, create a completely new project and choose another two of
 Look at the results you obtained and take a few moments to assess how they differ from mine.
 
 <!-- #endregion -->
+```
 

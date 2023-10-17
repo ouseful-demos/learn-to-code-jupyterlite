@@ -82,7 +82,7 @@ The __split-apply-combine__ pattern describes a process in which a dataset is __
 
 ``grouped.filter(myFilterFunction)`` will apply a user defined filtration function to each group in a set of grouped items that tests each group and returns a Boolean True or False value to say whether each group has passed the filter test. The ``.filter()`` function then returns a single dataframe that contains the combined rows from groups that the user defined filter function let through.
 
-`` pivot_table(df, index=indexColumnNames, columns=columnsColumnNames, values=valueColumnName, aggfunc=aggregationFunction) `` generates a pivot table from a dataframe using unique combinations of values from one or more columns specified by the ``indexColumnNames`` list to define the row index and unique combinations of values from one or more columns specified by the ``columnsColumnNames`` list to define the columns. The pivot table cells are calculated by applying the ``aggfunc`` function to the ``valueColumnName`` column in the group of rows associated with each cell.
+``pivot_table(df, index=indexColumnNames, columns=columnsColumnNames, values=valueColumnName, aggfunc=aggregationFunction)`` generates a pivot table from a dataframe using unique combinations of values from one or more columns specified by the ``indexColumnNames`` list to define the row index and unique combinations of values from one or more columns specified by the ``columnsColumnNames`` list to define the columns. The pivot table cells are calculated by applying the ``aggfunc`` function to the ``valueColumnName`` column in the group of rows associated with each cell.
 
 
 ---
@@ -138,6 +138,7 @@ Open data published by government departments and agencies such as [performance 
 
 * 
 The pandas library supports a growing number of external data sources such as [Google Analytics](http://pandas.pydata.org/pandas-docs/stable/remote_data.html).
+
 
 
 

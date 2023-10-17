@@ -63,7 +63,7 @@ The y-axis (the numbers on the side) shows the range of wind speed in kilometres
 
 By default, the ``plot()`` method will try to generate a line, although as you’ll see in a later week, it can produce other chart types too.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 5 Every picture tells a story
 
 
@@ -74,6 +74,7 @@ Now try Exercise 5 in the Exercise notebook 2.
 If you’re using Anaconda, remember that to open the notebook you’ll need to navigate to the notebook using Jupyter.
 
 <!-- #endregion -->
+```
 
 
 ## 2.1 Changing a dataframe’s index
@@ -250,7 +251,7 @@ __Figure 14__
 
 Now it is much clearer that the worst winds were in mid-February.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 6 Changing a dataframe’s index
 
 
@@ -259,6 +260,7 @@ Now it is much clearer that the worst winds were in mid-February.
 Now try Exercise 6 in the Exercise notebook 2.
 
 <!-- #endregion -->
+```
 
 
 ## 2.2 The project

@@ -195,7 +195,7 @@ life
 
 To illustrate potential issues when combining multiple datasets, I’ve taken a different set of countries, with common countries in a different order. Moreover, to illustrate a non-numeric conversion, I’ve abbreviated country names in one table but not the other.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 1 Creating the data
 
 
@@ -206,6 +206,7 @@ Open the exercise notebook 3 and save it in the disk folder or upload it to the 
 If you’re using Anaconda, remember that to open the notebook you’ll need to navigate to it using Jupyter. Whether you’re using Anaconda or CoCalc, once the notebook is open, run the existing code before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter, watch again the video in [Week 1 Exercise 1](https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83249&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4)
 
 <!-- #endregion -->
+```
 
 
 ## 1.2 Defining functions
@@ -322,7 +323,7 @@ usdToGbp(0) == 0
 
 Defining functions is such an important part of coding, that you should not skip the next exercise where you will define your own functions.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 2 Defining functions
 
 
@@ -331,6 +332,7 @@ Defining functions is such an important part of coding, that you should not skip
 Complete Exercise 2 in the Exercise notebook 3 to practise defining your own functions.
 
 <!-- #endregion -->
+```
 
 
 ## 1.3 What if...?
@@ -401,7 +403,7 @@ def expandCountry (name):
 
 You will see later this week an example of an ‘if-else’ statement, i.e. without the ``'elif'`` part.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 3 What if…?
 
 
@@ -410,6 +412,7 @@ You will see later this week an example of an ‘if-else’ statement, i.e. with
 Complete Exercise 3 in the Exercise notebook 3 to practise writing functions with conditional statements.
 
 <!-- #endregion -->
+```
 
 
 ## 1.4 Applying functions
@@ -466,6 +469,7 @@ Name: Country, dtype: object
 Finally, I add that new column to the dataframe, using a new column heading:
 
 ``In []`` :
+
 
 
 ```python
@@ -637,7 +641,7 @@ Note that method chaining only works if the methods chained return the same type
 
 This concludes the data transformation part. After applying functions in the next exercise, you’ll learn how to combine two tables.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 4 Applying functions
 
 
@@ -646,4 +650,5 @@ This concludes the data transformation part. After applying functions in the nex
 You can practise applying functions in Exercise 4 of your Exercise notebook 3.
 
 <!-- #endregion -->
+```
 

@@ -52,7 +52,7 @@ In addition, one or more ‘filters’ can be added to the selection of row and 
 
 It is often easier to understand how a pivot table is organised by using it interactively. You’ll get a chance to do this in the next exercise.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 5 Interactive pivot table
 
 
@@ -65,6 +65,7 @@ Configuring a pivot table requires paying careful attention to the selection of 
 How easy did you find it to use the interactive pivot table? Could you work out how to select the row and column labels in order to ask particular questions of the data? What sorts of questions did you try to ask?
 
 <!-- #endregion -->
+```
 
 
 ## 2.1 Pivot tables in pandas
@@ -213,6 +214,7 @@ In turn, the pandas ``pivot_table()`` function uses:
 * the ``values`` parameter set to ‘Amount’
 
 * the ``aggfunc`` (aggregating function) set to ``sum`` .
+
 
 ``In []:``
 
@@ -520,7 +522,7 @@ In terms of the ‘split-apply-combine’ pattern, the pandas pivot table operat
 
 The selected operator is then applied to each group and the results combined in an appropriately structured output display table.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 6 pivot tables with pandas
 
 
@@ -533,6 +535,7 @@ Did you manage to ask any new questions of your data using the pandas pivot tabl
 One reason that pivot tables are often thought of as difficult to use is that there is a lot of data manipulation going on inside them. The data is grouped across rows, split across columns and may be aggregated in various ways. It can sometimes be hard to work out how to structure the output report you want, even before worrying about the programming code syntax. Given that, consider what you think the benefits of using code are as opposed to interactive pivot tables. Think about how you could use them to complement each other.
 
 <!-- #endregion -->
+```
 
 
 ---
@@ -570,7 +573,7 @@ If you have time, extend my project to answer different questions or create your
 __Figure 10__
 
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 1 Extend the project
 
 
@@ -595,8 +598,9 @@ Make a copy of the project notebook and change it to answer one or all of the fo
 
 
 <!-- #endregion -->
+```
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 2 Create a project (optional)
 
 
@@ -613,4 +617,5 @@ If you have more time, create a completely new project. You could choose complet
 
 
 <!-- #endregion -->
+```
 

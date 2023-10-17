@@ -12,7 +12,7 @@ jupyter:
     name: python3
 ---
 
-# 2 This week’s quiz
+# 3 This week’s quiz
 
 
 Check what you’ve learned this week by taking the end-of-week quiz.

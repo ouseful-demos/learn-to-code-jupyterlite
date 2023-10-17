@@ -5,9 +5,9 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.4
+      jupytext_version: 1.15.0
   kernelspec:
-    display_name: Python 3
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -87,9 +87,10 @@ SyntaxError: invalid syntax
 ```
 
 
+<!-- #region tags=["test-tag"] -->
 Jupyter notebooks show reserved words in boldface font to make them easier to spot. If you see a boldface name in an assignment (as you will for the code above), you must choose a different name.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 5 pandas
 
 
@@ -97,7 +98,7 @@ Jupyter notebooks show reserved words in boldface font to make them easier to sp
 
 Use Exercise 5 the Exercise notebook 1 to help you answer these questions about errors you might come across.
 
-__ 1. What kind of error will you get if you misspell 'pandas' as 'Pandas'? __
+__1. What kind of error will you get if you misspell 'pandas' as 'Pandas'?__
 
 A syntax error
 
@@ -112,7 +113,7 @@ The computer is expecting a name but there is no module with the name 'Pandas' i
 
 #### Question
 
-__ 2. What kind of error will you get if you misspell 'import' as 'impart'? __
+__2. What kind of error will you get if you misspell 'import' as 'impart'?__
 
 A name error
 
@@ -125,7 +126,7 @@ The computer is expecting a reserved word and anything else will raise a syntax 
 
 #### Question
 
-__ 3. What kind of error will you get if you forget the asterisk? __
+__3. What kind of error will you get if you forget the asterisk?__
 
 A name error
 
@@ -136,7 +137,8 @@ A syntax error
 The statement cannot end with the reserved word 'import'; the computer is expecting an indication of what to import.
 
 <!-- #endregion -->
-
+```
+<!-- #endregion -->
 
 ## 1.1 This week’s data
 
@@ -313,6 +315,7 @@ FileNotFoundError Traceback (most recent call last)
 
 
 /Users/mw4687/anaconda/lib/python3.4/site-packages/xlrd/__init__.py in open_workbook(filename, logfile,
+
  verbosity, use_mmap, file_contents, encoding_override, formatting_info, on_demand, ragged_rows)
 
 392 peek = file_contents[:peeksz]
@@ -382,7 +385,7 @@ Strings are verbatim text, which means that the column name must be written exac
 
 Put this learning into practice in Exercise 6.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 6 selecting a column
 
 
@@ -393,6 +396,7 @@ In your Exercise notebook 1, select the population column and store it in a vari
 Remember that to open the notebook you’ll need to launch Anaconda and then navigate to the notebook using Jupyter. Once it’s open, run all the code.
 
 <!-- #endregion -->
+```
 
 Next, you’ll learn about making calculations on a column.
 
@@ -482,7 +486,7 @@ The median is probably closer to the intuition you have of what ‘average’ sh
 
 Put this learning into practice in Exercise 7.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 7 calculations on a column
 
 
@@ -491,6 +495,7 @@ Put this learning into practice in Exercise 7.
 Practise the use of column methods by applying them to the population column you obtained in Exercise 6 in the Exercise notebook 1. Remember to run all code before doing the exercise.
 
 <!-- #endregion -->
+```
 
 
 ## 1.5 Sorting on a column
@@ -773,7 +778,7 @@ It’s also possible to sort on a column that has text instead of numbers; the r
 </tbody>
 </table>
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 8 sorting on a column
 
 
@@ -782,6 +787,7 @@ It’s also possible to sort on a column that has text instead of numbers; the r
 Use the Exercise notebook 1 to sort the table by population so that you can quickly see which are the least and the most populous countries. Remember to run all code before doing the exercise.
 
 <!-- #endregion -->
+```
 
 In the next section you’ll learn about calculations over columns.
 

@@ -28,6 +28,7 @@ The __bitwise operators__``&amp;`` (and) and ``|`` (or) are used in pandas to bu
 
 A __Boolean__ has one of two possible values: ``True`` or ``False``.
 
+
 A __Comma Separated Values (CSV)__ file is a plain text file that is used to hold tabular data.
 
 A __list__ is a sequence of values, separated by commas, and written within square brackets.
@@ -59,7 +60,9 @@ The ``float64`` data type is how pandas represents floating point numbers (decim
 
 ``asType(aType)`` when applied to a dataframe column, the method changes the data type of each value in that column to the type given by the string ``aType``.
 
+
 ``datetime(yyyy, mm, dd)`` the function takes three arguments, ``yyyy`` a four digit integer representing a year, ``mm`` a two digit integer representing a month and ``dd`` a two digit integer representing a day. From these arguments the function creates and returns a value of ``datetime64``.
+
 
 ``dropna()`` when applied to a dataframe returns a new dataframe without the rows that have at least one missing value.
 
@@ -67,21 +70,25 @@ The ``float64`` data type is how pandas represents floating point numbers (decim
 
 ``iloc[index]`` gets and displays the row in the dataframe indicated by the integer argument ``index``.
 
+
 ``isnull()`` is a series method that checks which rows in that series have a missing value.
 
 ``fillna(value)`` is a series method that returns a new series in which all missing values have been filled with the given value.
 
 ``plot()`` when applied to a dataframe column of numeric values, the method displays a graph of those values. The x-axis shows the dataframe’s index and the y-axis the range of the column’s values. Before the method is called you first need to execute ``%matplotlib inline``.
 
+
 ``read_csv(csvFile)`` creates a dataframe from the dataset in the CSV file.
 
 ``rename(columns={oldName : newName})`` renames the column ``oldName`` to ``newName``.
+
 
 ``str.rstrip(suffix)`` when applied to a dataframe column of string values, the method removes the argument ``suffix`` from the end of each string value in the column.
 
 ``tail()`` gets and displays the last five rows of a dataframe. Optionally the method can take an integer argument to specify how many rows (until and including the last row) to get and display.
 
 ``to_datetime(aSeries)`` when applied to a series, typically a column from a dataframe, this function returns a new series in which each value in ``aSeries`` has been changed to type ``datetime64``.
+
 
 
 ---

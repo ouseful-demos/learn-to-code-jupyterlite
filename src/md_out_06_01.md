@@ -305,7 +305,7 @@ gdpVsLife = merge(gdp, life, on='Country name', how='inner')
 
 Now it’s just a matter of applying the data transformation and combination techniques seen so far to the real data from the World Bank.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 5 Joining left, right and centre
 
 
@@ -316,6 +316,7 @@ Put your learning into practice by completing Exercise 5 in the Exercise noteboo
 Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook.
 
 <!-- #endregion -->
+```
 
 
 ## 1.1 Constant variables
@@ -374,7 +375,7 @@ To sum up, using constants makes the code clearer, easier to change, and less pr
 
 Any value can be defined as a constant, whether it’s a string, a number or even a dataframe. For example, you could store the data you have loaded from the file into a constant, as a reminder to not change the original data. In the rest of the week, I’ll use constants mainly for the column names.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 6 Constants
 
 
@@ -383,6 +384,7 @@ Any value can be defined as a constant, whether it’s a string, a number or eve
 To practise using constants, rewrite your exercises in the Exercise notebook 3 using them.
 
 <!-- #endregion -->
+```
 
 
 ## 1.2 Getting real
@@ -577,7 +579,7 @@ life.head()
 
 By defining the year as a constant, it’s very quick to change the code to load both datasets for any other year. If you wish to get GDP data for an earlier year than for life expectancy, then you need to define a second constant.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 7 Getting real
 
 
@@ -588,6 +590,7 @@ The approach described above requires an internet connection to download the dat
 Therefore, the Exercise notebook 3 loads instead the GDP and life expectancy data from files WB GDP 2013.csv and WB LE 2013.csv and Exercise 7 uses the file WB POP 2013.csv , which you should add to your disk folder or CoCalc project. All files are in the normal tabular format and need no resetting of the indices.
 
 <!-- #endregion -->
+```
 
 
 ## 1.3 Cleaning up
@@ -596,6 +599,7 @@ Therefore, the Exercise notebook 3 loads instead the GDP and life expectancy dat
 You may have noticed that the initial rows are not about countries, but groups of countries. Such aggregated values need to be removed, because we’re only interested in individual countries.
 
 The expression ``frame[m:n],`` with ``n`` an integer bigger than ``m`` , represents the ‘sub-table’ from row ``m`` to row ``n-1``. In other words, it is a slice of frame with exactly ``n`` minus ``m`` rows. The expression is equivalent to the more convoluted expression ``frame.head(n).tail(n-m)``.
+
 
 ``In []:``
 
@@ -633,6 +637,7 @@ The expression ``frame[m:n],`` with ``n`` an integer bigger than ``m`` , represe
 </table>
 
 To slice all rows from ``m`` onwards, you don’t have to count how many rows there are beforehand, just omit ``n``.
+
 
 ``In []:``
 
@@ -918,7 +923,7 @@ life.head()
 
 Note how a single line of code can chain a row slice, a method call and a column slice, because each takes a dataframe and returns a dataframe.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 8 Cleaning up
 
 
@@ -927,6 +932,7 @@ Note how a single line of code can chain a row slice, a method call and a column
 Clean up the population data from Exercise 7, in Exercise 8 in the exercise notebook 3.
 
 <!-- #endregion -->
+```
 
 
 ## 1.4 Joining and transforming
@@ -1275,7 +1281,7 @@ gdpVsLife.head()
 
 For the first five countries there doesn’t seem to be any relation between wealth and life expectancy, but that might be just for those countries.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 9 Joining and transforming
 
 
@@ -1284,4 +1290,5 @@ For the first five countries there doesn’t seem to be any relation between wea
 Have a go at merging dataframes with an inner join in Exercise 9 in the Exercise notebook 3.
 
 <!-- #endregion -->
+```
 

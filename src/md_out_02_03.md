@@ -12,7 +12,7 @@ jupyter:
     name: python3
 ---
 
-# 3 Summary
+# 4 Summary
 
 
 This week looked at the importance of dataframes and the ‘dot’ notation, and the various dataframe methods. It also covered:

@@ -5,9 +5,9 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.15.0
+      jupytext_version: 1.11.4
   kernelspec:
-    display_name: Python 3 (ipykernel)
+    display_name: Python 3
     language: python
     name: python3
 ---
@@ -105,7 +105,7 @@ That was enough data for the fuzzy question: how serious is TB? It was time to m
 
 Answering these questions for the whole world and for seven years (2007–2013) would be a bit too much for this initial project. A subset was needed. I decided to take only the latest data for 2013 and, being Portuguese, to focus on the Portuguese-speaking countries. One of them, Brazil, is part of the BRICS group of major emerging economies, so for more diversity the other four countries would be included too: Russia, India, China and South Africa. The project was finally defined! I’ve added links to the data below if you’d like to take a look!
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 1 What would you ask?
 
 
@@ -118,6 +118,7 @@ What countries would you be interested in? What groups of countries might be int
 Note down some of your questions so that you can come back to them later.
 
 <!-- #endregion -->
+```
 
 [WHO POPULATION - DATA BY COUNTRY (LATEST YEAR)](https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20all.xls)
 
@@ -152,6 +153,7 @@ deathsInPortugal = 100
 
 
 The ‘In[]’ line is Jupyter’s way of saying that what follows is code I typed in. And there it is: the first line of code! It is a command to the computer that could be translated to English as: ‘find in the attic an empty box, put the number 100 in the box, and write “deathsInPortugal” on the box’. (Aren’t you glad Python is more succinct than English?) In coding jargon, the attic is the computer’s memory, boxes are called __variables__ (I’ll explain why shortly), what’s written on a box is the variable’s __name__ , and storing a value in a variable is called an __assignment__.
+                
 
 By naming the boxes, I can later ask the computer to show the value in box ``thingamajig`` or take the values in boxes ``stuff`` and ``moreStuff`` and add them together.
 
@@ -232,7 +234,7 @@ Python is relatively flexible about what you name your variables but rather pick
 __Figure 3__
 
 
-I could have chosen `` deaths_in_Brazil_in_2013, deathsBrazil,DeathsBrazil, dB `` or even ``stuff`` for my variables. If a box in your attic were labeled ``dB`` or ``stuff`` though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.
+I could have chosen ``deaths_in_Brazil_in_2013, deathsBrazil,DeathsBrazil, dB`` or even ``stuff`` for my variables. If a box in your attic were labeled ``dB`` or ``stuff`` though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.
 
 You can’t use spaces to separate words in a name, you can’t start a name with a digit and names are case-sensitive, i.e. ``deathsBrazil`` and ``DeathsBrazil`` are not the same variable. Making one of those mistakes will result in a __syntax error__ (when the computer doesn’t understand the line of code) or a __name error__ (when the computer doesn’t know of any variable with that name).
 
@@ -292,13 +294,14 @@ In the next section, download the notebook for this week and work through the fi
 
 So far, I’ve done the coding and you’ve read along. Booooring. It’s time to use the Jupyter notebooks and work on the first exercise in the course.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 1 Variables and assignments
 
 
 #### Question
 
 If you haven’t yet installed the software package or created an account on CoCalc, do it now using these [instructions](http://www.open.edu/openlearn/learn-to-code-installation)!
+
 
 Open the Exercise notebook 1 (from [here](https://github.com/mwermelinger/Learn-to-code-for-data-analysis)), and put it in the folder you created. (You’ll open the data later and learn how to use it in the notebook.)
 
@@ -319,8 +322,10 @@ __NARRATOR:__ * In this screencast I'm going to introduce you to Jupyter Noteboo
                 ./ou_futurelearn_learn_to_code_vid_1046.jpg](./ou_futurelearn_learn_to_code_vid_1046.jpg)
 <!--ENDMEDIACONTENT-->
 <!-- #endregion -->
+```
 
 If you haven’t yet installed Jupyter and Anaconda, do it now using these [instructions](http://www.open.edu/openlearn/learn-to-code-installation).
+
 
 
 ## 1.5 Expressions
@@ -416,7 +421,7 @@ __Figure 4__
 
 Now practice writing expressions and complete Exercise 2 in the notebook.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 2 Expressions
 
 
@@ -429,6 +434,7 @@ If you’re using Anaconda, remember that to open the notebook you’ll need to 
 Writing code for the first time can be difficult but stick with it.
 
 <!-- #endregion -->
+```
 
 In the next section, you will find out about functions.
 
@@ -538,7 +544,7 @@ range
 ```
 
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 3 Functions
 
 Identify different types of error (some of you may have experienced those already…) in Exercise 3. You’ll need to use the Week 1 notebook to answer question three.
@@ -546,13 +552,14 @@ Identify different types of error (some of you may have experienced those alread
 
 #### Question
 
-__ 1. If the function name is misspelled as Min, what kind of error is it? __
+__1. If the function name is misspelled as Min, what kind of error is it?__
 
 A syntax error
 
 Writing `Min(…, …)` instead of `min(…, …)` is not a syntax error, because both have the form of a function call. Names can use uppercase letters.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
+
 
 A name error
 
@@ -561,15 +568,17 @@ The computer will understand than `Min(…, …)` is a function call but doesn�
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
 
 
+
 #### Question
 
-__ 2. If a parenthesis or comma is forgotten, what kind of error is it? __
+__2. If a parenthesis or comma is forgotten, what kind of error is it?__
 
 A name error
 
 A parenthesis or comma is unrelated to how names are written.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
+
 
 A syntax error
 
@@ -578,11 +587,12 @@ A function call requires two parentheses around the arguments, and one comma bet
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
 
 
+
 #### Question
 
-__ 3. Use Exercise 3 in the Week 1 exercise notebook to answer this question. __
+__3. Use Exercise 3 in the Week 1 exercise notebook to answer this question.__
 
-__ What is the range of deaths among the BRICS countries (Brazil, Russia, India, China, South Africa)? __
+__What is the range of deaths among the BRICS countries (Brazil, Russia, India, China, South Africa)?__
 
 4400
 
@@ -590,11 +600,13 @@ This is the minimum value (for Brazil), not the range.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
 
+
 65480
 
 This is the average number of deaths, not the range.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">Expressions</a>.
+
 
 240000
 
@@ -602,17 +614,20 @@ This is the maximum value (for India), not the range.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
 
+
 327400
 
 This is the total number of deaths not the range.
 
 Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
 
+
 235600
 
 The range is the maximum value (240 thousand for India) minus the minimum value (4400 for Brazil).
 
 <!-- #endregion -->
+```
 
 
 ## 1.7 Comments
@@ -714,7 +729,7 @@ This finishes the basics of coding needed for this week. It took less than 30 li
 
 Test this out for yourself in Exercise 4 of the Week 1 exercise notebook.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Exercise 4 Comments
 
 
@@ -725,6 +740,7 @@ Complete the short exercise on the death rate in Exercise 4 in the Week 1 Exerci
 Remember that once the notebook is open, run all the code, before doing the exercise.
 
 <!-- #endregion -->
+```
 
 
 ## 1.8 Values have units
@@ -741,7 +757,7 @@ __Figure 7__
 
 Values are not just numbers, they have units: degrees Celsius, number of inhabitants, thousands of gallons, etc. Always make a note of the units the value refers to, using comments. This makes it easier to check whether the expressions are right. Disregarding the units will lead to wrong calculations and results.
 
-<!-- #region tags=["style-activity"] -->
+```{admonition} Activity<!-- #region tags=["style-activity"] -->
 ### Activity 2
 
 
@@ -752,4 +768,5 @@ Have you come across ‘horror stories’ that have happened due to mistakes in 
 Think through what happened and consider what you have learned from them.
 
 <!-- #endregion -->
+```
 
