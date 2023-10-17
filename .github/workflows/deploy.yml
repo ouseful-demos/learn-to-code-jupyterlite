@@ -27,7 +27,6 @@ jobs:
           python -m pip install jupyter-book thebe
           jupyter book build src
           mkdir -p dist/
-          touch src/_build/html/.nojekyll
           cp -R src/_build/html/* dist/  
       - name: Build the JupyterLite site
         run: |
@@ -51,6 +50,9 @@ jobs:
         with:
           name: jupyterlite-demo dist ${{ github.run_number }}
           path: ./dist
+      - name: nojekyll
+        run: |
+          touch ./dist/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
