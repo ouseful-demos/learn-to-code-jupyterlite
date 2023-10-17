@@ -26,6 +26,7 @@ jobs:
         run: |
           python -m pip install jupyter-book thebe
           jupyter book build src
+          mkdir -p dist/
           cp -R src/_build/html/* dist/
       - name: Build the JupyterLite site
         run: |
