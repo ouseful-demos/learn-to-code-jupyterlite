@@ -1,4 +1,5 @@
 *.bundle.*
+_build/
 _output/
 .jupyterlite.doit.db
 lib/
