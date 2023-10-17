@@ -27,7 +27,7 @@ jobs:
           python -m pip install jupyter-book thebe
           jupyter book build src
           mkdir -p dist/
-          touch ./_build/html/.nojekyll
+          touch src/_build/html/.nojekyll
           cp -R src/_build/html/* dist/  
       - name: Build the JupyterLite site
         run: |
