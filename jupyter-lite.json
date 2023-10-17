@@ -17,15 +17,15 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.3ff26e696aa2c37cdbc7.js",
-        "name": "@ijmbarr/jupyterlab_spellchecker",
-        "style": "./style"
+        "load": "static/remoteEntry.a37e37c87d212fe85e13.js",
+        "name": "@jupyter-widgets/jupyterlab-manager"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.a37e37c87d212fe85e13.js",
-        "name": "@jupyter-widgets/jupyterlab-manager"
+        "load": "static/remoteEntry.fe331f8109a0c7b472be.js",
+        "name": "@jupyterlab-contrib/spellchecker",
+        "style": "./style"
       },
       {
         "liteExtension": false,
@@ -50,12 +50,6 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.145e469029155b53b350.js",
-        "name": "@timkpaine/jupyterlab_miami_nights"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
         "load": "static/remoteEntry.2916befd91bdb8847e88.js",
         "name": "bqplot"
       },
@@ -70,13 +64,6 @@
         "liteExtension": false,
         "load": "static/remoteEntry.2245c790a510bf1865ea.js",
         "name": "jupyter-matplotlib"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.a0b8249f29f35c4273b6.js",
-        "name": "jupyterlab-myst",
-        "style": "./style"
       },
       {
         "extension": "./extension",
