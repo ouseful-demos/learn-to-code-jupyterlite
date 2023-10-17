@@ -4,7 +4,7 @@ jupyterlab~=3.5.1
 
 # Python kernels (optional)
 jupyterlite-pyodide-kernel
-jupyterlite-xeus-python
+#jupyterlite-xeus-python
 
 # Language support (optional)
 jupyterlab-language-pack-fr-FR
@@ -14,6 +14,7 @@ jupyterlab-language-pack-zh-CN
 jupyterlab-skip-traceback
 jupyter-archive
 jupyterlab-spellchecker
+jupyterlab_ou_brand_extension
 
 # JupyterLab: Fasta file renderer (optional)
 jupyterlab-fasta>=3,<4
@@ -24,7 +25,7 @@ jupyterlab-tour
 # JupyterLab: dark theme
 jupyterlab-night
 # JupyterLab: Miami nights theme (optional)
-jupyterlab_miami_nights
+#jupyterlab_miami_nights
 
 # Python: ipywidget library for Jupyter notebooks (optional)
 ipywidgets>=8.1.1,<9
@@ -33,9 +34,9 @@ ipyevents>=2.0.1
 # Python: interative Matplotlib library for Jupyter notebooks (optional)
 ipympl>=0.8.2
 
+# Excel file reader
+xlrd
+
 # Python: plotting libraries (optional)
 plotly>=5,<6
 bqplot
-
-jupyterlab_ou_brand_extension
-xlrd
