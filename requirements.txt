@@ -15,6 +15,7 @@ jupyterlab-skip-traceback
 jupyter-archive
 jupyterlab-spellchecker
 jupyterlab_ou_brand_extension
+jupyterlab_myst
 
 # JupyterLab: Fasta file renderer (optional)
 jupyterlab-fasta>=3,<4
