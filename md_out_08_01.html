@@ -1,0 +1,1101 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1 The split-apply-combine pattern &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_08_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2 Pivot tables" href="md_out_08_02.html" />
+    <link rel="prev" title="3 Summary" href="md_out_07_03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_01.html">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_01.html">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_01.html">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_02.html">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_08_01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1 The split-apply-combine pattern</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-a-dataset-by-grouping">1.1 Splitting a dataset by grouping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-apply-and-combine-operations">1.2 Looking at apply and combine operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-operations">1.3 Summary operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-groups">1.4 Filtering groups</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-split-apply-combine-pattern">
+<h1>1 The split-apply-combine pattern<a class="headerlink" href="#the-split-apply-combine-pattern" title="Permalink to this heading">#</a></h1>
+<p>In the  exercise in Week 7, you downloaded data from Comtrade that could be described as ‘heterogenous’ or mixed in some way. For example, the same dataset contained information relating to both imports and exports.</p>
+<p>To find the partner countries with the largest trade value in terms of exports means filtering the dataset to obtain just the rows containing export data and then ranking those. Finding the largest import partner requires a sort on just the import data.</p>
+<p><img alt="A close-up image of someone putting glue onto a plank of wood" src="ou_futurelearn_learn_to_code_fig_1062.jpg" /></p>
+<p><strong>Figure 1</strong></p>
+<p>But what if you wanted to find out even more refined information? For example:</p>
+<ul class="simple">
+<li><p>the total value of exports of product X from the UK to those countries on a year by year basis (group the information by year and then find the total for each year)</p></li>
+<li><p>the total value of exports of product X from the UK to each of the partner countries by year (group the information by country and year and then find the total for each country/year pairing)</p></li>
+<li><p>the average value of exports across all the countries on a month by month basis (group by month, then find the average value per month)</p></li>
+<li><p>the average value of exports across each country on a month by month basis (group by month and country, then find the average value over each country/month pairing)</p></li>
+<li><p>the difference month on month between the value of imports from, or exports to, each particular country over the five year period (group by country, order by month and year, then find the difference between consecutive months).</p></li>
+</ul>
+<p>In each case, the original dataset needs to be separated into several subsets, or groups of data rows, and then some operation performed on those rows. To generate a single, final report would then require combining the results of those operations in a new or extended dataframe.</p>
+<p>This sequence of operations is common enough for it to have been described as the ‘split-apply-combine’ pattern. The sequence is to:</p>
+<ul class="simple">
+<li><p>‘split’ an appropriately shaped dataset into several components</p></li>
+<li><p>‘apply’ an operator to the rows contained within a component</p></li>
+<li><p>‘combine’ the results of applying to operator to each component to return a single combined result.</p></li>
+</ul>
+<p>You will see how to make use of this pattern using pandas next.</p>
+<section id="splitting-a-dataset-by-grouping">
+<h2>1.1 Splitting a dataset by grouping<a class="headerlink" href="#splitting-a-dataset-by-grouping" title="Permalink to this heading">#</a></h2>
+<p>‘Grouping’ refers to the process of splitting a dataset into sets of rows, or ‘groups’, on the basis of one or more criteria associated with each data row.</p>
+<p>Grouping is often used to split a dataset into one or more distinct groups. Each row in the dataset being grouped around can be assigned to one, and only one, of the derived groups. The rows associated with a particular group may be accessed by reference to the group or the same processing or reporting operation may be applied to the rows contained in each group on a group by group basis.</p>
+<p><img alt="A table contains commodity and amount columns, there are amounts grouped by commodity A, B and C." src="ou_futurelearn_learn_to_code_fig_1016.jpg" /></p>
+<p><strong>Figure 2</strong></p>
+<p>The rows do not have to be ‘grouped’ together in the original dataset – they could appear in any order in the original dataset (for example, a commodity A row, followed by a two commodity B rows, then another commodity A row, and so on). However, the order in which each row appears in the original dataset will typically be reflected by the order in which the rows appear in each subgroup.</p>
+<p>Let’s see how to do that in pandas. Create a simple dataframe that looks like the full table in the image above:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+              <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+              <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">],[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">30</span><span class="p">]]</span> 
+<span class="n">df</span><span class="o">=</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Commodity&quot;</span><span class="p">,</span><span class="s2">&quot;Amount&quot;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__0__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__1__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__2__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__3__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>Next, use the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the dataframe into separate groups of rows based on the values contained within one or more specified ‘key’ columns. For example, group the rows according to what sort of commodity each row corresponds to as specified by the value taken in the ‘Commodity’ column.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">grouped</span> <span class="pre">=</span> <span class="pre">df.groupby('Commodity')</span></code></p>
+<p>The number and ‘names’ of the groups that are identified correspond to the unique values that can be found within the column or columns (which will be referred to as the ‘key columns’) used to identify the groups.</p>
+<p>You can see what groups are available with the following method call:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">grouped.groups.keys()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">['A',</span> <span class="pre">'C',</span> <span class="pre">'B']</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_group()</span></code> method can be used to grab just the rows associated with a particular group.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">grouped.get_group('B')</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+</tbody>
+</table>
+<p>Datasets can also be grouped against multiple columns. For example, if there was an extra ‘Year’ column in the above table, you could group against just the commodity, exactly as above, to provide access to rows by commodity; just the year, setting <code class="docutils literal notranslate"><span class="pre">grouped</span> <span class="pre">=</span> <span class="pre">df.groupby(</span> <span class="pre">'Year'</span> <span class="pre">);</span></code> or by both commodity and year, passing in the two grouping key columns as a list:</p>
+<p><code class="docutils literal notranslate"><span class="pre">grouped</span> <span class="pre">=</span> <span class="pre">df.groupby(</span> <span class="pre">['Commodity','Year'])</span></code></p>
+<p>The list of keys associated with the groups might then look like [(‘A’, 2015), (‘A’, 2014), (‘B’, 2015), (‘B’, 2014)]. The rows associated with the group corresponding to commodity A in 2014 could then be retrieved using the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">grouped.get_group(</span> <span class="pre">('A',2014)</span> <span class="pre">)</span></code></p>
+<p>This may seem to you like a roundabout way of filtering the dataframe as you did in Week 2; but you’ll see that the ability to automatically group rows sets up the possibility of then processing those rows as separate ‘mini-dataframes’ and then combining the results back together.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 2 Grouping data</p>
+<p class="rubric">Question</p>
+<p>Work through Exercise 2 in the Week 4 notebook.</p>
+<p>As you complete the tasks, think about these questions:</p>
+<ul class="simple">
+<li><p>For your particular dataset, how did you group the data and what questions did you ask of it? Which countries were the major partners of your reporter country for the different groupings?</p></li>
+<li><p>With the ability to group data so easily, what other sorts of questions would you like to be able to ask?</p></li>
+</ul>
+<!-- #endregion -->
+</div>
+</section>
+<section id="looking-at-apply-and-combine-operations">
+<h2>1.2 Looking at apply and combine operations<a class="headerlink" href="#looking-at-apply-and-combine-operations" title="Permalink to this heading">#</a></h2>
+<p>Having split a dataset by grouping, an operation is ‘applied’ to each group.</p>
+<p><img alt="A close-up image of a cubes of wood interlaced, making a pattern" src="ou_futurelearn_learn_to_code_fig_1063.jpg" /></p>
+<p><strong>Figure 3</strong></p>
+<p>The operation often takes one of two forms:</p>
+<ul class="simple">
+<li><p>a ‘summary’ operation, in which a summary statistic based on the rows contained within each group is generated. A single value is returned for each group, for example, the group median or mean, the number of rows in the group, or the maximum or minimum value in the group. The final result will have <em>M</em> rows, one for each of the M groups created by the split (that is, . <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> ) operation.</p></li>
+<li><p>a ‘filtering’ or ‘filtration’ operation, in which groups of rows are retained or discarded based on a particular property of the group as a whole. For example, only groups of rows where the sum of all the values in the group is above some threshold are retained. The effect is that each group keeps the same number of rows, but the resulting dataset (after combination, see below) may contain fewer groups than the original.</p></li>
+</ul>
+<p>The results of applying the summary or filtration operation are then combined to provide a single output dataframe.</p>
+<p>In the next section, you will see how to apply a variety of summary operations, and in a later step examples of filtration operations.</p>
+</section>
+<section id="summary-operations">
+<h2>1.3 Summary operations<a class="headerlink" href="#summary-operations" title="Permalink to this heading">#</a></h2>
+<p>Summary, or aggregation, operations are used to produce a single summary value or statistic, such as the group average, for each separate group.</p>
+<p>Find the ‘total’ amount within each group using a <strong>summary</strong> operation:</p>
+<p><img alt="A summary operator of the 'total' amount for Commodity A, B and C" src="ou_futurelearn_learn_to_code_fig_1014.jpg" /></p>
+<p><strong>Figure 4</strong></p>
+<p>To apply a summary operator to each group, such as a function to find the mean value of each group, and then automatically combine the results into a single output dataframe, pass the name of the function in to the <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code> method. Note that pandas will try to use this operator to summarise each column in the grouped rows separately if there is more than one column that can be summarised. So for example, if there was a ‘Volume’ column, it would also return total volumes.</p>
+<p>Let’s use again the example dataframe defined earlier:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">6</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">7</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">8</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>Group the data by commodity type and then apply the <code class="docutils literal notranslate"><span class="pre">sum</span></code> operation and combine the results in an output dataframe. The grouping elements are used to create index values in the output dataframe.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">grouped</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Commodity&#39;</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Amount</th>
+</tr>
+<tr>
+<th>Commodity</th>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">50</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">25</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">50</td>
+</tr>
+</tbody>
+</table>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code> method applies the sum summary operation to each group and then automatically combines the results. For a <strong>summary</strong> operation such as this, the resulting combined dataframe contains as many rows as there were groups created by the splitting <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> operation.</p>
+<p><img alt="A single dataframe of the previous summary operator." src="ou_futurelearn_learn_to_code_fig_1015.jpg" /></p>
+<p><strong>Figure 5</strong></p>
+<p>The slightly more general <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method can also be substituted for the <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code> method and will similarly take the rows associated with each group, apply a function to them, and return a combined result.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method can be really handy if you have defined a function of your own that you want to apply to just the rows associated with each group. Simply pass the name of the function to the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method and it will then call your function, once per group, on the sets of rows associated with each group.</p>
+<p>For example, find the top two items by ‘Amount’ in each group:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">top2byAmount</span><span class="p">(</span><span class="n">g</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="n">g</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top2byAmount</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th></th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__Commodity__</td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">8</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">7</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+</tbody>
+</table>
+<p>The second index column containing the numbers 3, 1, 4 etc., contains the original index value of each row.</p>
+<p>In Week 3 the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method was called on a column, to apply the given function to each cell. Here it was called on a grouped dataframe, to apply the given function to each group.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 3 Experimenting with split-apply-combine</p>
+<p class="rubric">Question</p>
+<p>Work through Exercise 3 in your Exercise notebook 4 to practise the summary operations.</p>
+<p>As you complete the tasks, think about these questions:</p>
+<ul class="simple">
+<li><p>For your dataset, which months saw the highest and lowest levels of trade activity? Did there appear to be any seasonal behaviour?</p></li>
+<li><p>When graphically comparing total trade flows from the leading partner countries to the World total, did it look as if any partners particularly dominated that area of trade? If you have time, find news reports discussing why this should be the case.</p></li>
+</ul>
+<!-- #endregion -->
+</div>
+</section>
+<section id="filtering-groups">
+<h2>1.4 Filtering groups<a class="headerlink" href="#filtering-groups" title="Permalink to this heading">#</a></h2>
+<p>Being able to group rows according to some criterion and then apply various operations to those groups is a very powerful technique.</p>
+<p>However, there may be occasions when you only want to work with a subset of the groups that can be extracted from a single dataset based on a particular group property. For example, it might require that:</p>
+<ul class="simple">
+<li><p>groups that contain a minimum number of rows, such as countries that engage in trade around a particular commodity with a minimum number of partner countries</p></li>
+<li><p>groups for whom a summary statistic meets certain conditions (for example, the total value of exports for a particular commodity exceeds a particular threshold value, or whose minimum or maximum value are below a certain value)</p></li>
+<li><p>a ranking of the groups based on a particular summary statistic, such as the total trade value, that returns only the top five or bottom three groups according to that ranking.</p></li>
+</ul>
+<p>In the following example, where groups are selected based on group size, a filtering operation is applied to limit an original dataset so that it includes just those groups containing at least three rows, combining the rows from the selected groups back together again to produce the output dataset:</p>
+<p><img alt="Dataframe for each commodity A, B and C and their amounts." src="ou_futurelearn_learn_to_code_fig_1017.jpg" /></p>
+<p><strong>Figure 6</strong></p>
+<p>In pandas, groups can be filtered based on their group properties using the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. Using the example dataframe again:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__0__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__1__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__2__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__3__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the dataframe can be filtered to return just the rows from groups where there is a maximum number of rows in the group.</p>
+<p>As a reference point, count how many rows are associated with each group.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Commodity&#39;</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__Commodity__</td>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">4</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">3</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">2</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method uses a function that returns a boolean ( <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> ) value to decide whether or not to filter through the rows associated with a particular group.</p>
+<p>As with the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> method, provide the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method with just a function name in order to pass each group to that function. For example, define a function that says whether or not a group contains three or fewer rows and use that as a basis for filtering the original dataset.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">groupsOfAtMostThreeRows</span><span class="p">(</span><span class="n">g</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">3</span> 
+<span class="n">grouped</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">groupsOfAtMostThreeRows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, all the rows in a group can be filtered on an aggregate property of the group such as the sum total, or maximum, minimum or mean value, from one of the columns.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1">#Consider the following total amounts by group</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__Commodity__</td>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">50</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">25</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">50</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+               <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">],</span> 
+               <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span> 
+               <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__0__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__1__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__2__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__3__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>The ability to filter datasets based on group properties means that large datasets can more easily be limited to just those rows associated with groups of rows that are deemed to be relevant in some way.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 4 Filtering groups</p>
+<p class="rubric">Question</p>
+<p>Use the Exercise notebook 4 to practise filtering in Exercise 4.</p>
+<p>As you complete the tasks, think about other questions you could ask of your data using the filter command.</p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_out_07_03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3 Summary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_08_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2 Pivot tables</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-a-dataset-by-grouping">1.1 Splitting a dataset by grouping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-apply-and-combine-operations">1.2 Looking at apply and combine operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-operations">1.3 Summary operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-groups">1.4 Filtering groups</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
