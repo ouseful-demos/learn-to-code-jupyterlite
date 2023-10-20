@@ -22,6 +22,8 @@ We can clean up simple markdown rendered fron the OU-XML transformation process 
 # pip3 install mdformat mdformat-myst
 mdformat src 
 ou_xml_validator cleanmd PATH
-# If it's simple markdown, transform to myst
+# Initialise as MyST with Jupytext header:
+jupyter-book myst init *.md --kernel python3
+# If headers are available, we can transform to myst
 jupytext --to myst src/*.md
 ```

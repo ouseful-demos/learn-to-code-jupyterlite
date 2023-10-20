@@ -39,3 +39,27 @@ https://github.com/ouseful-demos/learn-to-code-jupyterlite/blob/1328fd0701bb4aaa
 Add notebooks and supporting files into the `content/` directory.
 
 Then commit and push the changes. The site will be deployed on the next push to the `main` branch.
+
+## Cleaning md
+
+*Ad hoc* script to tidy up markdown once it's produced:
+
+```bash
+# pip3 install mdformat mdformat-myst
+# Format the markdown files
+mdformat src
+# Custom cleaning of markdown files
+ou_xml_validator cleanmd PATH
+# If it's simple markdown, transform to myst
+jupytext --to myst src/*.md
+# Add jupytext / myst header to markdown
+# If there is a singlekernel available, it's name will be used
+# If more than one kernel is available, use --kernel KERNELAME
+jupyter-book myst init mymarkdownfile.md #--kernel kernelname
+```
+
+## Previewing locally
+
+Use a simple http server:
+
+`python3 -m http.server -b 127.0.0.1 -d PATH`
