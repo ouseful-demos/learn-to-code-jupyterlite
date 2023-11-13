@@ -61,6 +61,13 @@
       {
         "extension": "./extension",
         "liteExtension": false,
+        "load": "static/remoteEntry.ffa5f565ff781bbfab6e.js",
+        "name": "jupyterlab-filesystem-access",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
         "load": "static/remoteEntry.c06ae9697719c2a3352e.js",
         "name": "jupyterlab-myst",
         "style": "./style"
@@ -90,6 +97,20 @@
         "liteExtension": false,
         "load": "static/remoteEntry.0019166b17e173212a28.js",
         "name": "jupyterlab-tour",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.a4b7fe28cbbbb52a1928.js",
+        "name": "jupyterlab_cell_status_extension",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.1d345213def2921e2b2e.js",
+        "name": "jupyterlab_empinken_extension",
         "style": "./style"
       },
       {
