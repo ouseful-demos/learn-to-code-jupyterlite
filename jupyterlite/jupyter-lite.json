@@ -41,6 +41,20 @@
       {
         "extension": "./extension",
         "liteExtension": false,
+        "load": "static/remoteEntry.ffa5f565ff781bbfab6e.js",
+        "name": "jupyterlab-filesystem-access",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
+        "load": "static/remoteEntry.74a375733b4162d461a9.js",
+        "name": "jupyterlab-open-url-parameter",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "liteExtension": false,
         "load": "static/remoteEntry.aa1060b2d1221f8e5688.js",
         "name": "jupyterlab_pygments",
         "style": "./style"
