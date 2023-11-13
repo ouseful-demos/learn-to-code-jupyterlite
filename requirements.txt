@@ -8,26 +8,26 @@ jupyterlite-pyodide-kernel
 #jupyterlite-xeus-python
 
 # Language support (optional)
-jupyterlab-language-pack-fr-FR
-jupyterlab-language-pack-zh-CN
+#jupyterlab-language-pack-fr-FR
+#jupyterlab-language-pack-zh-CN
 
 # User experience
-jupyterlab-skip-traceback
-jupyter-archive
-jupyterlab-spellchecker
-jupyterlab_ou_brand_extension
-jupyterlab_myst
-jupyterlab-empinken-extension
-jupyterlab_cell_status_extension
+#jupyterlab-skip-traceback
+#jupyter-archive
+#jupyterlab-spellchecker
+#jupyterlab_ou_brand_extension
+#jupyterlab_myst
+#jupyterlab-empinken-extension
+#jupyterlab_cell_status_extension
 
 # JupyterLab: Fasta file renderer (optional)
 #jupyterlab-fasta>=3,<4
 # JupyterLab: Geojson file renderer (optional)
 #jupyterlab-geojson>=3,<4
 # JupyterLab: guided tour (optional)
-jupyterlab-tour
+#jupyterlab-tour
 # JupyterLab: dark theme
-jupyterlab-night
+#jupyterlab-night
 # JupyterLab: Miami nights theme (optional)
 #jupyterlab_miami_nights
 
@@ -39,14 +39,14 @@ ipyevents>=2.0.1
 ipympl>=0.8.2
 
 # Excel file reader
-xlrd
+#xlrd
 
 # Python: plotting libraries (optional)
-plotly>=5,<6
-bqplot
+#bqplot
+#plotly>=5,<6
 
 # File sharing
-jupyterlab-filesystem-access
+#jupyterlab-filesystem-access
 
 # Sphinx extensions
 ou_book_theme

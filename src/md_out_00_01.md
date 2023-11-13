@@ -12,7 +12,8 @@ jupyter:
     name: python3
 ---
 
-# 
+# Accessing the course software
+
 To edit and execute code in the course notebooks that Ruth mentioned in the video, we're going use a program called JupyterLite. This opens in your web browser and allows you to write notebooks that include Python code.
 
 You will need to have a modern web browser in order to run the JupyterLite notebook application. The application runs inside you browser. You can save your modified notebooks into browser storage. This means that you will need to work in the same browser on the same computer in order to retrieve your files if you have made changes to them.
