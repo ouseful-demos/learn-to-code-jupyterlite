@@ -27,12 +27,12 @@ jobs:
           python -m pip install jupyter-book git+https://github.com/innovationOUtside/sphinxcontrib-ou-xml-tags.git
           jupyter book build src
           mkdir -p dist/
-          cp -R src/_build/html/* dist/  
+          cp -R src/_build/html/* dist/book
       - name: Build the JupyterLite site
         run: |
           cp README.md content
           jupyter lite build --contents content --output-dir dist/jupyterlite
-          cp -R custom/* dist/jupyterlite/
+          cp -R custom/* dist/
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
