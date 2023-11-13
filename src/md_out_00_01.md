@@ -12,82 +12,32 @@ jupyter:
     name: python3
 ---
 
-# 1 Install the software
+# 
+To edit and execute code in the course notebooks that Ruth mentioned in the video, we're going use a program called JupyterLite. This opens in your web browser and allows you to write notebooks that include Python code.
 
+You will need to have a modern web browser in order to run the JupyterLite notebook application. The application runs inside you browser. You can save your modified notebooks into browser storage. This means that you will need to work in the same browser on the same computer in order to retrieve your files if you have made changes to them.
 
-To code in the course notebooks that Ruth mentioned in the video you’ll need to install some software.
+## Notebooks
 
-We’re going use a program called Jupyter that opens in your web browser and allows you to write notebooks that include Python code. Jupyter and other software you will need to take part in the course are freely available and you have two options.
+Each week you will use two notebooks (and any necessary data files): an exercise notebook and a project notebook. The notebooks are this course's programming environment, where you will do your own coding.
 
+The exercise notebook contains all the code shown throughout the week, so that you can try it out for yourself, any time you wish. The exercise notebook also contains all the week's exercises. You will be able to solve several exercises just by slightly modifying our code.
 
----
+The project notebook contains the week's written-up data analysis project, including all necessary code. If you have the extra time, you're encouraged to modify the project notebooks to write up your own data analyses.
 
+You can access the JupyterLite environment here: [https://ouseful-demos.github.io/learn-to-code-jupyterlite/jupyterlite/tree/](https://ouseful-demos.github.io/learn-to-code-jupyterlite/jupyterlite/tree/). Although everyone initially accesses the website from the same web location, the application and the notebook files are then downloaded into you browser and you will work with your own copy of them.
 
+You will learn how to use notebooks later this week, after you’ve seen what Python code looks like.
 
-### Online CoCalc service
-
-The advantages of using CoCalc are that you don’t have to install any software and you can work on the course exercises from anywhere there is an internet connection. The disadvantages are that you will need a good internet connection, running the code in your notebook may take time if there are many simultaneous users on CoCalc and you may occasionally lose the latest changes you make in your notebook, because the service will periodically reset.
-
-However, since notebooks are regularly auto-saved, the risk of losing work should be rather small. CoCalc offers a paid plan that has better performance and stability than the free plan. The Open University and the authors have no commercial affiliation with CoCalc.
-
-
----
-
-
-
----
-
-
-
-### Install Anaconda package
-
-The other option is to install on your laptop or desktop the free Anaconda package, which includes all necessary software for this course. If you plan to work on this course from multiple computers, you will need to install Anaconda on each one. You can use cloud storage, like Dropbox, to keep your notebooks in sync across machines. Anaconda doesn’t have the limitations of CoCalc, so we recommend you use Anaconda if you are going to work on this course always from the same computer.
-
-You should now read the [ instructions for installing Anaconda or creating a CoCalc project ](http://www.open.edu/openlearn/learn-to-code-installation)for this course. Don’t forget to test everything is working, as explained in the instructions.
-
-The installation of Anaconda is different for Windows, Macs and Linux. Please follow the appropriate instructions.
-
-We advise you to accept the pre-filled defaults suggested during the installation process.
-
-
----
-
-
-
----
-
-
-
-### Notebooks
-
-Each week you will use two notebooks (and any necessary data files): an exercise notebook and a project notebook. The notebooks are this course’s programming environment, where you will do your own coding.
-
-The exercise notebook contains all the code shown throughout the week, so that you can try it out for yourself, any time you wish. The exercise notebook also contains all the week’s exercises. You will be able to solve several exercises just by slightly modifying our code.
-
-The project notebook contains the week’s written-up data analysis project, including all necessary code. If you have the extra time, you’re encouraged to modify the project notebooks to write up your own data analyses.
-
-You should now download from [here](https://github.com/mwermelinger/Learn-to-code-for-data-analysis) the notebooks and data files needed for the whole course. 
-
-You’ll open the notebooks using Jupyter, which is part of Anaconda and CoCalc. You will learn how to use notebooks later this week, after you’ve seen what Python code looks like.
-
-Note: please ensure that you abide by any terms and conditions associated with these pieces of software.
-
-
----
-
-
-
-## 1.1 Start with a question
-
+## Start with a question
 
 Data analysis often starts with a question or with some data.
 
-
-![An image with a young boy wearing a medical mask, in the foreground; a patient in a South African tuberculosis clinic ](./ou_futurelearn_learn_to_code_fig_1026.jpg)
-
-
+```{figure} .images//ou_futurelearn_learn_to_code_fig_1026.jpg
 __Figure 1__
 
+An image with a young boy wearing a medical mask, in the foreground; a patient in a South African tuberculosis clinic 
+```
 
 A question leads to data that can answer it, and looking at the available data helps to make a question precise or may trigger new questions, which, in turn, may require further data. Data analysis is thus often an iterative process: the questions determine which data to obtain, and the data influences which questions to ask and what the scope of the analysis is. How this week’s project came about is an example of such an iterative process.
 
@@ -95,21 +45,13 @@ I (Michel) was watching a news programme mentioning the fight against tuberculos
 
 That was enough data for the fuzzy question: how serious is TB? It was time to make it precise. I chose to measure the effect of TB in terms of deaths, which led to the following questions:
 
-* What is the total, smallest, largest, and average number of deaths due to TB?
-
-* What is the death rate (number of deaths divided by population) of each country?
-
-* Which countries have the smallest and largest number of deaths?
-
-* Which countries have the smallest and largest death rate?
-
+- What is the total, smallest, largest, and average number of deaths due to TB?
+- What is the death rate (number of deaths divided by population) of each country?
+- Which countries have the smallest and largest number of deaths?
+- Which countries have the smallest and largest death rate?
 Answering these questions for the whole world and for seven years (2007–2013) would be a bit too much for this initial project. A subset was needed. I decided to take only the latest data for 2013 and, being Portuguese, to focus on the Portuguese-speaking countries. One of them, Brazil, is part of the BRICS group of major emerging economies, so for more diversity the other four countries would be included too: Russia, India, China and South Africa. The project was finally defined! I’ve added links to the data below if you’d like to take a look!
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Activity 1 What would you ask?
-
-
-#### Question
+````{activity} Activity 1 What would you ask?
 
 Before you embark on coding the analysis to get answers, what other questions could be asked of the datasets described?
 
@@ -117,8 +59,23 @@ What countries would you be interested in? What groups of countries might be int
 
 Note down some of your questions so that you can come back to them later.
 
-<!-- #endregion -->
-```
+    <textarea id="textArea" placeholder="Type your text here..."></textarea>
+    
+    <script>
+        const textArea = document.getElementById('textArea');
+
+        // Load text on page load
+        window.onload = function () {
+            loadText();
+        };
+
+        // Auto-save changes
+        textArea.addEventListener('input', function () {
+            saveText();
+        });
+    </script>
+````
+
 
 [WHO POPULATION - DATA BY COUNTRY (LATEST YEAR)](https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20all.xls)
 
@@ -126,19 +83,17 @@ Note down some of your questions so that you can come back to them later.
 
 Next, I’ll explain how I started to organise the information.
 
-
-## 1.2 Variables and assignments
-
+## Variables and assignments
 
 With the choice of data and questions confirmed, the coding can begin.
 
-
-![An image of a lot of boxes stacked up](./ou_futurelearn_learn_to_code_fig_1027.jpg)
-
-
+```{figure} ./images/ou_futurelearn_learn_to_code_fig_1027.jpg
 __Figure 2__
 
+An image of a lot of boxes stacked up
+```
 
+An image of a lot of boxes stacked upAn image of a lot of boxes stacked up
 To introduce the basics of coding, I will show you a very simple approach, only suitable for the smallest of datasets. Please bear with me. In the second part of the week I will show you the proper approach. Read through this step and the next – __you’re not expected to write code just yet__. In Exercise 1, a bit further on in this week, you’ll be asked to start writing code.
 
 Ok, let’s start. I want the computer to calculate the total number of deaths in 2013. For the computer to do that, it must first be told what is the number of deaths in each country in that year. I’ll start with my home country.
@@ -222,18 +177,22 @@ To sum up, a __variable__ is a named storage for values and an __assignment__ ta
 In the next section, you will find out the importance of naming in Python.
 
 
-## 1.3 The art of naming
+## The art of naming
 
 
 Python is relatively flexible about what you name your variables but rather picky about the format of names.
 
 
-![An image of blank name labels headed, 'Hello my name is'](./ou_futurelearn_learn_to_code_fig_1028.jpg)
+```{figure} ./images/ou_futurelearn_learn_to_code_fig_1028.jpg
+__Figure 3__
+
+An image of blank name labels headed, 'Hello my name is'
+```
 
 
 __Figure 3__
 
-
+An image of blank name labels headed, 'Hello my name is'An image of blank name labels headed, 'Hello my name is'
 I could have chosen ``deaths_in_Brazil_in_2013, deathsBrazil,DeathsBrazil, dB`` or even ``stuff`` for my variables. If a box in your attic were labeled ``dB`` or ``stuff`` though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.
 
 You can’t use spaces to separate words in a name, you can’t start a name with a digit and names are case-sensitive, i.e. ``deathsBrazil`` and ``DeathsBrazil`` are not the same variable. Making one of those mistakes will result in a __syntax error__ (when the computer doesn’t understand the line of code) or a __name error__ (when the computer doesn’t know of any variable with that name).
@@ -294,11 +253,9 @@ In the next section, download the notebook for this week and work through the fi
 
 So far, I’ve done the coding and you’ve read along. Booooring. It’s time to use the Jupyter notebooks and work on the first exercise in the course.
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Exercise 1 Variables and assignments
 
+````{activity} Exercise 1 Variables and assignments
 
-#### Question
 
 If you haven’t yet installed the software package or created an account on CoCalc, do it now using these [instructions](http://www.open.edu/openlearn/learn-to-code-installation)!
 
@@ -306,7 +263,12 @@ If you haven’t yet installed the software package or created an account on CoC
 Open the Exercise notebook 1 (from [here](https://github.com/mwermelinger/Learn-to-code-for-data-analysis)), and put it in the folder you created. (You’ll open the data later and learn how to use it in the notebook.)
 
 Once you have installed the file, watch the video to learn how to work with Jupyter notebooks and complete Exercise 1. Pause the video frequently to repeat the demonstrated steps in your notebook. Throughout the week you’ll be directed back to the notebook to complete the other exercises.
-<!--MEDIACONTENT--><video xmlns:str="http://exslt.org/strings" width="80%" download=""><source src="./ou_futurelearn_learn_to_code_vid_1046.mp4" type="video/mp4"></source></video><!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
+
+
+```{ou-video} ./media/ou_futurelearn_learn_to_code_vid_1046.mp4
+```
+
+<!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
 __NARRATOR:__ * In this screencast I'm going to introduce you to Jupyter Notebooks. First you'll need to start the Anaconda launcher. This screencast was done on a Mac. However, the same process applies to Windows. If you're a Linux user, you'll need to use the command line as described in the installation instructions. To follow along on your computer, make sure you have created a folder for this course, and that it contains the exercise notebook for this week. This screencast uses earlier versions of the exercise notebook, and of the Anaconda software than you downloaded, so don't worry that things look slightly different. *;
 * Do not click on 'Update' buttons in the Anaconda Launcher, because you should use the version you installed to avoid compatibility problems with the notebooks of this course. Once the Anaconda launcher has booted up, launch the ipython notebook. Whenever you see a circle, the mouse has been clicked. After a couple of screens you should see Jupyter running in a browser, and the contents of your home folder. Navigate to the folder you created, and open the relevant notebook. The first thing to appreciate is that Jupyter notebook consists of a sequence of individual cells. You can see the individual cells as I click on the left of each one. Each cell can contain text or code. *;
 * Before starting any exercises, you should execute all the code already in the notebook. I'll explain why in a moment. Go to the 'Cell' menu and select 'Run all'. As the notebook executes all code, it may automatically scroll to a different part of the notebook. Just scroll back to the start. Go to the first exercise. It asks you to add assignments for more countries into the preceding code cell. To select a cell, click to the left of it. A grey border shows the currently selected cell. To edit a cell, click inside it. The border becomes green to show the cell is in editing mode. *;
@@ -317,18 +279,19 @@ __NARRATOR:__ * In this screencast I'm going to introduce you to Jupyter Noteboo
 * Also note the way a word or phrase to be hyperlinked is surrounded with square brackets and immediately followed by the URL, in round brackets. Once the text is written, click the 'Play' button to see the formatted text in the cell. The 'Help' menu contains links to information about Jupyter notebooks and Markdown formatting. As you get used to Jupyter, take a look at the keyboard shortcuts, as they will help you to work more efficiently. *;
 </td></tr></table><!--ENDTRANSCRIPT-->
 
-![
-                figure
-                ./ou_futurelearn_learn_to_code_vid_1046.jpg](./ou_futurelearn_learn_to_code_vid_1046.jpg)
-<!--ENDMEDIACONTENT-->
-<!-- #endregion -->
+```{figure} ./ou_futurelearn_learn_to_code_vid_1046.jpg
 ```
+
+
+
+````
+
 
 If you haven’t yet installed Jupyter and Anaconda, do it now using these [instructions](http://www.open.edu/openlearn/learn-to-code-installation).
 
 
 
-## 1.5 Expressions
+## Expressions
 
 
 I’ve told the computer the deaths in Angola, Brazil and Portugal. I can now ask it to add them together to obtain the total deaths.
@@ -413,19 +376,21 @@ totalDeaths / 3
 Python has of course all four arithmetic __operators__ : addition (+), division (/), subtraction (-) and multiplication (*). I’ll use the last two later in the week. Python follows the conventional operator precedence: multiplication and division before addition and subtraction, unless parentheses are used to change the order. For example, (3+4)/2 is 3.5 but 3+4/2 is 5.
 
 
-![An image of many colourful painted skulls with different drawings and textures.](./ou_futurelearn_learn_to_code_fig_1030.jpg)
+```{figure} ./ou_futurelearn_learn_to_code_fig_1030.jpg
+__Figure 4__
+
+An image of many colourful painted skulls with different drawings and textures.
+```
 
 
 __Figure 4__
 
-
+An image of many colourful painted skulls with different drawings and textures.An image of many colourful painted skulls with different drawings and textures.
 Now practice writing expressions and complete Exercise 2 in the notebook.
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Exercise 2 Expressions
 
+````{activity} Exercise 2 Expressions
 
-#### Question
 
 Go back to the Exercise notebook 1 you used in Exercise 1. In Exercise 2 you’ll see an example of operator precedence and practise writing expressions.
 
@@ -433,24 +398,29 @@ If you’re using Anaconda, remember that to open the notebook you’ll need to 
 
 Writing code for the first time can be difficult but stick with it.
 
-<!-- #endregion -->
-```
+
+````
+
 
 In the next section, you will find out about functions.
 
 
-## 1.6 Functions
+## Functions
 
 
 After the total and the average, next on my to-do list is to calculate the largest number of deaths.
 
 
-![An image with an angel in prayer statue in the foreground of a graveyard](./ou_futurelearn_learn_to_code_fig_1031.jpg)
+```{figure} ./ou_futurelearn_learn_to_code_fig_1031.jpg
+__Figure 5__
+
+An image with an angel in prayer statue in the foreground of a graveyard
+```
 
 
 __Figure 5__
 
-
+An image with an angel in prayer statue in the foreground of a graveyardAn image with an angel in prayer statue in the foreground of a graveyard
 This will be the __maximum__. It takes another single line of code to calculate it.
 
 ``In []:``
@@ -544,104 +514,29 @@ range
 ```
 
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Exercise 3 Functions
 
-Identify different types of error (some of you may have experienced those already…) in Exercise 3. You’ll need to use the Week 1 notebook to answer question three.
-
-
-#### Question
-
-__1. If the function name is misspelled as Min, what kind of error is it?__
-
-A syntax error
-
-Writing `Min(…, …)` instead of `min(…, …)` is not a syntax error, because both have the form of a function call. Names can use uppercase letters.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
-
-
-A name error
-
-The computer will understand than `Min(…, …)` is a function call but doesn’t know of any function with that name. Remember that names are case-sensitive.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
+````{activity} Exercise 3 Functions
+<!--UnknownTag: Multipart :UnknownTag-->
+````
 
 
 
-#### Question
-
-__2. If a parenthesis or comma is forgotten, what kind of error is it?__
-
-A name error
-
-A parenthesis or comma is unrelated to how names are written.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.
-
-
-A syntax error
-
-A function call requires two parentheses around the arguments, and one comma between successive arguments. Forgetting any of them therefore deviates from the syntax of the Python language.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
-
-
-
-#### Question
-
-__3. Use Exercise 3 in the Week 1 exercise notebook to answer this question.__
-
-__What is the range of deaths among the BRICS countries (Brazil, Russia, India, China, South Africa)?__
-
-4400
-
-This is the minimum value (for Brazil), not the range.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
-
-
-65480
-
-This is the average number of deaths, not the range.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">Expressions</a>.
-
-
-240000
-
-This is the maximum value (for India), not the range.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
-
-
-327400
-
-This is the total number of deaths not the range.
-
-Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.
-
-
-235600
-
-The range is the maximum value (240 thousand for India) minus the minimum value (4400 for Brazil).
-
-<!-- #endregion -->
-```
-
-
-## 1.7 Comments
+## Comments
 
 
 Last on my to-do list is the death rate, which is the number of deaths divided by the population.
 
 
-![An image of different speech bubbles being held up](./ou_futurelearn_learn_to_code_fig_1032.jpg)
+```{figure} ./ou_futurelearn_learn_to_code_fig_1032.jpg
+__Figure 6__
+
+An image of different speech bubbles being held up
+```
 
 
 __Figure 6__
 
-
+An image of different speech bubbles being held upAn image of different speech bubbles being held up
 
 
 A quick glance at the WHO website tells me Portugal’s population in 2013.
@@ -729,44 +624,46 @@ This finishes the basics of coding needed for this week. It took less than 30 li
 
 Test this out for yourself in Exercise 4 of the Week 1 exercise notebook.
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Exercise 4 Comments
 
+````{activity} Exercise 4 Comments
 
-#### Question
 
 Complete the short exercise on the death rate in Exercise 4 in the Week 1 Exercise notebook.
 
 Remember that once the notebook is open, run all the code, before doing the exercise.
 
-<!-- #endregion -->
-```
+
+````
 
 
-## 1.8 Values have units
+
+## Values have units
 
 
 Before I move on, let me explain the importance of using comments to record units of measurement.
 
 
-![An image of four towers of liquorish all sorts](./ou_futurelearn_learn_to_code_fig_1033.jpg)
+```{figure} ./ou_futurelearn_learn_to_code_fig_1033.jpg
+__Figure 7__
+
+An image of four towers of liquorish all sorts
+```
 
 
 __Figure 7__
 
-
+An image of four towers of liquorish all sortsAn image of four towers of liquorish all sorts
 Values are not just numbers, they have units: degrees Celsius, number of inhabitants, thousands of gallons, etc. Always make a note of the units the value refers to, using comments. This makes it easier to check whether the expressions are right. Disregarding the units will lead to wrong calculations and results.
 
-```{admonition} Activity<!-- #region tags=["style-activity"] -->
-### Activity 2
 
+````{activity} Activity 2
 
-#### Question
 
 Have you come across ‘horror stories’ that have happened due to mistakes in the unit of measurement?
 
 Think through what happened and consider what you have learned from them.
 
-<!-- #endregion -->
-```
+<!--UnknownTag: Interaction :UnknownTag-->
+````
+
 

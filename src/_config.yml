@@ -2,6 +2,8 @@
 title: Learn to code for data analysis
 author: OpenLearn
 
+lang: en
+
 execute:
   execute_notebooks: force
 
@@ -17,3 +19,11 @@ launch_buttons:
   notebook_interface: "jupuyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
   binderhub_url: "https://mybinder.org"
   thebe: true
+
+only_build_toc_files: true
+
+sphinx:
+  extra_extensions:
+    - ou_book_theme
+    - sphinxcontrib.ou-video
+    - sphinxcontrib.ou-audio
