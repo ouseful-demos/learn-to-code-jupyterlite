@@ -17,6 +17,9 @@ jupyter-archive
 jupyterlab-spellchecker
 jupyterlab_ou_brand_extension
 jupyterlab_myst
+jupyterlab-empinken-extension
+jupyterlab-filesystem-access
+jupyterlab_cell_status_extension
 
 # JupyterLab: Fasta file renderer (optional)
 #jupyterlab-fasta>=3,<4
