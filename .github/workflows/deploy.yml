@@ -27,7 +27,8 @@ jobs:
           python -m pip install jupyter-book git+https://github.com/innovationOUtside/sphinxcontrib-ou-xml-tags.git
           jupyter book build src
           mkdir -p dist/book/
-          cp -R src/_build/html/* dist/book
+          cp -R src/_build/html/* dist/
+          touch dist/index.html
       - name: Build the JupyterLite site
         run: |
           cp README.md content
