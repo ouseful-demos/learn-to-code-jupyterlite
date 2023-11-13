@@ -50,4 +50,3 @@ ipympl>=0.8.2
 
 # Sphinx extensions
 ou_book_theme
-https://github.com/innovationOUtside/sphinxcontrib-ou-xml-tags/archive/refs/heads/main.zip
