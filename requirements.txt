@@ -1,10 +1,20 @@
+# Follow: https://github.com/jtpio/lit/blob/main/requirements.txt
+
+ipywidgets>=8.1
+jupyterlab~=4.0.8
+jupyterlab-filesystem-access~=0.6.0
+jupyterlab-open-url-parameter~=0.1.0
+jupyterlite-core==0.2.0
+jupyterlite-pyodide-kernel==0.2.0
+notebook~=7.0.6
+
 # Core modules (mandatory)
-jupyterlite-core
-jupyterlab
-notebook
+#jupyterlite-core
+#jupyterlab
+#notebook
 
 # Python kernels (optional)
-jupyterlite-pyodide-kernel
+#jupyterlite-pyodide-kernel
 #jupyterlite-xeus-python
 
 # Language support (optional)
