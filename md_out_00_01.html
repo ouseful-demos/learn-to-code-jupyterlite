@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>1 Install the software &#8212; Learn to code for data analysis</title>
+    <title>Accessing the course software &#8212; Learn to code for data analysis</title>
   
   
   
@@ -50,6 +50,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/ou-book-theme.js?digest=70cd4f36c5f75a004a4184ab875fcbdab8e13f88"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -163,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 Install the software</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Accessing the course software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
 </ul>
@@ -373,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1 Install the software</h1>
+    <h1>Accessing the course software</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -383,17 +384,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-cocalc-service">Online CoCalc service</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-anaconda-package">Install Anaconda package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">1.1 Start with a question</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">1.2 Variables and assignments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">1.3 The art of naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">Start with a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">Variables and assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">The art of naming</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-notebook-and-trying-the-first-exercise">1.4 Downloading the notebook and trying the first exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">1.5 Expressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.6 Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">1.7 Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">1.8 Values have units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">Values have units</a></li>
 </ul>
             </nav>
         </div>
@@ -405,42 +404,30 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="install-the-software">
-<h1>1 Install the software<a class="headerlink" href="#install-the-software" title="Permalink to this heading">#</a></h1>
-<p>To code in the course notebooks that Ruth mentioned in the video you’ll need to install some software.</p>
-<p>We’re going use a program called Jupyter that opens in your web browser and allows you to write notebooks that include Python code. Jupyter and other software you will need to take part in the course are freely available and you have two options.</p>
-<hr class="docutils" />
-<section id="online-cocalc-service">
-<h2>Online CoCalc service<a class="headerlink" href="#online-cocalc-service" title="Permalink to this heading">#</a></h2>
-<p>The advantages of using CoCalc are that you don’t have to install any software and you can work on the course exercises from anywhere there is an internet connection. The disadvantages are that you will need a good internet connection, running the code in your notebook may take time if there are many simultaneous users on CoCalc and you may occasionally lose the latest changes you make in your notebook, because the service will periodically reset.</p>
-<p>However, since notebooks are regularly auto-saved, the risk of losing work should be rather small. CoCalc offers a paid plan that has better performance and stability than the free plan. The Open University and the authors have no commercial affiliation with CoCalc.</p>
-<hr class="docutils" />
-<hr class="docutils" />
-</section>
-<section id="install-anaconda-package">
-<h2>Install Anaconda package<a class="headerlink" href="#install-anaconda-package" title="Permalink to this heading">#</a></h2>
-<p>The other option is to install on your laptop or desktop the free Anaconda package, which includes all necessary software for this course. If you plan to work on this course from multiple computers, you will need to install Anaconda on each one. You can use cloud storage, like Dropbox, to keep your notebooks in sync across machines. Anaconda doesn’t have the limitations of CoCalc, so we recommend you use Anaconda if you are going to work on this course always from the same computer.</p>
-<p>You should now read the <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation"> instructions for installing Anaconda or creating a CoCalc project </a>for this course. Don’t forget to test everything is working, as explained in the instructions.</p>
-<p>The installation of Anaconda is different for Windows, Macs and Linux. Please follow the appropriate instructions.</p>
-<p>We advise you to accept the pre-filled defaults suggested during the installation process.</p>
-<hr class="docutils" />
-<hr class="docutils" />
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-course-software">
+<h1>Accessing the course software<a class="headerlink" href="#accessing-the-course-software" title="Permalink to this heading">#</a></h1>
+<p>To edit and execute code in the course notebooks that Ruth mentioned in the video, we’re going use a program called JupyterLite. This opens in your web browser and allows you to write notebooks that include Python code.</p>
+<p>You will need to have a modern web browser in order to run the JupyterLite notebook application. The application runs inside you browser. You can save your modified notebooks into browser storage. This means that you will need to work in the same browser on the same computer in order to retrieve your files if you have made changes to them.</p>
 <section id="notebooks">
 <h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h2>
 <p>Each week you will use two notebooks (and any necessary data files): an exercise notebook and a project notebook. The notebooks are this course’s programming environment, where you will do your own coding.</p>
 <p>The exercise notebook contains all the code shown throughout the week, so that you can try it out for yourself, any time you wish. The exercise notebook also contains all the week’s exercises. You will be able to solve several exercises just by slightly modifying our code.</p>
 <p>The project notebook contains the week’s written-up data analysis project, including all necessary code. If you have the extra time, you’re encouraged to modify the project notebooks to write up your own data analyses.</p>
-<p>You should now download from <a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis">here</a> the notebooks and data files needed for the whole course.</p>
-<p>You’ll open the notebooks using Jupyter, which is part of Anaconda and CoCalc. You will learn how to use notebooks later this week, after you’ve seen what Python code looks like.</p>
-<p>Note: please ensure that you abide by any terms and conditions associated with these pieces of software.</p>
+<p>You can access the JupyterLite environment here: <a class="reference external" href="https://ouseful-demos.github.io/learn-to-code-jupyterlite/jupyterlite/tree/">https://ouseful-demos.github.io/learn-to-code-jupyterlite/jupyterlite/tree/</a>. Although everyone initially accesses the website from the same web location, the application and the notebook files are then downloaded into you browser and you will work with your own copy of them.</p>
+<p>You will learn how to use notebooks later this week, after you’ve seen what Python code looks like.</p>
 </section>
-<hr class="docutils" />
 <section id="start-with-a-question">
-<h2>1.1 Start with a question<a class="headerlink" href="#start-with-a-question" title="Permalink to this heading">#</a></h2>
+<h2>Start with a question<a class="headerlink" href="#start-with-a-question" title="Permalink to this heading">#</a></h2>
 <p>Data analysis often starts with a question or with some data.</p>
-<p><img alt="An image with a young boy wearing a medical mask, in the foreground; a patient in a South African tuberculosis clinic " src="ou_futurelearn_learn_to_code_fig_1026.jpg" /></p>
-<p><strong>Figure 1</strong></p>
+<figure class="align-default" id="id1">
+<img alt=".images/ou_futurelearn_learn_to_code_fig_1026.jpg" src=".images/ou_futurelearn_learn_to_code_fig_1026.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><strong>Figure 1</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image with a young boy wearing a medical mask, in the foreground; a patient in a South African tuberculosis clinic</p>
+</div>
+</figcaption>
+</figure>
 <p>A question leads to data that can answer it, and looking at the available data helps to make a question precise or may trigger new questions, which, in turn, may require further data. Data analysis is thus often an iterative process: the questions determine which data to obtain, and the data influences which questions to ask and what the scope of the analysis is. How this week’s project came about is an example of such an iterative process.</p>
 <p>I (Michel) was watching a news programme mentioning the fight against tuberculosis (TB) as part of the United Nations Millenium Development Goals. Wishing to know how serious TB is, I browsed the World Health Organization (WHO) website and found a dataset with the number of TB cases and deaths per country per year, from 2007 to 2013. This in turn raised the question of whether a high (or low) number could be mainly due to the country having a large (or small) population. Some more browsing revealed the WHO also has population data from 1990 to 2013.</p>
 <p>That was enough data for the fuzzy question: how serious is TB? It was time to make it precise. I chose to measure the effect of TB in terms of deaths, which led to the following questions:</p>
@@ -448,28 +435,51 @@ document.write(`
 <li><p>What is the total, smallest, largest, and average number of deaths due to TB?</p></li>
 <li><p>What is the death rate (number of deaths divided by population) of each country?</p></li>
 <li><p>Which countries have the smallest and largest number of deaths?</p></li>
-<li><p>Which countries have the smallest and largest death rate?</p></li>
+<li><p>Which countries have the smallest and largest death rate?
+Answering these questions for the whole world and for seven years (2007–2013) would be a bit too much for this initial project. A subset was needed. I decided to take only the latest data for 2013 and, being Portuguese, to focus on the Portuguese-speaking countries. One of them, Brazil, is part of the BRICS group of major emerging economies, so for more diversity the other four countries would be included too: Russia, India, China and South Africa. The project was finally defined! I’ve added links to the data below if you’d like to take a look!</p></li>
 </ul>
-<p>Answering these questions for the whole world and for seven years (2007–2013) would be a bit too much for this initial project. A subset was needed. I decided to take only the latest data for 2013 and, being Portuguese, to focus on the Portuguese-speaking countries. One of them, Brazil, is part of the BRICS group of major emerging economies, so for more diversity the other four countries would be included too: Russia, India, China and South Africa. The project was finally defined! I’ve added links to the data below if you’d like to take a look!</p>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Activity 1 What would you ask?</p>
-<p class="rubric">Question</p>
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Activity 1 What would you ask?</div>
 <p>Before you embark on coding the analysis to get answers, what other questions could be asked of the datasets described?</p>
 <p>What countries would you be interested in? What groups of countries might be interesting to analyse?</p>
 <p>Note down some of your questions so that you can come back to them later.</p>
-<!-- #endregion -->
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;textarea id=&quot;textArea&quot; placeholder=&quot;Type your text here...&quot;&gt;&lt;/textarea&gt;
+
+&lt;script&gt;
+    const textArea = document.getElementById(&#39;textArea&#39;);
+
+    // Load text on page load
+    window.onload = function () {
+        loadText();
+    };
+
+    // Auto-save changes
+    textArea.addEventListener(&#39;input&#39;, function () {
+        saveText();
+    });
+&lt;/script&gt;
+</pre></div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20all.xls">WHO POPULATION - DATA BY COUNTRY (LATEST YEAR)</a></p>
 <p><a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20some.xls">WHO TB MORTALITY AND PREVALENCE - DATA BY COUNTRY (2007 - PRESENT)</a></p>
 <p>Next, I’ll explain how I started to organise the information.</p>
 </section>
 <section id="variables-and-assignments">
-<h2>1.2 Variables and assignments<a class="headerlink" href="#variables-and-assignments" title="Permalink to this heading">#</a></h2>
+<h2>Variables and assignments<a class="headerlink" href="#variables-and-assignments" title="Permalink to this heading">#</a></h2>
 <p>With the choice of data and questions confirmed, the coding can begin.</p>
-<p><img alt="An image of a lot of boxes stacked up" src="ou_futurelearn_learn_to_code_fig_1027.jpg" /></p>
-<p><strong>Figure 2</strong></p>
-<p>To introduce the basics of coding, I will show you a very simple approach, only suitable for the smallest of datasets. Please bear with me. In the second part of the week I will show you the proper approach. Read through this step and the next – <strong>you’re not expected to write code just yet</strong>. In Exercise 1, a bit further on in this week, you’ll be asked to start writing code.</p>
+<figure class="align-default" id="id2">
+<img alt="_images/ou_futurelearn_learn_to_code_fig_1027.jpg" src="_images/ou_futurelearn_learn_to_code_fig_1027.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>Figure 2</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image of a lot of boxes stacked up</p>
+</div>
+</figcaption>
+</figure>
+<p>An image of a lot of boxes stacked upAn image of a lot of boxes stacked up
+To introduce the basics of coding, I will show you a very simple approach, only suitable for the smallest of datasets. Please bear with me. In the second part of the week I will show you the proper approach. Read through this step and the next – <strong>you’re not expected to write code just yet</strong>. In Exercise 1, a bit further on in this week, you’ll be asked to start writing code.</p>
 <p>Ok, let’s start. I want the computer to calculate the total number of deaths in 2013. For the computer to do that, it must first be told what is the number of deaths in each country in that year. I’ll start with my home country.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -517,11 +527,20 @@ document.write(`
 <p>In the next section, you will find out the importance of naming in Python.</p>
 </section>
 <section id="the-art-of-naming">
-<h2>1.3 The art of naming<a class="headerlink" href="#the-art-of-naming" title="Permalink to this heading">#</a></h2>
+<h2>The art of naming<a class="headerlink" href="#the-art-of-naming" title="Permalink to this heading">#</a></h2>
 <p>Python is relatively flexible about what you name your variables but rather picky about the format of names.</p>
-<p><img alt="An image of blank name labels headed, 'Hello my name is'" src="ou_futurelearn_learn_to_code_fig_1028.jpg" /></p>
+<figure class="align-default" id="id3">
+<img alt="_images/ou_futurelearn_learn_to_code_fig_1028.jpg" src="_images/ou_futurelearn_learn_to_code_fig_1028.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><strong>Figure 3</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image of blank name labels headed, ‘Hello my name is’</p>
+</div>
+</figcaption>
+</figure>
 <p><strong>Figure 3</strong></p>
-<p>I could have chosen <code class="docutils literal notranslate"><span class="pre">deaths_in_Brazil_in_2013,</span> <span class="pre">deathsBrazil,DeathsBrazil,</span> <span class="pre">dB</span></code> or even <code class="docutils literal notranslate"><span class="pre">stuff</span></code> for my variables. If a box in your attic were labeled <code class="docutils literal notranslate"><span class="pre">dB</span></code> or <code class="docutils literal notranslate"><span class="pre">stuff</span></code> though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.</p>
+<p>An image of blank name labels headed, ‘Hello my name is’An image of blank name labels headed, ‘Hello my name is’
+I could have chosen <code class="docutils literal notranslate"><span class="pre">deaths_in_Brazil_in_2013,</span> <span class="pre">deathsBrazil,DeathsBrazil,</span> <span class="pre">dB</span></code> or even <code class="docutils literal notranslate"><span class="pre">stuff</span></code> for my variables. If a box in your attic were labeled <code class="docutils literal notranslate"><span class="pre">dB</span></code> or <code class="docutils literal notranslate"><span class="pre">stuff</span></code> though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.</p>
 <p>You can’t use spaces to separate words in a name, you can’t start a name with a digit and names are case-sensitive, i.e. <code class="docutils literal notranslate"><span class="pre">deathsBrazil</span></code> and <code class="docutils literal notranslate"><span class="pre">DeathsBrazil</span></code> are not the same variable. Making one of those mistakes will result in a <strong>syntax error</strong> (when the computer doesn’t understand the line of code) or a <strong>name error</strong> (when the computer doesn’t know of any variable with that name).</p>
 <p>Let’s see some examples. (Remember that you’re not expected to write any code for this step.) The first example has spaces between the words, the second example has a digit at the start of the name, and the third example changes the case of a letter, resulting in an unknown name. The kind of error is always at the end of the error message.</p>
 <p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
@@ -561,14 +580,14 @@ NameError: name ‘deathsinPortugal’ is not defined
 <section id="downloading-the-notebook-and-trying-the-first-exercise">
 <h2>1.4 Downloading the notebook and trying the first exercise<a class="headerlink" href="#downloading-the-notebook-and-trying-the-first-exercise" title="Permalink to this heading">#</a></h2>
 <p>So far, I’ve done the coding and you’ve read along. Booooring. It’s time to use the Jupyter notebooks and work on the first exercise in the course.</p>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Exercise 1 Variables and assignments</p>
-<p class="rubric">Question</p>
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Exercise 1 Variables and assignments</div>
 <p>If you haven’t yet installed the software package or created an account on CoCalc, do it now using these <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation">instructions</a>!</p>
 <p>Open the Exercise notebook 1 (from <a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis">here</a>), and put it in the folder you created. (You’ll open the data later and learn how to use it in the notebook.)</p>
 <p>Once you have installed the file, watch the video to learn how to work with Jupyter notebooks and complete Exercise 1. Pause the video frequently to repeat the demonstrated steps in your notebook. Throughout the week you’ll be directed back to the notebook to complete the other exercises.</p>
-<!--MEDIACONTENT--><video xmlns:str="http://exslt.org/strings" width="80%" download=""><source src="./ou_futurelearn_learn_to_code_vid_1046.mp4" type="video/mp4"></source></video><!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
+<p>{ou-video} ./media/ou_futurelearn_learn_to_code_vid_1046.mp4</p>
+<!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
 <p><strong>NARRATOR:</strong> * In this screencast I’m going to introduce you to Jupyter Notebooks. First you’ll need to start the Anaconda launcher. This screencast was done on a Mac. However, the same process applies to Windows. If you’re a Linux user, you’ll need to use the command line as described in the installation instructions. To follow along on your computer, make sure you have created a folder for this course, and that it contains the exercise notebook for this week. This screencast uses earlier versions of the exercise notebook, and of the Anaconda software than you downloaded, so don’t worry that things look slightly different. *;</p>
 <ul class="simple">
 <li><p>Do not click on ‘Update’ buttons in the Anaconda Launcher, because you should use the version you installed to avoid compatibility problems with the notebooks of this course. Once the Anaconda launcher has booted up, launch the ipython notebook. Whenever you see a circle, the mouse has been clicked. After a couple of screens you should see Jupyter running in a browser, and the contents of your home folder. Navigate to the folder you created, and open the relevant notebook. The first thing to appreciate is that Jupyter notebook consists of a sequence of individual cells. You can see the individual cells as I click on the left of each one. Each cell can contain text or code. *;</p></li>
@@ -580,14 +599,14 @@ NameError: name ‘deathsinPortugal’ is not defined
 <li><p>Also note the way a word or phrase to be hyperlinked is surrounded with square brackets and immediately followed by the URL, in round brackets. Once the text is written, click the ‘Play’ button to see the formatted text in the cell. The ‘Help’ menu contains links to information about Jupyter notebooks and Markdown formatting. As you get used to Jupyter, take a look at the keyboard shortcuts, as they will help you to work more efficiently. *;</p></li>
 </ul>
 </td></tr></table><!--ENDTRANSCRIPT-->
-<p><img alt="figure./ou_futurelearn_learn_to_code_vid_1046.jpg" src="ou_futurelearn_learn_to_code_vid_1046.jpg" /></p>
-<!--ENDMEDIACONTENT-->
-<!-- #endregion -->
+<figure class="align-default">
+<img alt="ou_futurelearn_learn_to_code_vid_1046.jpg" src="ou_futurelearn_learn_to_code_vid_1046.jpg" />
+</figure>
 </div>
 <p>If you haven’t yet installed Jupyter and Anaconda, do it now using these <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation">instructions</a>.</p>
 </section>
 <section id="expressions">
-<h2>1.5 Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">#</a></h2>
+<h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">#</a></h2>
 <p>I’ve told the computer the deaths in Angola, Brazil and Portugal. I can now ask it to add them together to obtain the total deaths.</p>
 <p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -633,26 +652,42 @@ NameError: name ‘deathsinPortugal’ is not defined
 </pre></div>
 </div>
 <p>Python has of course all four arithmetic <strong>operators</strong> : addition (+), division (/), subtraction (-) and multiplication (*). I’ll use the last two later in the week. Python follows the conventional operator precedence: multiplication and division before addition and subtraction, unless parentheses are used to change the order. For example, (3+4)/2 is 3.5 but 3+4/2 is 5.</p>
-<p><img alt="An image of many colourful painted skulls with different drawings and textures." src="ou_futurelearn_learn_to_code_fig_1030.jpg" /></p>
+<figure class="align-default" id="id4">
+<img alt="ou_futurelearn_learn_to_code_fig_1030.jpg" src="ou_futurelearn_learn_to_code_fig_1030.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><strong>Figure 4</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image of many colourful painted skulls with different drawings and textures.</p>
+</div>
+</figcaption>
+</figure>
 <p><strong>Figure 4</strong></p>
-<p>Now practice writing expressions and complete Exercise 2 in the notebook.</p>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Exercise 2 Expressions</p>
-<p class="rubric">Question</p>
+<p>An image of many colourful painted skulls with different drawings and <a class="reference external" href="http://textures.An">textures.An</a> image of many colourful painted skulls with different drawings and textures.
+Now practice writing expressions and complete Exercise 2 in the notebook.</p>
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Exercise 2 Expressions</div>
 <p>Go back to the Exercise notebook 1 you used in Exercise 1. In Exercise 2 you’ll see an example of operator precedence and practise writing expressions.</p>
 <p>If you’re using Anaconda, remember that to open the notebook you’ll need to navigate to it using Jupyter. Whether you’re using Anaconda or CoCalc, once the notebook is open, run all the code before doing the exercise.</p>
 <p>Writing code for the first time can be difficult but stick with it.</p>
-<!-- #endregion -->
 </div>
 <p>In the next section, you will find out about functions.</p>
 </section>
 <section id="functions">
-<h2>1.6 Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
 <p>After the total and the average, next on my to-do list is to calculate the largest number of deaths.</p>
-<p><img alt="An image with an angel in prayer statue in the foreground of a graveyard" src="ou_futurelearn_learn_to_code_fig_1031.jpg" /></p>
+<figure class="align-default" id="id5">
+<img alt="ou_futurelearn_learn_to_code_fig_1031.jpg" src="ou_futurelearn_learn_to_code_fig_1031.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text"><strong>Figure 5</strong></span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image with an angel in prayer statue in the foreground of a graveyard</p>
+</div>
+</figcaption>
+</figure>
 <p><strong>Figure 5</strong></p>
-<p>This will be the <strong>maximum</strong>. It takes another single line of code to calculate it.</p>
+<p>An image with an angel in prayer statue in the foreground of a graveyardAn image with an angel in prayer statue in the foreground of a graveyard
+This will be the <strong>maximum</strong>. It takes another single line of code to calculate it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
@@ -708,51 +743,26 @@ NameError: name ‘deathsinPortugal’ is not defined
 <span class="mi">6760</span>
 </pre></div>
 </div>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Exercise 3 Functions</p>
-<p>Identify different types of error (some of you may have experienced those already…) in Exercise 3. You’ll need to use the Week 1 notebook to answer question three.</p>
-<p class="rubric">Question</p>
-<p><strong>1. If the function name is misspelled as Min, what kind of error is it?</strong></p>
-<p>A syntax error</p>
-<p>Writing <code class="docutils literal notranslate"><span class="pre">Min(…,</span> <span class="pre">…)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">min(…,</span> <span class="pre">…)</span></code> is not a syntax error, because both have the form of a function call. Names can use uppercase letters.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
-<p>A name error</p>
-<p>The computer will understand than <code class="docutils literal notranslate"><span class="pre">Min(…,</span> <span class="pre">…)</span></code> is a function call but doesn’t know of any function with that name. Remember that names are case-sensitive.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
-<p class="rubric">Question</p>
-<p><strong>2. If a parenthesis or comma is forgotten, what kind of error is it?</strong></p>
-<p>A name error</p>
-<p>A parenthesis or comma is unrelated to how names are written.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
-<p>A syntax error</p>
-<p>A function call requires two parentheses around the arguments, and one comma between successive arguments. Forgetting any of them therefore deviates from the syntax of the Python language.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
-<p class="rubric">Question</p>
-<p><strong>3. Use Exercise 3 in the Week 1 exercise notebook to answer this question.</strong></p>
-<p><strong>What is the range of deaths among the BRICS countries (Brazil, Russia, India, China, South Africa)?</strong></p>
-<p>4400</p>
-<p>This is the minimum value (for Brazil), not the range.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
-<p>65480</p>
-<p>This is the average number of deaths, not the range.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Expressions</a>.</p>
-<p>240000</p>
-<p>This is the maximum value (for India), not the range.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
-<p>327400</p>
-<p>This is the total number of deaths not the range.</p>
-<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
-<p>235600</p>
-<p>The range is the maximum value (240 thousand for India) minus the minimum value (4400 for Brazil).</p>
-<!-- #endregion -->
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Exercise 3 Functions</div>
+<!--UnknownTag: Multipart :UnknownTag-->
 </div>
 </section>
 <section id="comments">
-<h2>1.7 Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>Last on my to-do list is the death rate, which is the number of deaths divided by the population.</p>
-<p><img alt="An image of different speech bubbles being held up" src="ou_futurelearn_learn_to_code_fig_1032.jpg" /></p>
+<figure class="align-default" id="id6">
+<img alt="ou_futurelearn_learn_to_code_fig_1032.jpg" src="ou_futurelearn_learn_to_code_fig_1032.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text"><strong>Figure 6</strong></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image of different speech bubbles being held up</p>
+</div>
+</figcaption>
+</figure>
 <p><strong>Figure 6</strong></p>
+<p>An image of different speech bubbles being held upAn image of different speech bubbles being held up</p>
 <p>A quick glance at the WHO website tells me Portugal’s population in 2013.</p>
 <p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -801,28 +811,34 @@ NameError: name ‘deathsinPortugal’ is not defined
 </div>
 <p>This finishes the basics of coding needed for this week. It took less than 30 lines of code…</p>
 <p>Test this out for yourself in Exercise 4 of the Week 1 exercise notebook.</p>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Exercise 4 Comments</p>
-<p class="rubric">Question</p>
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Exercise 4 Comments</div>
 <p>Complete the short exercise on the death rate in Exercise 4 in the Week 1 Exercise notebook.</p>
 <p>Remember that once the notebook is open, run all the code, before doing the exercise.</p>
-<!-- #endregion -->
 </div>
 </section>
 <section id="values-have-units">
-<h2>1.8 Values have units<a class="headerlink" href="#values-have-units" title="Permalink to this heading">#</a></h2>
+<h2>Values have units<a class="headerlink" href="#values-have-units" title="Permalink to this heading">#</a></h2>
 <p>Before I move on, let me explain the importance of using comments to record units of measurement.</p>
-<p><img alt="An image of four towers of liquorish all sorts" src="ou_futurelearn_learn_to_code_fig_1033.jpg" /></p>
+<figure class="align-default" id="id7">
+<img alt="ou_futurelearn_learn_to_code_fig_1033.jpg" src="ou_futurelearn_learn_to_code_fig_1033.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text"><strong>Figure 7</strong></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>An image of four towers of liquorish all sorts</p>
+</div>
+</figcaption>
+</figure>
 <p><strong>Figure 7</strong></p>
-<p>Values are not just numbers, they have units: degrees Celsius, number of inhabitants, thousands of gallons, etc. Always make a note of the units the value refers to, using comments. This makes it easier to check whether the expressions are right. Disregarding the units will lead to wrong calculations and results.</p>
-<div class="admonition-activity-region-tags-style-activity admonition">
-<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
-<p class="rubric">Activity 2</p>
-<p class="rubric">Question</p>
+<p>An image of four towers of liquorish all sortsAn image of four towers of liquorish all sorts
+Values are not just numbers, they have units: degrees Celsius, number of inhabitants, thousands of gallons, etc. Always make a note of the units the value refers to, using comments. This makes it easier to check whether the expressions are right. Disregarding the units will lead to wrong calculations and results.</p>
+<div class="ou-activity docutils">
+<div class="ou-activity-title docutils">
+Activity 2</div>
 <p>Have you come across ‘horror stories’ that have happened due to mistakes in the unit of measurement?</p>
 <p>Think through what happened and consider what you have learned from them.</p>
-<!-- #endregion -->
+<!--UnknownTag: Interaction :UnknownTag-->
 </div>
 </section>
 </section>
@@ -890,17 +906,15 @@ NameError: name ‘deathsinPortugal’ is not defined
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-cocalc-service">Online CoCalc service</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-anaconda-package">Install Anaconda package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">1.1 Start with a question</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">1.2 Variables and assignments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">1.3 The art of naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">Start with a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">Variables and assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">The art of naming</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-notebook-and-trying-the-first-exercise">1.4 Downloading the notebook and trying the first exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">1.5 Expressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.6 Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">1.7 Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">1.8 Values have units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">Values have units</a></li>
 </ul>
   </nav></div>
 

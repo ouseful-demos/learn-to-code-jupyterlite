@@ -10,13 +10,6 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.c3551e86769ef3973316.js",
-        "name": "@hadim/jupyter-archive",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
         "load": "static/remoteEntry.b2792fe643cae74ea824.js",
         "name": "@jupyter-notebook/lab-extension",
         "style": "./style"
@@ -29,22 +22,9 @@
       },
       {
         "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.afbfa74351e195593c24.js",
-        "name": "@jupyterlab-contrib/spellchecker",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
         "liteExtension": true,
         "load": "static/remoteEntry.b251ea2aad2b76ca95d7.js",
         "name": "@jupyterlite/pyodide-kernel-extension"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.2916befd91bdb8847e88.js",
-        "name": "bqplot"
       },
       {
         "extension": "./extension",
@@ -57,68 +37,6 @@
         "liteExtension": false,
         "load": "static/remoteEntry.2245c790a510bf1865ea.js",
         "name": "jupyter-matplotlib"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.ffa5f565ff781bbfab6e.js",
-        "name": "jupyterlab-filesystem-access",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.c06ae9697719c2a3352e.js",
-        "name": "jupyterlab-myst",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.6a37df5d4590b29196a3.js",
-        "name": "jupyterlab-night"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.70a4f7e7a0383740860d.js",
-        "mimeExtension": "./mimeExtension",
-        "name": "jupyterlab-plotly"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.b4861d8944599b59ea1c.js",
-        "name": "jupyterlab-skip-traceback",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.0019166b17e173212a28.js",
-        "name": "jupyterlab-tour",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.a4b7fe28cbbbb52a1928.js",
-        "name": "jupyterlab_cell_status_extension",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.1d345213def2921e2b2e.js",
-        "name": "jupyterlab_empinken_extension",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "liteExtension": false,
-        "load": "static/remoteEntry.91537d272ddee019d9db.js",
-        "name": "jupyterlab_ou_brand_extension",
-        "style": "./style"
       },
       {
         "extension": "./extension",
