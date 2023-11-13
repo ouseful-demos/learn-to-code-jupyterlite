@@ -266,8 +266,8 @@ Open the Exercise notebook 1 (from [here](https://github.com/mwermelinger/Learn-
 Once you have installed the file, watch the video to learn how to work with Jupyter notebooks and complete Exercise 1. Pause the video frequently to repeat the demonstrated steps in your notebook. Throughout the week you’ll be directed back to the notebook to complete the other exercises.
 
 
-```{ou-video} ./media/ou_futurelearn_learn_to_code_vid_1046.mp4
-```
+{ou-video} ./media/ou_futurelearn_learn_to_code_vid_1046.mp4
+
 
 <!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
 __NARRATOR:__ * In this screencast I'm going to introduce you to Jupyter Notebooks. First you'll need to start the Anaconda launcher. This screencast was done on a Mac. However, the same process applies to Windows. If you're a Linux user, you'll need to use the command line as described in the installation instructions. To follow along on your computer, make sure you have created a folder for this course, and that it contains the exercise notebook for this week. This screencast uses earlier versions of the exercise notebook, and of the Anaconda software than you downloaded, so don't worry that things look slightly different. *;
