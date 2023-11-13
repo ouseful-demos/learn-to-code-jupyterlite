@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1 I spy with my little eye &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_07_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2 This week’s quiz" href="md_out_07_02.html" />
+    <link rel="prev" title="4 Summary" href="md_out_06_04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_01.html">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_01.html">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_01.html">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_02.html">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_07_01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1 I spy with my little eye</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ways-of-grouping-data">1.1 Ways of grouping data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-that-describes-the-world-of-trade">1.2 Data that describes the world of trade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-world-of-export-data">1.3 Exploring the world of export data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-comtrade-api">1.4 Getting data from the Comtrade API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-direct-way-of-getting-the-data">A More Direct Way of Getting the Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-getting-data">1.5 Practice getting data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="i-spy-with-my-little-eye">
+<h1>1 I spy with my little eye<a class="headerlink" href="#i-spy-with-my-little-eye" title="Permalink to this heading">#</a></h1>
+<p>One of the ways you are shown for loading World Bank data into the notebook in Week 7, was to use the <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">()</span></code> function.</p>
+<p><img alt="A close-up image of a green eye" src="ou_futurelearn_learn_to_code_fig_1059.jpg" /></p>
+<p><strong>Figure 1</strong></p>
+<p>One way to find out for yourself what sorts of argument a function expects is to ask it. Running a code cell containing a question mark (?) followed by a function name should pop up a help area in the bottom of the notebook window. (Close it using the x in the top right hand corner of the panel.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+from pandas.io.wb import download
+?download
+</pre></div>
+</div>
+<p>The function documentation tells you that you can enter a list of one or more country names using standard country codes as well as a date range. You can also calculate a date range from a single date to show the <code class="docutils literal notranslate"><span class="pre">N</span></code> years of data leading up to a particular year.</p>
+<p>Note that if you are using the CoCalc free plan, you will not be able to use the <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">()</span></code> function to download the data directly from the World Bank API, although you will still be able to inspect the documentation associated with the function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2013</span>
+<span class="n">GDP_INDICATOR</span> <span class="o">=</span> <span class="s1">&#39;NY.GDP.MKTP.CD&#39;</span>
+
+<span class="n">gdp</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span><span class="n">indicator</span><span class="o">=</span><span class="n">GDP_INDICATOR</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GB&#39;</span><span class="p">,</span><span class="s1">&#39;CN&#39;</span><span class="p">],</span> <span class="n">start</span><span class="o">=</span><span class="n">YEAR</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">YEAR</span><span class="p">)</span>
+
+<span class="n">gdp</span> <span class="o">=</span> <span class="n">gdp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">gdp</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>country</th>
+<th>year</th>
+<th>NY.GDP.MKTP.CD</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__0__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2013</td>
+<td class="highlight_" rowspan="" colspan="">9.490603e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__1__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2012</td>
+<td class="highlight_" rowspan="" colspan="">8.461623e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__2__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2011</td>
+<td class="highlight_" rowspan="" colspan="">7.492432e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__3__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2010</td>
+<td class="highlight_" rowspan="" colspan="">6.039659e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2009</td>
+<td class="highlight_" rowspan="" colspan="">5.059420e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">2008</td>
+<td class="highlight_" rowspan="" colspan="">4.558431e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2013</td>
+<td class="highlight_" rowspan="" colspan="">2.678173e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2012</td>
+<td class="highlight_" rowspan="" colspan="">2.614946e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2011</td>
+<td class="highlight_" rowspan="" colspan="">2.592016e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__9__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2010</td>
+<td class="highlight_" rowspan="" colspan="">2.407857e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__10__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2009</td>
+<td class="highlight_" rowspan="" colspan="">2.308995e+12</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__11__</td>
+<td class="highlight_" rowspan="" colspan="">United Kingdom</td>
+<td class="highlight_" rowspan="" colspan="">2008</td>
+<td class="highlight_" rowspan="" colspan="">2.791682e+12</td>
+</tr>
+</tbody>
+</table>
+<p>Although many datasets that you are likely to work with are published in the form of a single data table, such as a single CSV file or spreadsheet worksheet, it is often possible to regard the dataset as being made up from several distinct subsets of data.</p>
+<p>In the above example, you will probably notice that each country name appears in several rows, as does each year. This suggests that we can make different sorts of comparisons between different groupings of data using just this dataset. For example, compare the total GDP of each country calculated over the six years 2008 to 2013 using just a single line of code:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gdp.groupby('country')['NY.GDP.MKTP.CD'].aggregate(sum)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">country</span>
+<span class="n">China</span>             <span class="mf">4.110217e+13</span>
+<span class="n">United</span> <span class="n">Kingdom</span>    <span class="mf">1.539367e+13</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">NY</span><span class="o">.</span><span class="n">GDP</span><span class="o">.</span><span class="n">MKTP</span><span class="o">.</span><span class="n">CD</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>Essentially what this does is to say ‘for each country, find the total GDP’.</p>
+<p>The total combined GDP for those two countries in each year could be found by making just one slight tweak to our code (can you see below where I made the change?):</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gdp.groupby('year')['NY.GDP.MKTP.CD'].aggregate(sum)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">year</span>
+<span class="mi">2008</span>    <span class="mf">7.350113e+12</span>
+<span class="mi">2009</span>    <span class="mf">7.368415e+12</span>
+<span class="mi">2010</span>    <span class="mf">8.447515e+12</span>
+<span class="mi">2011</span>    <span class="mf">1.008445e+13</span>
+<span class="mi">2012</span>    <span class="mf">1.107657e+13</span>
+<span class="mi">2013</span>    <span class="mf">1.216878e+13</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">NY</span><span class="o">.</span><span class="n">GDP</span><span class="o">.</span><span class="n">MKTP</span><span class="o">.</span><span class="n">CD</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>That second calculation probably doesn’t make much sense in this particular case, but what if there was another column saying which region of the world each country was in? Then, by taking the data for all the countries in the world, the total GDP could be found for each region by grouping on <em>both</em> the year <em>and</em> the region.</p>
+<p>Next, you will consider ways of grouping data.</p>
+<section id="ways-of-grouping-data">
+<h2>1.1 Ways of grouping data<a class="headerlink" href="#ways-of-grouping-data" title="Permalink to this heading">#</a></h2>
+<p>Think back to the weather dataset you used in Week 3 , how might you group that data into several distinct groups? What sorts of comparisons could you make by grouping just the elements of that dataset? Or how might you group and compare the GDP data?</p>
+<p><img alt="A very colourful image of piles of different peppers" src="ou_futurelearn_learn_to_code_fig_1060.jpg" /></p>
+<p><strong>Figure 2</strong></p>
+<p>One thing the newspapers love to report are weather ‘records’, such as the ‘hottest June ever’ or the wettest location in a particular year as measured by total annual rainfall, or highest average monthly rainfall. How easy is it to find that information out from the data?</p>
+<p>Or with the GDP data, if countries were assigned to economic groupings such as the European Union, or regional groupings such as Africa, or South America, how would you generate information such as lowest GDP in the EU or highest GDP in South America?</p>
+<p>This week you will learn how to split data into groups based on particular features of the data, and then generate information about each separate group, across all of the groups, at the same time.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 1 Grouping data</p>
+<p class="rubric">Question</p>
+<p>Based on the data you have seen so far, or some other datasets you may be aware of, what other ways of grouping data can you think of, and why might grouping data that way be useful?</p>
+<!-- #endregion -->
+</div>
+</section>
+<section id="data-that-describes-the-world-of-trade">
+<h2>1.2 Data that describes the world of trade<a class="headerlink" href="#data-that-describes-the-world-of-trade" title="Permalink to this heading">#</a></h2>
+<p>A news article from the <em>Guardian</em> announcing a gloomy export outlook for UK manufacturers (see the link below), got me wondering about what sorts of thing different countries actually export.</p>
+<p>For example, it might surprise you that India was the world’s largest exporter by value of unset diamonds in 2014 (24 billion US dollars worth), or that Germany was the biggest importer of chocolate (over $2.5 billion worth) in that same year.</p>
+<p>National governments all tend to publish their own trade figures, but the UN also collect data from across the world. In particular, the UN’s global trade database, Comtrade, contains data about import and export trade flows between countries for a wide range of goods and services.</p>
+<p><img alt="An image of a China Shipping Lane cargo ship passing under the San Francisco bridge" src="ou_futurelearn_learn_to_code_fig_1061.jpg" /></p>
+<p><strong>Figure 3</strong></p>
+<p>So if you’ve ever wondered where your country imports most of its T-shirts from, or exports most of its municipal waste to, Comtrade is likely to have the data.</p>
+<p>In the next section, you will find out about the Comtrade data.</p>
+</section>
+<section id="exploring-the-world-of-export-data">
+<h2>1.3 Exploring the world of export data<a class="headerlink" href="#exploring-the-world-of-export-data" title="Permalink to this heading">#</a></h2>
+<p>The Comtrade Data Extraction interface provides a user interface for selecting, previewing and exporting data from the Comtrade database.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 2 Exploring export data</p>
+<p class="rubric">Question</p>
+<p>Open the <a class="reference external" href="http://comtrade.un.org/data/">Comtrade Data Extraction interface</a> and keep it open alongside this page. You’ll explore the options and preview some data.</p>
+<p><img alt="Comtrade Data Extraction interface" src="ou_futurelearn_learn_to_code_fig_1020.jpg" /></p>
+<p>__Figure 4:__Comtrade Data Extraction interface</p>
+<p>In the text area marked <strong>HS (as reported) commodity codes</strong> , start to enter the name of various goods and services. You should see suggestions regarding different goods and services that Comtrade records trade flow data for.</p>
+<p>If you don’t select too much data, you should be able to get a preview of the data by clicking the green ‘Preview’ button. Notice that the interface allows you to sort the data by a particular column, which provides a quick way of finding the countries that export most, or least, goods by value.</p>
+<p>If you selected ‘All’ reporters, you will probably notice that a decreasing sort on the ‘Trade Value’ column always has ‘World’ at the top: in the ‘All’ reports dataset, individual country reports and reports from ‘areas not elsewhere specified’ (‘nes’) are complemented by the ‘World’ report which represents a sum total of those other values.</p>
+<p>The user interface is rather complicated at first glance, but with a bit of trial and error you should be able to work out:</p>
+<ul class="simple">
+<li><p>how to display trade flows between a particular country (the ‘Reporter’) and a particular country or region of the world (the ‘Partners’)</p></li>
+<li><p>how to limit the display to show just imports, or exports, between ‘Reporter(s)’ and ‘Partner(s)’</p></li>
+<li><p>how to display data for different years</p></li>
+<li><p>how to display data for different months in a particular year, or all the months in a particular year.</p></li>
+</ul>
+<p>You might notice that the commodities codes are organised hierarchically, i.e. a code breaks down into further sub-codes. For example:</p>
+<ul class="simple">
+<li><p>3825 – Residual products of the chemical or allied industries 382510 – Municipal waste382520 – Sewage sludge382530 – Clinical waste…</p></li>
+</ul>
+<p>Adding up the results from the next level down on a particular code should generate trade value totals that correspond to the higher level totals, rounding errors aside. This means that if you want to focus on the subcategories of a particular commodity type, you may well be able to do so.</p>
+<p>For a particular category of goods, and a reporting period of a single month or year, select your country as the reporter and ‘All’ as the partner.</p>
+<p>Does the range of goods and services listed within the database surprise you?</p>
+<!-- #endregion -->
+</div>
+<p>Keep the Comtrade webpage open as you’ll use it again in the next section.</p>
+</section>
+<section id="getting-data-from-the-comtrade-api">
+<h2>1.4 Getting data from the Comtrade API<a class="headerlink" href="#getting-data-from-the-comtrade-api" title="Permalink to this heading">#</a></h2>
+<p>Hopefully, you have a few ideas about data you’d like to explore from the Comtrade database.</p>
+<p>In the previous section, I managed to identify a set of data that describes the amount of unset diamonds (commodity code 7102) imported into the UK from the Russian Federation, Angola and South Africa in 2013 and 2014.</p>
+<p><img alt="Comtrade Data Extraction interface" src="ou_futurelearn_learn_to_code_fig_1021.jpg" /></p>
+<p>__Figure 5__Comtrade Data Extraction interface</p>
+<p>You can export the data you have selected as a CSV file that will be downloaded to your own computer by clicking on the <em>Download CSV</em> button. You may find it useful to change the filename of the downloaded file to something more meaningful than the comtrade.csv default name.</p>
+<p>If you moved the downloaded CSV file into the same folder as your Exercise notebook 4 (that you’ll download later), you could use the following command to load the data into a pandas dataframe:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">filename</span><span class="o">=</span><span class="s1">&#39;comtrade.csv</span>
+
+<span class="s1">&#39; df=read_csv(filename, dtype={&#39;</span><span class="n">Commodity</span> <span class="n">Code</span><span class="s1">&#39;:str, &#39;</span><span class="n">Reporter</span> <span class="n">Code</span><span class="s1">&#39;:str })</span>
+
+</pre></div>
+</div>
+<p>The ‘Commodity Code’ and ‘Reporter Code’ values are explicitly read in as a string <code class="docutils literal notranslate"><span class="pre">(str)</span></code> otherwise codes like 0401 will be returned as the number 401.</p>
+<p>One of the problems of working with real data like this is that it may not be just the data you want. The data returned from Comtrade includes several columns that are essentially surplus to requirements for the reports you will produce. I suggest that you clean the dataframes so that they contain at most the following key columns: ‘Year’, ‘Period’, ‘Trade Flow’, ‘Reporter’, ‘Partner’, ‘Commodity’, ‘Commodity Code’, ‘Trade Value (US$)’.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">COLUMNS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Period&#39;</span><span class="p">,</span><span class="s1">&#39;Trade Flow&#39;</span><span class="p">,</span><span class="s1">&#39;Reporter&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Commodity Code&#39;</span><span class="p">,</span><span class="s1">&#39;Trade Value (US$)&#39;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">COLUMNS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To avoid conflating data relating to all countries (the ‘World’ partner), and each separate country, create separate dataframes for each, using the comparison operators introduced in Week 3.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Partner&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;World&#39;</span><span class="p">]</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Partner&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;World&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="a-more-direct-way-of-getting-the-data">
+<h3>A More Direct Way of Getting the Data<a class="headerlink" href="#a-more-direct-way-of-getting-the-data" title="Permalink to this heading">#</a></h3>
+<p>Just as there was a method for downloading data directly from the World Bank, there is also a more direct way of getting the Comtrade data into a dataframe – directly from the Comtrade website. You might have noticed that when you downloaded the file from the Comtrade website, a link appeared on the site labelled ‘View API Call’.</p>
+<p>An API is an ‘application programming interface’ that provides a means for one computer to talk to another ‘in machine terms’. When you extracted data from the World Bank, you were calling the World Bank API using a set of functions provided by the pandas library. Behind the scenes, these functions create URLs (that is, web addresses) that call the World Bank API and allow requests to be made directly from it, putting the response into a pandas dataframe.</p>
+<p>In the case of Comtrade, clicking the <em>View API Link</em> reveals a URL that requests the data you selected in the search form as a data file, though not, by default, as a CSV data file.</p>
+<p>This link can be used to download data directly into a pandas dataframe from Comtrade, although you will need to make a couple of modifications to the URL first. In particular, change the max value to 5000 (to increase the amount of data returned by each request) and add <code class="docutils literal notranslate"><span class="pre">&amp;amp;fmt=csv</span></code> to the end of the URL to ensure that the data is returned in a CSV format.</p>
+<p>For example, if you copied the URL:</p>
+<p><a class="reference external" href="http://comtrade.un.org/api/get?max=500&amp;amp;type=C&amp;amp;freq=M&amp;amp;px=HS&amp;amp;ps=2015&amp;amp;r=826&amp;amp;p=all&amp;amp;rg=1%2C2&amp;amp;cc=0401%2C0402">http://comtrade.un.org/api/get?max=500&amp;type=C&amp;freq=M&amp;px=HS&amp;ps=2015&amp;r=826&amp;p=all&amp;rg=1%2C2&amp;cc=0401%2C0402</a></p>
+<p>you would need to modify it as follows:</p>
+<p><a class="reference external" href="http://comtrade.un.org/api/get?max=">http://comtrade.un.org/api/get?max=</a> <strong>5000</strong> &amp;type=C&amp;freq=M&amp;px=HS&amp;ps=2015&amp;r=826&amp;p=all&amp;rg=1%2C2&amp;cc=0401%2C0402 <strong>&amp;fmt=csv</strong></p>
+<p>You can then load the data in using the panda <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function.</p>
+<ul class="simple">
+<li><p>Note that if you are using the CoCalc free plan, you will not be able to download data directly from the Comtrade API into a pandas dataframe. *</p></li>
+</ul>
+<p>Set the datatypes as shown using the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> argument to ensure that the codes are read in correctly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">URL</span><span class="o">=</span><span class="s1">&#39;http://comtrade.un.org/api/get?max=5000&amp;type=C&amp;freq=A&amp;px=HS&amp;ps=2014%2C2013%2C2012&amp;r=826&amp;p=all&amp;rg=all&amp;cc</span>
+
+<span class="o">=</span><span class="mi">0401</span><span class="o">%</span><span class="mi">2</span><span class="n">C0402</span><span class="o">&amp;</span><span class="n">fmt</span><span class="o">=</span><span class="n">csv</span><span class="s1">&#39;</span>
+
+
+<span class="n">df</span><span class="o">=</span><span class="n">read_csv</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Commodity Code&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Reporter Code&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">})</span>
+
+</pre></div>
+</div>
+<p>Having downloaded the data, you should then separate out the World data as before.</p>
+<p>If you want to save a copy of data downloaded into pandas directly from the Comtrade API, call the <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> method on your dataframe, pasting in the filename you want to save the file under, and setting <code class="docutils literal notranslate"><span class="pre">index=False</span></code> so that the dataframe’s automatically introduced index column is not included. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">countries.to_csv('saved_country_data_example.csv',</span> <span class="pre">index=False)</span></code></p>
+<p>The file will be saved in the same folder as the notebook.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="practice-getting-data">
+<h2>1.5 Practice getting data<a class="headerlink" href="#practice-getting-data" title="Permalink to this heading">#</a></h2>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 1 Getting data from API</p>
+<p class="rubric">Question</p>
+<p>In Exercise 1, identify a dataset from the <a class="reference external" href="http://comtrade.un.org/data/">Comtrade Data Extraction interface</a> selecting one or more commodity codes and a single reporter that are of interest to you and import the data into pandas.</p>
+<p>Open the exercise notebook 4 and save it in the disk folder or the CoCalc project you created in Week 1. You should also open the comtrade_pivot.html comtrade_milk_uk_monthly_14.csv files and save them into the same folder or project.</p>
+<p>Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter watch again the video in <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83251&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4">Week 1 Exercise 1</a>.</p>
+<p>For the commodities and reporter you chose, find out which countries are the biggest partners in recent years in terms of import and export trade flows.</p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_out_06_04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4 Summary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_07_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2 This week’s quiz</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ways-of-grouping-data">1.1 Ways of grouping data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-that-describes-the-world-of-trade">1.2 Data that describes the world of trade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-world-of-export-data">1.3 Exploring the world of export data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-comtrade-api">1.4 Getting data from the Comtrade API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-direct-way-of-getting-the-data">A More Direct Way of Getting the Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-getting-data">1.5 Practice getting data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

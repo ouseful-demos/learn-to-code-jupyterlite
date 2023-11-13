@@ -1,0 +1,957 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1 Install the software &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_00_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2 This week’s quiz" href="md_out_00_02.html" />
+    <link rel="prev" title="Learn to code for data analysis" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_01.html">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_01.html">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_01.html">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_02.html">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_00_01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1 Install the software</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-cocalc-service">Online CoCalc service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-anaconda-package">Install Anaconda package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">1.1 Start with a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">1.2 Variables and assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">1.3 The art of naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-notebook-and-trying-the-first-exercise">1.4 Downloading the notebook and trying the first exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">1.5 Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.6 Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">1.7 Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">1.8 Values have units</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="install-the-software">
+<h1>1 Install the software<a class="headerlink" href="#install-the-software" title="Permalink to this heading">#</a></h1>
+<p>To code in the course notebooks that Ruth mentioned in the video you’ll need to install some software.</p>
+<p>We’re going use a program called Jupyter that opens in your web browser and allows you to write notebooks that include Python code. Jupyter and other software you will need to take part in the course are freely available and you have two options.</p>
+<hr class="docutils" />
+<section id="online-cocalc-service">
+<h2>Online CoCalc service<a class="headerlink" href="#online-cocalc-service" title="Permalink to this heading">#</a></h2>
+<p>The advantages of using CoCalc are that you don’t have to install any software and you can work on the course exercises from anywhere there is an internet connection. The disadvantages are that you will need a good internet connection, running the code in your notebook may take time if there are many simultaneous users on CoCalc and you may occasionally lose the latest changes you make in your notebook, because the service will periodically reset.</p>
+<p>However, since notebooks are regularly auto-saved, the risk of losing work should be rather small. CoCalc offers a paid plan that has better performance and stability than the free plan. The Open University and the authors have no commercial affiliation with CoCalc.</p>
+<hr class="docutils" />
+<hr class="docutils" />
+</section>
+<section id="install-anaconda-package">
+<h2>Install Anaconda package<a class="headerlink" href="#install-anaconda-package" title="Permalink to this heading">#</a></h2>
+<p>The other option is to install on your laptop or desktop the free Anaconda package, which includes all necessary software for this course. If you plan to work on this course from multiple computers, you will need to install Anaconda on each one. You can use cloud storage, like Dropbox, to keep your notebooks in sync across machines. Anaconda doesn’t have the limitations of CoCalc, so we recommend you use Anaconda if you are going to work on this course always from the same computer.</p>
+<p>You should now read the <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation"> instructions for installing Anaconda or creating a CoCalc project </a>for this course. Don’t forget to test everything is working, as explained in the instructions.</p>
+<p>The installation of Anaconda is different for Windows, Macs and Linux. Please follow the appropriate instructions.</p>
+<p>We advise you to accept the pre-filled defaults suggested during the installation process.</p>
+<hr class="docutils" />
+<hr class="docutils" />
+</section>
+<section id="notebooks">
+<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h2>
+<p>Each week you will use two notebooks (and any necessary data files): an exercise notebook and a project notebook. The notebooks are this course’s programming environment, where you will do your own coding.</p>
+<p>The exercise notebook contains all the code shown throughout the week, so that you can try it out for yourself, any time you wish. The exercise notebook also contains all the week’s exercises. You will be able to solve several exercises just by slightly modifying our code.</p>
+<p>The project notebook contains the week’s written-up data analysis project, including all necessary code. If you have the extra time, you’re encouraged to modify the project notebooks to write up your own data analyses.</p>
+<p>You should now download from <a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis">here</a> the notebooks and data files needed for the whole course.</p>
+<p>You’ll open the notebooks using Jupyter, which is part of Anaconda and CoCalc. You will learn how to use notebooks later this week, after you’ve seen what Python code looks like.</p>
+<p>Note: please ensure that you abide by any terms and conditions associated with these pieces of software.</p>
+</section>
+<hr class="docutils" />
+<section id="start-with-a-question">
+<h2>1.1 Start with a question<a class="headerlink" href="#start-with-a-question" title="Permalink to this heading">#</a></h2>
+<p>Data analysis often starts with a question or with some data.</p>
+<p><img alt="An image with a young boy wearing a medical mask, in the foreground; a patient in a South African tuberculosis clinic " src="ou_futurelearn_learn_to_code_fig_1026.jpg" /></p>
+<p><strong>Figure 1</strong></p>
+<p>A question leads to data that can answer it, and looking at the available data helps to make a question precise or may trigger new questions, which, in turn, may require further data. Data analysis is thus often an iterative process: the questions determine which data to obtain, and the data influences which questions to ask and what the scope of the analysis is. How this week’s project came about is an example of such an iterative process.</p>
+<p>I (Michel) was watching a news programme mentioning the fight against tuberculosis (TB) as part of the United Nations Millenium Development Goals. Wishing to know how serious TB is, I browsed the World Health Organization (WHO) website and found a dataset with the number of TB cases and deaths per country per year, from 2007 to 2013. This in turn raised the question of whether a high (or low) number could be mainly due to the country having a large (or small) population. Some more browsing revealed the WHO also has population data from 1990 to 2013.</p>
+<p>That was enough data for the fuzzy question: how serious is TB? It was time to make it precise. I chose to measure the effect of TB in terms of deaths, which led to the following questions:</p>
+<ul class="simple">
+<li><p>What is the total, smallest, largest, and average number of deaths due to TB?</p></li>
+<li><p>What is the death rate (number of deaths divided by population) of each country?</p></li>
+<li><p>Which countries have the smallest and largest number of deaths?</p></li>
+<li><p>Which countries have the smallest and largest death rate?</p></li>
+</ul>
+<p>Answering these questions for the whole world and for seven years (2007–2013) would be a bit too much for this initial project. A subset was needed. I decided to take only the latest data for 2013 and, being Portuguese, to focus on the Portuguese-speaking countries. One of them, Brazil, is part of the BRICS group of major emerging economies, so for more diversity the other four countries would be included too: Russia, India, China and South Africa. The project was finally defined! I’ve added links to the data below if you’d like to take a look!</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 1 What would you ask?</p>
+<p class="rubric">Question</p>
+<p>Before you embark on coding the analysis to get answers, what other questions could be asked of the datasets described?</p>
+<p>What countries would you be interested in? What groups of countries might be interesting to analyse?</p>
+<p>Note down some of your questions so that you can come back to them later.</p>
+<!-- #endregion -->
+</div>
+<p><a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20all.xls">WHO POPULATION - DATA BY COUNTRY (LATEST YEAR)</a></p>
+<p><a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis/raw/master/1_Having_a_go_at_it/WHO%20POP%20TB%20some.xls">WHO TB MORTALITY AND PREVALENCE - DATA BY COUNTRY (2007 - PRESENT)</a></p>
+<p>Next, I’ll explain how I started to organise the information.</p>
+</section>
+<section id="variables-and-assignments">
+<h2>1.2 Variables and assignments<a class="headerlink" href="#variables-and-assignments" title="Permalink to this heading">#</a></h2>
+<p>With the choice of data and questions confirmed, the coding can begin.</p>
+<p><img alt="An image of a lot of boxes stacked up" src="ou_futurelearn_learn_to_code_fig_1027.jpg" /></p>
+<p><strong>Figure 2</strong></p>
+<p>To introduce the basics of coding, I will show you a very simple approach, only suitable for the smallest of datasets. Please bear with me. In the second part of the week I will show you the proper approach. Read through this step and the next – <strong>you’re not expected to write code just yet</strong>. In Exercise 1, a bit further on in this week, you’ll be asked to start writing code.</p>
+<p>Ok, let’s start. I want the computer to calculate the total number of deaths in 2013. For the computer to do that, it must first be told what is the number of deaths in each country in that year. I’ll start with my home country.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>The ‘In[]’ line is Jupyter’s way of saying that what follows is code I typed in. And there it is: the first line of code! It is a command to the computer that could be translated to English as: ‘find in the attic an empty box, put the number 100 in the box, and write “deathsInPortugal” on the box’. (Aren’t you glad Python is more succinct than English?) In coding jargon, the attic is the computer’s memory, boxes are called <strong>variables</strong> (I’ll explain why shortly), what’s written on a box is the variable’s <strong>name</strong> , and storing a value in a variable is called an <strong>assignment</strong>.</p>
+<p>By naming the boxes, I can later ask the computer to show the value in box <code class="docutils literal notranslate"><span class="pre">thingamajig</span></code> or take the values in boxes <code class="docutils literal notranslate"><span class="pre">stuff</span></code> and <code class="docutils literal notranslate"><span class="pre">moreStuff</span></code> and add them together.</p>
+<p>To see what’s inside a box, I can just write the name of the box on a line of its own. Jupyter will write the variable’s value on the screen, preceded by ‘Out[]’, to clearly mark the output generated by the code. When you start to use the Jupyter notebooks, you will see numbers inside the square brackets, i.e. In[1], In[2], etc., to indicate in which order the various pieces of code are being executed. Here we have omitted the numbers to avoid confusion between what you see here and what you see in your notebook.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInPortugal</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">100</span>
+</pre></div>
+</div>
+<p>Each assignment is written on a line of its own. The computer executes the assignments line by line, from top to bottom. Thus, the program would continue as follows:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">deathsInAngola</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">deathsInBrazil</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+<p>I don’t think I need to continue, you get the gist.</p>
+<p>By the way, all numbers so far are fictitious. If I use real data, taken from the World Health Organization website, you’ll see a difference.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="n">deathsInAngola</span> <span class="o">=</span> <span class="mi">6900</span>
+<span class="n">deathsInBrazil</span> <span class="o">=</span> <span class="mi">4400</span>
+<span class="n">deathsInPortugal</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">140</span>
+</pre></div>
+</div>
+<p>Notice what happened. When a value is assigned to an already existing variable, the value stored in that variable is unceremoniously chucked away and replaced by the new value. In the example, the second group of assignments replaced the values assigned by the first group and thus the current value of <code class="docutils literal notranslate"><span class="pre">deathsInPortugal</span></code> is 140 and no longer 100. That’s why the storage boxes are called variables: their content can vary over time.</p>
+<p>To sum up, a <strong>variable</strong> is a named storage for values and an <strong>assignment</strong> takes the value on the right hand side of the equal sign (=) and stores it in the variable on the left-hand side.</p>
+<p>In the next section, you will find out the importance of naming in Python.</p>
+</section>
+<section id="the-art-of-naming">
+<h2>1.3 The art of naming<a class="headerlink" href="#the-art-of-naming" title="Permalink to this heading">#</a></h2>
+<p>Python is relatively flexible about what you name your variables but rather picky about the format of names.</p>
+<p><img alt="An image of blank name labels headed, 'Hello my name is'" src="ou_futurelearn_learn_to_code_fig_1028.jpg" /></p>
+<p><strong>Figure 3</strong></p>
+<p>I could have chosen <code class="docutils literal notranslate"><span class="pre">deaths_in_Brazil_in_2013,</span> <span class="pre">deathsBrazil,DeathsBrazil,</span> <span class="pre">dB</span></code> or even <code class="docutils literal notranslate"><span class="pre">stuff</span></code> for my variables. If a box in your attic were labeled <code class="docutils literal notranslate"><span class="pre">dB</span></code> or <code class="docutils literal notranslate"><span class="pre">stuff</span></code> though, would you know what it contains a year later? So, although you can, it’s better not to use cryptic, general, or very long names.</p>
+<p>You can’t use spaces to separate words in a name, you can’t start a name with a digit and names are case-sensitive, i.e. <code class="docutils literal notranslate"><span class="pre">deathsBrazil</span></code> and <code class="docutils literal notranslate"><span class="pre">DeathsBrazil</span></code> are not the same variable. Making one of those mistakes will result in a <strong>syntax error</strong> (when the computer doesn’t understand the line of code) or a <strong>name error</strong> (when the computer doesn’t know of any variable with that name).</p>
+<p>Let’s see some examples. (Remember that you’re not expected to write any code for this step.) The first example has spaces between the words, the second example has a digit at the start of the name, and the third example changes the case of a letter, resulting in an unknown name. The kind of error is always at the end of the error message.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deaths</span> <span class="n">In</span> <span class="n">Portugal</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-7-ded1a063fe45&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">deaths</span> <span class="n">In</span> <span class="n">Portugal</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">2013</span><span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-8-af085101fcfc&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="mi">2013</span><span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+deathsinPortugal
+---------------------------------------
+
+NameError Traceback (most recent call last)
+
+&lt;ipython-input-9-7d3c81b4fb34&gt; in &lt;module ()
+----&gt; 1 deathsinPortugal
+NameError: name ‘deathsinPortugal’ is not defined
+</pre></div>
+</div>
+<p>Note that Jupyter doesn’t write any <code class="docutils literal notranslate"><span class="pre">Out[]</span></code> because the code is wrong and thus doesn’t generate any output.</p>
+<p>In this course, to make names shorter to help fit lines of code on small screens, we’ll use capitalisation instead of underscores to separate the different words of a name, as shown in the code so far. Such practice is called <strong>camel case</strong> independently of the name having <strong><code class="docutils literal notranslate"><span class="pre">oneHump</span></code></strong> (‘dromedary case’ just doesn’t sound good, does it?) or <strong><code class="docutils literal notranslate"><span class="pre">moreThanTwoHumps</span></code></strong>. The convention in Python is to start variable names with lower case and we’ll stick to it.</p>
+<p>In the next section, download the notebook for this week and work through the first exercise – your first line of code!</p>
+</section>
+<section id="downloading-the-notebook-and-trying-the-first-exercise">
+<h2>1.4 Downloading the notebook and trying the first exercise<a class="headerlink" href="#downloading-the-notebook-and-trying-the-first-exercise" title="Permalink to this heading">#</a></h2>
+<p>So far, I’ve done the coding and you’ve read along. Booooring. It’s time to use the Jupyter notebooks and work on the first exercise in the course.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 1 Variables and assignments</p>
+<p class="rubric">Question</p>
+<p>If you haven’t yet installed the software package or created an account on CoCalc, do it now using these <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation">instructions</a>!</p>
+<p>Open the Exercise notebook 1 (from <a class="reference external" href="https://github.com/mwermelinger/Learn-to-code-for-data-analysis">here</a>), and put it in the folder you created. (You’ll open the data later and learn how to use it in the notebook.)</p>
+<p>Once you have installed the file, watch the video to learn how to work with Jupyter notebooks and complete Exercise 1. Pause the video frequently to repeat the demonstrated steps in your notebook. Throughout the week you’ll be directed back to the notebook to complete the other exercises.</p>
+<!--MEDIACONTENT--><video xmlns:str="http://exslt.org/strings" width="80%" download=""><source src="./ou_futurelearn_learn_to_code_vid_1046.mp4" type="video/mp4"></source></video><!--TRANSCRIPT--><table xmlns:str="http://exslt.org/strings" border="1"><tr><td>
+<p><strong>NARRATOR:</strong> * In this screencast I’m going to introduce you to Jupyter Notebooks. First you’ll need to start the Anaconda launcher. This screencast was done on a Mac. However, the same process applies to Windows. If you’re a Linux user, you’ll need to use the command line as described in the installation instructions. To follow along on your computer, make sure you have created a folder for this course, and that it contains the exercise notebook for this week. This screencast uses earlier versions of the exercise notebook, and of the Anaconda software than you downloaded, so don’t worry that things look slightly different. *;</p>
+<ul class="simple">
+<li><p>Do not click on ‘Update’ buttons in the Anaconda Launcher, because you should use the version you installed to avoid compatibility problems with the notebooks of this course. Once the Anaconda launcher has booted up, launch the ipython notebook. Whenever you see a circle, the mouse has been clicked. After a couple of screens you should see Jupyter running in a browser, and the contents of your home folder. Navigate to the folder you created, and open the relevant notebook. The first thing to appreciate is that Jupyter notebook consists of a sequence of individual cells. You can see the individual cells as I click on the left of each one. Each cell can contain text or code. *;</p></li>
+<li><p>Before starting any exercises, you should execute all the code already in the notebook. I’ll explain why in a moment. Go to the ‘Cell’ menu and select ‘Run all’. As the notebook executes all code, it may automatically scroll to a different part of the notebook. Just scroll back to the start. Go to the first exercise. It asks you to add assignments for more countries into the preceding code cell. To select a cell, click to the left of it. A grey border shows the currently selected cell. To edit a cell, click inside it. The border becomes green to show the cell is in editing mode. *;</p></li>
+<li><p>Once inside the cell press ‘Enter’ a couple of times to put the cursor on a new line, then start typing an appropriate variable name, say ‘deaths in Russia’. Once you’ve start typing, names that have been used within the notebook can be accessed via the Tab key. So once you’ve typed ‘de’ press the Tab key to get some auto-complete suggestions. Use the arrow keys to scroll through the options and press ‘Enter’ to select the appropriate option. In this case I’ll accept the first suggestion in the list and edit it to complete the assignment. Next start a new line and just enter the new variable name you’ve just added. Remember to use auto-complete to avoid spelling mistakes. *;</p></li>
+<li><p>Now we can run the code. To execute only the current code cell, click on the ‘Play’ button. The results appear below the code cell in a line titled ‘Out’. If you wish to split a cell, for example to separate the supplied code from the code you are adding, then put the cursor where you want to split the cell, go to the ‘Edit’ menu and select ‘Split Cell’. It’s easy to move cells around - for example we can cut a selected cell……and then paste it below another cell that you select. To save a snapshot of the notebook, called a checkpoint, click the ‘Save and Checkpoint’ button. *;</p></li>
+<li><p>If things go horribly wrong, you can revert the notebook to the last checkpoint by using the ‘Revert to Checkpoint’ option in the ‘File’ menu. To finish your session, go to the ‘File’ menu and select ‘Close and Halt’. It is very important to note that opening a notebook does not execute any code cells. Any code output was saved from the previous session. So if I reopen the workbook and execute the code in the second cell alone, I’ll get an error, because in this session (that is since the notebook was opened again) the first cell hasn’t been executed and therefore the computer doesn’t recognise the variable name ‘deaths in Portugal’. And that’s why you should run all code after opening a notebook! *;</p></li>
+<li><p>It’s easy to add your own notes to the notebook. For example if I select the first cell……and then click on the plus button, I can insert a new cell below the current one. By default, a new cell is a code cell. Select ‘Markdown’ to change it to a text cell. To edit a text cell, double-click inside the cell. Text is written in Markdown, a very simple formatting system. Here are some examples of what Markdown can do - pay attention to how prefixing or surrounding words with simple characters is all the information needed to format the text. *;</p></li>
+<li><p>Also note the way a word or phrase to be hyperlinked is surrounded with square brackets and immediately followed by the URL, in round brackets. Once the text is written, click the ‘Play’ button to see the formatted text in the cell. The ‘Help’ menu contains links to information about Jupyter notebooks and Markdown formatting. As you get used to Jupyter, take a look at the keyboard shortcuts, as they will help you to work more efficiently. *;</p></li>
+</ul>
+</td></tr></table><!--ENDTRANSCRIPT-->
+<p><img alt="figure./ou_futurelearn_learn_to_code_vid_1046.jpg" src="ou_futurelearn_learn_to_code_vid_1046.jpg" /></p>
+<!--ENDMEDIACONTENT-->
+<!-- #endregion -->
+</div>
+<p>If you haven’t yet installed Jupyter and Anaconda, do it now using these <a class="reference external" href="http://www.open.edu/openlearn/learn-to-code-installation">instructions</a>.</p>
+</section>
+<section id="expressions">
+<h2>1.5 Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">#</a></h2>
+<p>I’ve told the computer the deaths in Angola, Brazil and Portugal. I can now ask it to add them together to obtain the total deaths.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInAngola</span> <span class="o">+</span> <span class="n">deathsInBrazil</span> <span class="o">+</span> <span class="n">deathsInPortugal</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">11440</span>
+</pre></div>
+</div>
+<p>A fragment of code that has a value is called an <strong>expression</strong>. Calculating the value of an expression is called <strong>evaluating</strong> the expression. If the expression is on a line of its own, the Jupyter notebook displays its value, as above.</p>
+<p>The value of an expression can of course be assigned to a variable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">totalDeaths</span> <span class="o">=</span> <span class="n">deathsInAngola</span> <span class="o">+</span> <span class="n">deathsInBrazil</span> <span class="o">+</span> <span class="n">deathsInPortugal</span>
+
+</pre></div>
+</div>
+<p>Note that no value is displayed because the whole line of code is not an expression, it’s a <strong>statement</strong> , a command to the computer. In this case the statement is an assignment. You will see another kind of statement later this week.</p>
+<p>To see the value, you learned that you must write the variable’s name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">totalDeaths</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">11440</span>
+</pre></div>
+</div>
+<p>This is really just a special case of the general rule that writing an expression on its own shows its value. A variable (which stores a value) is just an example of an expression (which is anything that has a value).</p>
+<p>I can now write an expression to compute the average number of deaths: it’s the total divided by the number of countries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">totalDeaths</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mf">3813.3333333333335</span>
+</pre></div>
+</div>
+<p>Python has of course all four arithmetic <strong>operators</strong> : addition (+), division (/), subtraction (-) and multiplication (*). I’ll use the last two later in the week. Python follows the conventional operator precedence: multiplication and division before addition and subtraction, unless parentheses are used to change the order. For example, (3+4)/2 is 3.5 but 3+4/2 is 5.</p>
+<p><img alt="An image of many colourful painted skulls with different drawings and textures." src="ou_futurelearn_learn_to_code_fig_1030.jpg" /></p>
+<p><strong>Figure 4</strong></p>
+<p>Now practice writing expressions and complete Exercise 2 in the notebook.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 2 Expressions</p>
+<p class="rubric">Question</p>
+<p>Go back to the Exercise notebook 1 you used in Exercise 1. In Exercise 2 you’ll see an example of operator precedence and practise writing expressions.</p>
+<p>If you’re using Anaconda, remember that to open the notebook you’ll need to navigate to it using Jupyter. Whether you’re using Anaconda or CoCalc, once the notebook is open, run all the code before doing the exercise.</p>
+<p>Writing code for the first time can be difficult but stick with it.</p>
+<!-- #endregion -->
+</div>
+<p>In the next section, you will find out about functions.</p>
+</section>
+<section id="functions">
+<h2>1.6 Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<p>After the total and the average, next on my to-do list is to calculate the largest number of deaths.</p>
+<p><img alt="An image with an angel in prayer statue in the foreground of a graveyard" src="ou_futurelearn_learn_to_code_fig_1031.jpg" /></p>
+<p><strong>Figure 5</strong></p>
+<p>This will be the <strong>maximum</strong>. It takes another single line of code to calculate it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="nb">max</span><span class="p">(</span><span class="n">deathsInAngola</span><span class="p">,</span> <span class="n">deathsInBrazil</span><span class="p">,</span> <span class="n">deathsInPortugal</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">6900</span>
+</pre></div>
+</div>
+<p>In this expression, <strong><code class="docutils literal notranslate"><span class="pre">max()</span></code></strong> is a function – the parenthesis are a reminder that the name <strong><code class="docutils literal notranslate"><span class="pre">max</span></code></strong> doesn’t refer to a variable. A <strong>function</strong> is a piece of code that calculates ( <strong>returns</strong> ) a value, given zero or more values (the function’s <strong>arguments</strong> ). In this case, <strong><code class="docutils literal notranslate"><span class="pre">max()</span></code></strong> has three arguments and returns the greatest of them. Actually, <strong><code class="docutils literal notranslate"><span class="pre">max()</span></code></strong> can calculate the maximum of two, three, four or more values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="nb">max</span><span class="p">(</span><span class="n">deathsInBrazil</span><span class="p">,</span> <span class="n">deathsInPortugal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">4400</span>
+</pre></div>
+</div>
+<p>The expressions above are function <strong>calls</strong>. I’m calling the <strong><code class="docutils literal notranslate"><span class="pre">max()</span></code></strong> function with three or two arguments, and the value of the expression is the value returned by the function. A function is called by writing its name, followed by the arguments, within parentheses and separated by commas. Function names follow the same rules as variable names.</p>
+<p>As you might expect, Python also has a function to calculate the smallest (minimum) of two or more values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="nb">min</span><span class="p">(</span><span class="n">deathsInAngola</span><span class="p">,</span> <span class="n">deathsInBrazil</span><span class="p">,</span> <span class="n">deathsInPortugal</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">140</span>
+</pre></div>
+</div>
+<p>The value returned by a function call can be assigned to a variable. Here is an example, which calculates the <strong>range</strong> of deaths. The range of a set of values is the difference between the largest and the smallest of them.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">deathsInAngola</span><span class="p">,</span> <span class="n">deathsInBrazil</span><span class="p">,</span> <span class="n">deathsInPortugal</span><span class="p">)</span>
+
+
+<span class="n">smallest</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">deathsInAngola</span><span class="p">,</span> <span class="n">deathsInBrazil</span><span class="p">,</span> <span class="n">deathsInPortugal</span><span class="p">)</span>
+
+<span class="nb">range</span> <span class="o">=</span> <span class="n">largest</span> <span class="o">-</span> <span class="n">smallest</span>
+<span class="nb">range</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">6760</span>
+</pre></div>
+</div>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 3 Functions</p>
+<p>Identify different types of error (some of you may have experienced those already…) in Exercise 3. You’ll need to use the Week 1 notebook to answer question three.</p>
+<p class="rubric">Question</p>
+<p><strong>1. If the function name is misspelled as Min, what kind of error is it?</strong></p>
+<p>A syntax error</p>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">Min(…,</span> <span class="pre">…)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">min(…,</span> <span class="pre">…)</span></code> is not a syntax error, because both have the form of a function call. Names can use uppercase letters.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
+<p>A name error</p>
+<p>The computer will understand than <code class="docutils literal notranslate"><span class="pre">Min(…,</span> <span class="pre">…)</span></code> is a function call but doesn’t know of any function with that name. Remember that names are case-sensitive.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
+<p class="rubric">Question</p>
+<p><strong>2. If a parenthesis or comma is forgotten, what kind of error is it?</strong></p>
+<p>A name error</p>
+<p>A parenthesis or comma is unrelated to how names are written.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">The art of naming</a>.</p>
+<p>A syntax error</p>
+<p>A function call requires two parentheses around the arguments, and one comma between successive arguments. Forgetting any of them therefore deviates from the syntax of the Python language.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
+<p class="rubric">Question</p>
+<p><strong>3. Use Exercise 3 in the Week 1 exercise notebook to answer this question.</strong></p>
+<p><strong>What is the range of deaths among the BRICS countries (Brazil, Russia, India, China, South Africa)?</strong></p>
+<p>4400</p>
+<p>This is the minimum value (for Brazil), not the range.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
+<p>65480</p>
+<p>This is the average number of deaths, not the range.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Expressions</a>.</p>
+<p>240000</p>
+<p>This is the maximum value (for India), not the range.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
+<p>327400</p>
+<p>This is the total number of deaths not the range.</p>
+<p>Take a look at <a xmlns:str="http://exslt.org/strings" href="">Functions</a>.</p>
+<p>235600</p>
+<p>The range is the maximum value (240 thousand for India) minus the minimum value (4400 for Brazil).</p>
+<!-- #endregion -->
+</div>
+</section>
+<section id="comments">
+<h2>1.7 Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>Last on my to-do list is the death rate, which is the number of deaths divided by the population.</p>
+<p><img alt="An image of different speech bubbles being held up" src="ou_futurelearn_learn_to_code_fig_1032.jpg" /></p>
+<p><strong>Figure 6</strong></p>
+<p>A quick glance at the WHO website tells me Portugal’s population in 2013.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">populationOfPortugal</span> <span class="o">=</span> <span class="mi">10608</span>
+</pre></div>
+</div>
+<p>Wait a minute! This can’t be right. I know Portugal isn’t a large country, but ten and a half thousand people is ridiculous. I look more carefully at the WHO website. Oh, the value is given in thousands of people; it’s 10 million and 608 thousand people. I could change the assignment to</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">populationOfPortugal</span> <span class="o">=</span> <span class="mi">10608000</span>
+</pre></div>
+</div>
+<p>but that could give the impression that the population had been counted exactly, whereas it’s more likely the number is an estimate based on a previous census. It also makes it easier to check my code against the WHO data if I use the exact same numbers.</p>
+<p>I will therefore keep the original assignment but make a note of the unit, using a <strong>comment</strong> , a piece of text that documents what the code does.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># population unit: thousands of inhabitants</span>
+<span class="n">populationOfPortugal</span> <span class="o">=</span> <span class="mi">10608</span>
+<span class="c1"># deaths unit: inhabitants</span>
+<span class="n">deathsInPortugal</span> <span class="o">=</span> <span class="mi">140</span>
+</pre></div>
+</div>
+<p>A comment starts with a hash sign <strong>(#)</strong> and goes until the end of the line. Computers ignore all comments, they just execute the code. Comments are your insurance policy: they help you understand your own code if you come back to it after a long break.</p>
+<p>I can now compute the death rate, making sure I first convert the population into number of inhabitants, the same unit as deaths.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">deathsInPortugal</span> <span class="o">/</span> <span class="p">(</span><span class="n">populationOfPortugal</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mf">1.3197586726998491e-05</span>
+</pre></div>
+</div>
+<p>The death rate (roughly 140 people in 10 million) is a very small number, not very practical to display and reason about. Looking again at the WHO website, I note that other indicators, like TB prevalence, are given per 100 thousand inhabitants. I will do the same for the death rate. Since the population is already in thousands, dividing the deaths by the population gives me the number of deaths per thousand people. Thus, the number of deaths per 100 thousand people must be 100 times higher than that.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># death rate: deaths per 100 thousand inhabitants</span>
+<span class="n">deathsInPortugal</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">populationOfPortugal</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mf">1.3197586726998491</span>
+</pre></div>
+</div>
+<p>This finishes the basics of coding needed for this week. It took less than 30 lines of code…</p>
+<p>Test this out for yourself in Exercise 4 of the Week 1 exercise notebook.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 4 Comments</p>
+<p class="rubric">Question</p>
+<p>Complete the short exercise on the death rate in Exercise 4 in the Week 1 Exercise notebook.</p>
+<p>Remember that once the notebook is open, run all the code, before doing the exercise.</p>
+<!-- #endregion -->
+</div>
+</section>
+<section id="values-have-units">
+<h2>1.8 Values have units<a class="headerlink" href="#values-have-units" title="Permalink to this heading">#</a></h2>
+<p>Before I move on, let me explain the importance of using comments to record units of measurement.</p>
+<p><img alt="An image of four towers of liquorish all sorts" src="ou_futurelearn_learn_to_code_fig_1033.jpg" /></p>
+<p><strong>Figure 7</strong></p>
+<p>Values are not just numbers, they have units: degrees Celsius, number of inhabitants, thousands of gallons, etc. Always make a note of the units the value refers to, using comments. This makes it easier to check whether the expressions are right. Disregarding the units will lead to wrong calculations and results.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 2</p>
+<p class="rubric">Question</p>
+<p>Have you come across ‘horror stories’ that have happened due to mistakes in the unit of measurement?</p>
+<p>Think through what happened and consider what you have learned from them.</p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Learn to code for data analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_00_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2 This week’s quiz</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-cocalc-service">Online CoCalc service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-anaconda-package">Install Anaconda package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-a-question">1.1 Start with a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-assignments">1.2 Variables and assignments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-art-of-naming">1.3 The art of naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-notebook-and-trying-the-first-exercise">1.4 Downloading the notebook and trying the first exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">1.5 Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.6 Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">1.7 Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#values-have-units">1.8 Values have units</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

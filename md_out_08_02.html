@@ -1,0 +1,1015 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2 Pivot tables &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_08_02';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3 This week’s quiz" href="md_out_08_03.html" />
+    <link rel="prev" title="1 The split-apply-combine pattern" href="md_out_08_01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_01.html">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_01.html">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_01.html">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_01.html">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_08_02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2 Pivot tables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-in-pandas">2.1 Pivot tables in pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pandas-pivot-tables">Working with pandas pivot tables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-the-milk-and-cream-trade">2.2 Looking at the milk and cream trade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-project">2.3 Your project</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pivot-tables">
+<h1>2 Pivot tables<a class="headerlink" href="#pivot-tables" title="Permalink to this heading">#</a></h1>
+<p>One of the most useful, if poorly understood, features offered by many spreadsheet applications is the ‘pivot table’.</p>
+<p>Pivot tables provide a way of creating summary reports over particular parts of a dataset, reshaping the data into grouped rows, itemised columns, and summary values within each group and item.</p>
+<p>The screenshot of the interactive pivot table shown below, based on a widget originally created by Nicolas Krutchen at Datacritic, contains a small fragment of the Comtrade data describing milk imports to the UK.</p>
+<p>The pivot table is organised as follows:</p>
+<p><img alt="Screenshot of the interactive pivot table" src="ou_futurelearn_learn_to_code_fig_1022.jpg" /></p>
+<p><strong>Figure 7</strong></p>
+<p>You can see how the ‘Trade Flow’ and ‘Reporter’ columns are used to group the data, with each row representing a separate group. In addition, the values in the ‘Year’ column are broken out to create separate columns (although in this example there is only data for one year, and hence one ‘Year’ column, 2014). The function that is applied to the grouped data is a <code class="docutils literal notranslate"><span class="pre">sum</span></code> operation, and it is applied to the selected ‘Trade Value (US<span class="math notranslate nohighlight">\()’ column in the original dataset. A marginal total value is calculated by summing across all the columns. The ‘Commodity’ and ‘Trade Value (US\)</span>)’ columns, while part of the original dataset, are not directly used to define the pivot table’s structure; that is, they are not used to set the row or column index header labels in the displayed pivot table.</p>
+<p>In terms of the split-apply-combine pattern, the pivot table operates as follows:</p>
+<ul class="simple">
+<li><p>the column names from the original dataframe that are listed in the rows panel on the left hand side of the interactive pivot table split the data into a set of groups, with each row specifying a group</p></li>
+<li><p>the pivot table’s columns are set according to the unique values associated with the specified columns from the orignal dataframe; these break the data down into yet smaller groups that are associated with each cell.</p></li>
+</ul>
+<p>The selected operator is then applied to each cell level group, the results combined and an appropriately structured output table is displayed.</p>
+<p>To create a pivot table report for a dataset, typically three actions will be needed:</p>
+<ul class="simple">
+<li><p>identify what elements will appear as the row index values – that is, how the rows will be grouped. Typically, groups will be created based on the unique values within a single column or a combination of values, one from each of multiple grouping columns.</p></li>
+<li><p>identify what elements will appear as column headings. Again, the column heading may just be the unique values of a single variable, or combined values across multiple grouping columns.</p></li>
+<li><p>identify what numbers will be reported on. This step may often break down into two smaller steps: to count the number of rows associated with a particular combination of row and column index values, select the count operationto perform an operation on the value of cells in another column, select that column and then identify what operation to apply to it. For example, find the sum or mean values of a numerical quantity associated with rows keyed by the row and column index values, or count the number of unique values of a particular variable in rows identified by those key values.</p></li>
+</ul>
+<p>In addition, one or more ‘filters’ can be added to the selection of row and column index values, either limiting which unique values in each key column to report on, or, by default, selecting them all.</p>
+<p>It is often easier to understand how a pivot table is organised by using it interactively. You’ll get a chance to do this in the next exercise.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 5 Interactive pivot table</p>
+<p class="rubric">Question</p>
+<p>If you haven’t already, open the comtrade_pivot.html and save it into the same folder as the Exercise notebook 4. Then either re-run all the notebook cells, or just run the cell that contains the interactive pivot table.</p>
+<p>Configuring a pivot table requires paying careful attention to the selection of row (grouping) values, columns (reported values) and summary (aggregating) function.</p>
+<p>How easy did you find it to use the interactive pivot table? Could you work out how to select the row and column labels in order to ask particular questions of the data? What sorts of questions did you try to ask?</p>
+<!-- #endregion -->
+</div>
+<section id="pivot-tables-in-pandas">
+<h2>2.1 Pivot tables in pandas<a class="headerlink" href="#pivot-tables-in-pandas" title="Permalink to this heading">#</a></h2>
+<p>The interactive pivot table provides a convenient way of exploring a relatively small dataset directly within a web browser. (A python package is also available that allows interactive pivot tables to be created directly from a pandas dataframe.)</p>
+<p><img alt="An image of several giant pandas lounging against some logs eating bamboo" src="ou_futurelearn_learn_to_code_fig_1064.jpg" /></p>
+<p><strong>Figure 8</strong></p>
+<p>You can also achieve a similar effect using code, one-line-at-a-time. In this step, you will learn how to ask – and answer – questions of a similar form to the ones you raised using the interactive pivot table, but this time using programming code.</p>
+<p>There are several reasons why you might want to automate pivot table operations you might previously have done by hand. These include:</p>
+<ul class="simple">
+<li><p>having a record of all the steps used to perform a particular task, or analysis, which can be useful if you need to check or provide evidence about what you have done (transparency)</p></li>
+<li><p>being able to repeat the task automatically; this is particularly useful if you need to perform the same task repeatedly – for example, generating a new summary report each time a dataset is updated with new weekly or daily figures</p></li>
+<li><p>being able to apply one analysis to another dataset. For example, you might want to produce the same sort of pivot table reports to similarly organised datasets but differently populated datasets (for example, Comtrade datasets that refer to different groups of countries and/or different commodity types).</p></li>
+</ul>
+<p>In order to use the interactive pivot table, you had to identify:</p>
+<ul class="simple">
+<li><p>what column(s) in the dataset to use to define the row groupings in the pivot table</p></li>
+<li><p>what column(s) in the dataset to use to define the column groupings in the pivot table</p></li>
+<li><p>what column in the dataset to use as the basis for the pivot table summary function</p></li>
+<li><p>what summary function to use.</p></li>
+</ul>
+<p>The process is similar when it comes to using pivot tables in pandas. Indeed, you might find it useful to use the interactive pivot table to help you identify just what needs to go where in order to generate a particular report using the pandas pivot table.</p>
+<hr class="docutils" />
+<section id="working-with-pandas-pivot-tables">
+<h3>Working with pandas pivot tables<a class="headerlink" href="#working-with-pandas-pivot-tables" title="Permalink to this heading">#</a></h3>
+<p>Let’s start by creating a sample dataset that includes several different columns that can be grouped around. The code below defines the dataframe column by column, instead of row by row as you have learned before.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Commodity&quot;</span><span class="p">:[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">],</span>
+
+<span class="s2">&quot;Amount&quot;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">],</span>
+<span class="s2">&quot;Partner&quot;</span><span class="p">:[</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;Q&quot;</span><span class="p">],</span>
+<span class="s2">&quot;Flow&quot;</span><span class="p">:[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">]})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Commodity</th>
+<th>Partner</th>
+<th>Flow</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__0__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__1__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__2__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__3__</td>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__4__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__5__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__6__</td>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__7__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__8__</td>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose, for example, that you have data for a particular reporter country, and that you want to find the total value of trade that country has for each commodity and each partner country. A pivot table can be used to split the data by ‘commodity’, and within that ‘partner’, and then apply some sort of aggregation function to each (‘commodity’, ‘partner’) group.</p>
+<p>In the interactive pivot table, this would have meant ordering the ‘Commodity’ and ‘Partner’ labels in the rows area, setting the aggregation function to <code class="docutils literal notranslate"><span class="pre">sum</span></code> and applying it to the ‘Amount’ (that is, the ‘Trade Value’), and leaving the columns area free of any selections.</p>
+<p>In turn, the pandas <code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code> function uses:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">index</span></code> parameter set as a list containing the ‘Commodity’ and ‘Reporter’ data elements, to define the row categories</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">values</span></code> parameter set to ‘Amount’</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">aggfunc</span></code> (aggregating function) set to <code class="docutils literal notranslate"><span class="pre">sum</span></code> .</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+<span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">],</span>
+<span class="n">values</span><span class="o">=</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span>
+<span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Flow</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+<tr>
+<th>Commodity</th>
+<th>Partner</th>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>To further subdivide the data, an additional ‘Flow’ grouping element could be added in. (In this case, the resulting pivot table just corresponds to the original dataset.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+               <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">,</span><span class="s1">&#39;Flow&#39;</span><span class="p">],</span> 
+               <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span> 
+               <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th>Commodity</th>
+<th>Partner</th>
+<th>Flow</th>
+<th></th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">A</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">B</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">C</td>
+<td class="highlight_" rowspan="" colspan="">P</td>
+<td class="highlight_" rowspan="" colspan="">X</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">Q</td>
+<td class="highlight_" rowspan="" colspan="">Y</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, you might decide that you want to pull out the ‘Flow’ items into separate columns for each of the original (‘commodity’, ‘partner’) groupings. To do this, add in a columns parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">],</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Flow&#39;</span><span class="p">],</span>
+        <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span>
+        <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Flow</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+<tr>
+<th>Commodity</th>
+<th>Partner</th>
+<th></th>
+<th></th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+</tbody>
+</table>
+<p>In this case, some missing values arise for cases where there was no original row item. For example, there were no rows in the original dataset for Commodity/Partner/Flow values of B/Q/Y, C/P/Y or C/Q/X.</p>
+<p>The pandas produced pivot table can be further extended to report ‘marginal’ items, that is, row and column based total amounts, by setting <code class="docutils literal notranslate"><span class="pre">margins=True.</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Commodity&#39;</span><span class="p">,</span><span class="s1">&#39;Partner&#39;</span><span class="p">],</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Flow&#39;</span><span class="p">],</span>
+        <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Amount&#39;</span><span class="p">,</span>
+        <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span>
+        <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+</pre></div>
+</div>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Flow</th>
+<th>X</th>
+<th>Y</th>
+<th>All</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__Commodity__</td>
+<td class="highlight_" rowspan="" colspan="">__Partner__</td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan=""></td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__A__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">15</td>
+<td class="highlight_" rowspan="" colspan="">25</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+<td class="highlight_" rowspan="" colspan="">25</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__B__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">10</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+<td class="highlight_" rowspan="" colspan="">5</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__C__</td>
+<td class="highlight_" rowspan="" colspan="">__P__</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+<td class="highlight_" rowspan="" colspan="">20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">__Q__</td>
+<td class="highlight_" rowspan="" colspan="">NaN</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+<td class="highlight_" rowspan="" colspan="">30</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">__All__</td>
+<td class="highlight_" rowspan="" colspan=""></td>
+<td class="highlight_" rowspan="" colspan="">50</td>
+<td class="highlight_" rowspan="" colspan="">75</td>
+<td class="highlight_" rowspan="" colspan="">125</td>
+</tr>
+</tbody>
+</table>
+<p>In terms of the ‘split-apply-combine’ pattern, the pandas pivot table operates in much the same way as the interactive pivot table:</p>
+<ul class="simple">
+<li><p>the list of original data columns assigned to the index parameter splits the data into a set of groups</p></li>
+<li><p>the groups are further split into smaller cell level groupings by optionally setting the columns parameter.</p></li>
+</ul>
+<p>The selected operator is then applied to each group and the results combined in an appropriately structured output display table.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 6 pivot tables with pandas</p>
+<p class="rubric">Question</p>
+<p>Use the Exercise notebook 4 to explore the creation of pivot tables using pandas in Exercise 6.</p>
+<p>Did you manage to ask any new questions of your data using the pandas pivot table function? You could try using them in combination with other pandas functions, such as <code class="docutils literal notranslate"><span class="pre">filter()</span></code> , to limit the rows you generated the pivot table against. What did the pivot tables tell you about the levels of trade around the trade item and reporter country you selected?</p>
+<p>One reason that pivot tables are often thought of as difficult to use is that there is a lot of data manipulation going on inside them. The data is grouped across rows, split across columns and may be aggregated in various ways. It can sometimes be hard to work out how to structure the output report you want, even before worrying about the programming code syntax. Given that, consider what you think the benefits of using code are as opposed to interactive pivot tables. Think about how you could use them to complement each other.</p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="looking-at-the-milk-and-cream-trade">
+<h2>2.2 Looking at the milk and cream trade<a class="headerlink" href="#looking-at-the-milk-and-cream-trade" title="Permalink to this heading">#</a></h2>
+<p>This week’s project looks at the milk and cream trade between the UK and other countries in the first five months of 2015.</p>
+<p><img alt="A close-up image of the splash of milk being poured" src="ou_futurelearn_learn_to_code_fig_1065.jpg" /></p>
+<p><strong>Figure 9</strong></p>
+<p>The written up analysis is in the project notebook. You will also need to open the file comtrade_milk_uk_jan_jul_15.csv and save it to your Anaconda folder or CoCalc project.</p>
+<p>The structure is very simple: besides the introduction and the conclusions, there is one section for each research question.</p>
+<p>Extend or create your own project next.</p>
+</section>
+<section id="your-project">
+<h2>2.3 Your project<a class="headerlink" href="#your-project" title="Permalink to this heading">#</a></h2>
+<p>If you have time, extend my project to answer different questions or create your own project.</p>
+<p><img alt="An image of a young man writing in a notebook at a desk in front of a brick wall." src="ou_futurelearn_learn_to_code_fig_1066.jpg" /></p>
+<p><strong>Figure 10</strong></p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 1 Extend the project</p>
+<p class="rubric">Question</p>
+<hr class="docutils" />
+<p>Make a copy of the project notebook and change it to answer one or all of the following questions:</p>
+<ul class="simple">
+<li><p>Which are the regular exporters, i.e. which countries sell every month both unprocessed and processed milk and cream to the UK?</p></li>
+<li><p>Where could the export market be further developed, i.e. which countries import the least? Do the figures look realistic?</p></li>
+<li><p>What is total amount of exports to and imports from the bi-lateral trade countries? Hint: pivot tables can have ‘marginal’ values.</p></li>
+<li><p>Repeat the whole analysis for January–May 2014 and compare the results.</p></li>
+</ul>
+<hr class="docutils" />
+<!-- #endregion -->
+</div>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Activity 2 Create a project (optional)</p>
+<p class="rubric">Question</p>
+<hr class="docutils" />
+<p>If you have more time, create a completely new project. You could choose completely different commodities, a different reporter (e.g. your country), a different period (e.g. two or more full years), and only a few select partners (e.g. just the ‘World’ partner for a global analysis).</p>
+<hr class="docutils" />
+<!-- #endregion -->
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_out_08_01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1 The split-apply-combine pattern</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_08_03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3 This week’s quiz</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-in-pandas">2.1 Pivot tables in pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pandas-pivot-tables">Working with pandas pivot tables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-the-milk-and-cream-trade">2.2 Looking at the milk and cream trade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-project">2.3 Your project</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

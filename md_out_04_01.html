@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1 Loading the weather data &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_04_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2 Every picture tells a story" href="md_out_04_02.html" />
+    <link rel="prev" title="4.1 Week 4 glossary" href="md_out_03_05.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_01.html">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_01.html">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_01.html">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_01.html">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_02.html">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_04_01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1 Loading the weather data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notice-for-learners-outside-of-the-eu">Important notice for learners outside of the EU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-rogue-spaces">1.1 Removing rogue spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-extra-characters">1.2 Removing extra characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">1.3 Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-value-types-of-columns">1.4 Changing the value types of columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-data-type-of-the-winddirdegrees-column">Changing the data type of the ‘WindDirDegrees’ column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-data-type-of-the-gmt-column">Changing the data type of the ‘GMT’ column</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="loading-the-weather-data">
+<h1>1 Loading the weather data<a class="headerlink" href="#loading-the-weather-data" title="Permalink to this heading">#</a></h1>
+<p>You have learned some more about Python and the pandas module and tried it out on a fairly small dataset. You are now ready to explore a dataset from the Weather Underground.</p>
+<p><img alt="An image of filter like diagonal strips across various skies such as an orange sunset, a storm and a clear blue sky." src="ou_futurelearn_learn_to_code_fig_1039.jpg" /></p>
+<p><strong>Figure 1</strong></p>
+<p>Open the file London_2014.csv and save it in the disk folder or CoCalc project you created in Week 1.</p>
+<p><strong>Do not be tempted to open this file with Excel</strong> as this application will attempt to localise the data in the file, i.e. use your country’s local data formats, which will make much of what follows rather incomprehensible! You can if you like open the file with a simple text editor, but <strong>do not make any changes</strong>.</p>
+<p>The CSV file can be loaded into a dataframe by executing the following code:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">london</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;London_2014.csv&#39;</span><span class="p">)</span>
+<span class="n">london</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<p><img alt="First 5 rows of the London dataframe. " src="ou_futurelearn_learn_to_code_fig_1006.jpg" /></p>
+<p><strong>Figure 2</strong></p>
+<ul class="simple">
+<li><p>Note that the right hand side of the table has been cropped to fit on the page. *</p></li>
+</ul>
+<p>In the next section, you’ll find out how to remove rogue spaces.</p>
+<hr class="docutils" />
+<section id="important-notice-for-learners-outside-of-the-eu">
+<h2>Important notice for learners outside of the EU<a class="headerlink" href="#important-notice-for-learners-outside-of-the-eu" title="Permalink to this heading">#</a></h2>
+<p>The Weather Underground automatically localises data based on from what country it detects you are accessing the web site. So, for example, if you are accessing the website from the USA wind speeds will be in MPH rather than km/h and temperatures in Fahrenheit rather than Celsius.</p>
+<p>In order to change the settings so that the data is in European format you will need to click on the ‘head and shoulders’ icon on the top right of the Weather Underground web page and create a free Weather Underground account.</p>
+<p>Once you have created an account, click on the ‘cog’ icon on the top right of the web page. Then:</p>
+<ul class="simple">
+<li><p>click on the C button to select Celsius</p></li>
+<li><p>click on ‘More Settings’ and select Units: metric</p></li>
+<li><p>click on ‘Save My Preferences’.</p></li>
+</ul>
+<p>Now, when you download the data, temperatures will be in Celsius and wind speeds in km/h etc.</p>
+</section>
+<hr class="docutils" />
+<section id="removing-rogue-spaces">
+<h2>1.1 Removing rogue spaces<a class="headerlink" href="#removing-rogue-spaces" title="Permalink to this heading">#</a></h2>
+<p>One of the problems often encountered with CSV files is rogue spaces before or after data values or column names.</p>
+<p><img alt="An image of empty, numbered parking spaces" src="ou_futurelearn_learn_to_code_fig_1045.jpg" /></p>
+<p><strong>Figure 3</strong></p>
+<p>You learned earlier, in What is a CSV file? , that each value or column name is separated by a comma. However, if you opened ‘London_2014.csv’ in a text editor, you would see that in the row of column names sometimes there are spaces after a comma:</p>
+<!--
+            Quote id=
+            -->
+<blockquote>
+<div><p>GMT,Max TemperatureC,Mean TemperatureC,Min TemperatureC,Dew PointC,MeanDew PointC,Min DewpointC,Max Humidity, Mean Humidity, Min Humidity, Max Sea Level PressurehPa, Mean Sea Level PressurehPa, Min Sea Level PressurehPa, Max VisibilityKm, Mean VisibilityKm, Min VisibilitykM, Max Wind SpeedKm/h, Mean Wind SpeedKm/h, Max Gust SpeedKm/h,Precipitationmm, CloudCover, Events,WindDirDegrees</p>
+</div></blockquote>
+<p>For example, there is a space after the comma between <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Humidity</span></code> and <code class="docutils literal notranslate"><span class="pre">Mean</span> <span class="pre">Humidity</span></code>. This means that when <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> reads the row of column names it will interpret a space after a comma as part of the next column name. So, for example, the column name after <code class="docutils literal notranslate"><span class="pre">'Max</span> <span class="pre">Humidity'</span></code> will be interpreted as <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">Mean</span> <span class="pre">Humidity'</span></code> rather than what was intended, which is <code class="docutils literal notranslate"><span class="pre">'Mean</span> <span class="pre">Humidity'</span></code>. The ramification of this is that code such as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">london[['Mean</span> <span class="pre">Humidity']]</span></code></p>
+<p>will cause a key error (see <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83247&amp;targetdoc=Week+2%3A+Having+a+go+at+it+Part+2&amp;targetptr=1.3">Selecting a column</a> ), as the column name is confusingly <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">Mean</span> <span class="pre">Humidity</span></code> ‘.</p>
+<p>This can easily be rectified by adding another argument to the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function:</p>
+<p><code class="docutils literal notranslate"><span class="pre">skipinitialspace=True</span></code></p>
+<p>which will tell <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> to ignore any spaces after a comma:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">london</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;London_2014.csv&#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The rogue spaces will no longer be in the dataframe and we can write code such as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london[['Mean</span> <span class="pre">Humidity']].head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>__Mean Humidity__</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">86</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">81</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">76</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">85</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">88</td>
+</tr>
+</tbody>
+</table>
+<p>Note that a <code class="docutils literal notranslate"><span class="pre">skipinitialspace=True</span></code> argument won’t remove a trailing space at the end of a column name.</p>
+<p>Next, find out about extra characters and how to remove them.</p>
+</section>
+<section id="removing-extra-characters">
+<h2>1.2 Removing extra characters<a class="headerlink" href="#removing-extra-characters" title="Permalink to this heading">#</a></h2>
+<p>If you opened London_2014.csv in a text editor once again and looked at the last column name you would see that the name is’WindDirDegrees</p>
+<p>‘.</p>
+<p>What has happened here is that when the dataset was exported from the Weather Underground website an html line break <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> was added after the line of column headers which <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> has interpreted as the end part of the final column’s name.</p>
+<p><img alt="An image of two bouncers in suits standing in a corridor" src="ou_futurelearn_learn_to_code_fig_1050.jpg" /></p>
+<p><strong>Figure 4</strong></p>
+<p>In fact, the problem is worse than this, let’s look at some values in the final column:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p>`london[[‘WindDirDegrees</p>
+<p>‘]].head()`</p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>__WindDirDegrees
+__</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">186
+</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">214
+</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">219
+</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">211
+</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">199
+</td>
+</tr>
+</tbody>
+</table>
+<p>It’s seems there is an html line break at the end of each line. If I opened ‘London_2014.csv’ in a text editor and looked at the ends of all lines in the file this would be confirmed.</p>
+<p>Once again I’m not going to edit the CSV file but rather fix the problem in the dataframe. To change <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees</span> <span class="pre">'</span></code> to <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> all I have to do is use the <code class="docutils literal notranslate"><span class="pre">rename()</span></code> method as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p>`
+london = london.rename(columns={‘WindDirDegrees</p>
+<p>‘:’WindDirDegrees’})
+`</p>
+<p>Don’t worry about the syntax of the argument for <code class="docutils literal notranslate"><span class="pre">rename()</span></code> , just use this example as a template for whenever you need to change the name of a column.</p>
+<p>Now I need to get rid of those pesky <code class="docutils literal notranslate"> </code> html line breaks from the ends of the values in the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column, so that they become something sensible. I can do that using the string method <code class="docutils literal notranslate"><span class="pre">rstrip()</span></code> which is used to remove characters from the end or ‘rear’ of a string, just like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p>`
+london[‘WindDirDegrees’] = london[‘WindDirDegrees’].str.rstrip(’</p>
+<p>‘)
+`</p>
+<p>Again don’t worry too much about the syntax of the code and simply use it as a template for whenever you need to process a whole column of values stripping characters from the end of each string value.</p>
+<p>Let’s display the first few rows of the ‘ <code class="docutils literal notranslate"><span class="pre">WindDirDegrees</span></code> ‘ to confirm the changes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london[['WindDirDegrees']].head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>__WindDirDegrees__</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">186</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">214</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">219</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">211</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">199</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="missing-values">
+<h2>1.3 Missing values<a class="headerlink" href="#missing-values" title="Permalink to this heading">#</a></h2>
+<p>As you heard in the video at the start of the week, missing values (also called null values) are one of the reasons to clean data.</p>
+<p><img alt="An image of a girl with the last piece of a jigsaw puzzle" src="ou_futurelearn_learn_to_code_fig_1051.jpg" /></p>
+<p><strong>Figure 5</strong></p>
+<p>Finding missing values in a particular column can be done with the column method <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> , like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london['Events'].isnull()</span></code></p>
+<p>The above code returns a series of Boolean values, where <code class="docutils literal notranslate"><span class="pre">True</span></code> indicates that the corresponding row in the <code class="docutils literal notranslate"><span class="pre">'Events'</span></code> column is missing a value and <code class="docutils literal notranslate"><span class="pre">False</span></code> indicates the presence of a value. Here are the last few rows from the series:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">...</span>
+<span class="mi">360</span> <span class="kc">False</span>
+<span class="mi">361</span> <span class="kc">True</span>
+<span class="mi">362</span> <span class="kc">True</span>
+<span class="mi">363</span> <span class="kc">True</span>
+<span class="mi">364</span> <span class="kc">False</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Events</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p>If, as you did with the comparison expressions, you put this code within square brackets after the dataframe’s name, it will return a new dataframe consisting of all the rows without recorded events (rain, fog, thunderstorm, etc.):</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london[london['Events'].isnull()]</span></code></p>
+<p>As you will see in Exercise 4 of the exercise notebook, this will return a new dataframe with 114 rows, showing that more than one in three days had no particular event recorded. If you scroll the table to the right, you will see that all values in the <code class="docutils literal notranslate"><span class="pre">'Events'</span></code> column are marked <code class="docutils literal notranslate"><span class="pre">NaN</span></code> , which stands for ‘Not a Number’, but is also used to mark non-numeric missing values, like in this case (events are strings, not numbers).</p>
+<p>Once you know how much and where data is missing, you have to decide what to do: ignore those rows? Replace with a fixed value? Replace with a computed value, like the mean?</p>
+<p>In this case, only the first two options are possible. The method call <code class="docutils literal notranslate"><span class="pre">london.dropna()</span></code> will drop (remove) all rows that have a missing (non-available) value somewhere, returning a new dataframe. This will therefore also remove rows that have missing values in other columns.</p>
+<p>The column method <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> will replace all non-available values with the value given as argument. For this case, each NaN could be replaced by the empty string.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">london</span><span class="p">[</span><span class="s1">&#39;Events&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">london</span><span class="p">[</span><span class="s1">&#39;Events&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">london</span><span class="p">[</span><span class="n">london</span><span class="p">[</span><span class="s1">&#39;Events&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>The second line above will now show an empty dataframe, because there are no longer missing values in the events column.</p>
+<p>As a final note on missing values, pandas ignores them when computing numeric statistics, i.e. you don’t have to remove missing values before applying <code class="docutils literal notranslate"><span class="pre">sum(),</span> <span class="pre">median()</span></code> and other similar methods.</p>
+<p>Learn about checking data types of each column in the next section.</p>
+</section>
+<section id="changing-the-value-types-of-columns">
+<h2>1.4 Changing the value types of columns<a class="headerlink" href="#changing-the-value-types-of-columns" title="Permalink to this heading">#</a></h2>
+<p>The function <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> may, for many reasons, wrongly interpret the data type of the values in a column, so when cleaning data it’s important to check the data types of each column are what is expected, and if necessary change them.</p>
+<p>The data type of every column in a dataframe can be determined by looking at the dataframe’s <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute, like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london.dtypes</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">GMT</span> <span class="nb">object</span>
+<span class="n">Max</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Dew</span> <span class="n">PointC</span> <span class="n">int64</span>
+<span class="n">MeanDew</span> <span class="n">PointC</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">DewpointC</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">VisibilityKm</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">VisibilityKm</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">VisibilitykM</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Wind</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Wind</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Gust</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">float64</span>
+<span class="n">Precipitationmm</span> <span class="n">float64</span>
+<span class="n">CloudCover</span> <span class="n">float64</span>
+<span class="n">Events</span> <span class="nb">object</span>
+<span class="n">WindDirDegrees</span> <span class="nb">object</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>In the above output, you can see the column names to the left and to the right the data types of the values in those columns.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int64</span></code> is the pandas data type for whole numbers such as <code class="docutils literal notranslate"><span class="pre">55</span></code> or <code class="docutils literal notranslate"><span class="pre">2356</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float64</span></code> is the pandas data type for decimal numbers such as <code class="docutils literal notranslate"><span class="pre">55.25</span></code> or <code class="docutils literal notranslate"><span class="pre">2356.00</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code> is the pandas data type for strings such as <code class="docutils literal notranslate"><span class="pre">'hello</span> <span class="pre">world'</span></code> or <code class="docutils literal notranslate"><span class="pre">'rain'</span></code></p></li>
+</ul>
+<p>Most of the column data types seem fine, however two are of concern, <code class="docutils literal notranslate"><span class="pre">'GMT'</span></code> and <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> , both of which are of type <code class="docutils literal notranslate"><span class="pre">object.</span></code> Let’s take a look at <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> first.</p>
+<hr class="docutils" />
+<section id="changing-the-data-type-of-the-winddirdegrees-column">
+<h3>Changing the data type of the ‘WindDirDegrees’ column<a class="headerlink" href="#changing-the-data-type-of-the-winddirdegrees-column" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> method has interpreted the values in the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column as strings (type <code class="docutils literal notranslate"><span class="pre">object</span></code> ). This is because in the CSV file the values in that column had all been suffixed with that html line break string <code class="docutils literal notranslate"> </code> so <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> had no alternative but to interpret the values as strings.</p>
+<p>The values in the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column are meant to represent wind direction in terms of degrees from true north (360) and meteorologists always define the wind direction as the direction the wind is coming from. So if you stand so that the wind is blowing directly into your face, the direction you are facing names the wind, so a westerly wind is reported as 270 degrees. The compass rose shown below should make this clearer:</p>
+<p><img alt="figure./ou_futurelearn_learn_to_code_fig_1007.jpg" src="ou_futurelearn_learn_to_code_fig_1007.jpg" /></p>
+<p><strong>Figure 6</strong> A compass rose</p>
+<p>We need to be able to make queries such as ‘Get and display the rows where the wind direction is greater than 350 degrees’. To do this we need to change the data type of the ‘WindDirDegrees’ column from object to type <code class="docutils literal notranslate"><span class="pre">int64</span></code>. We can do that by using the <code class="docutils literal notranslate"><span class="pre">astype()</span></code> method like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london['WindDirDegrees']</span> <span class="pre">=</span> <span class="pre">london['WindDirDegrees'].astype('int64')</span></code></p>
+<p>Now all the values in the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column are of type <code class="docutils literal notranslate"><span class="pre">int64</span></code> and we can make our query:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london[london['WindDirDegrees']</span> <span class="pre">&amp;gt;</span> <span class="pre">350]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<p><img alt="Rows from the london dataframe where the value in the WindDirDegrees column is greater than 350." src="ou_futurelearn_learn_to_code_fig_1008.jpg" /></p>
+<p><strong>Figure 7</strong></p>
+<ul class="simple">
+<li><p>Note that the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column is on the far right of the table and the right of the table has been cropped to fit on the page. *</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="changing-the-data-type-of-the-gmt-column">
+<h3>Changing the data type of the ‘GMT’ column<a class="headerlink" href="#changing-the-data-type-of-the-gmt-column" title="Permalink to this heading">#</a></h3>
+<p>Recall that I noted that the <code class="docutils literal notranslate"><span class="pre">'GMT'</span></code> column was of type <code class="docutils literal notranslate"><span class="pre">object</span></code> , the type pandas uses for strings.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">'GMT'</span></code> column is supposed to represent dates. It would be helpful for the date values not to be strings to make it possible to make queries of the data such as ‘Return the row where the date is 4 June 2014’.</p>
+<p>Pandas has a function called <code class="docutils literal notranslate"><span class="pre">to_datetime()</span></code> which can convert a column of <code class="docutils literal notranslate"><span class="pre">object</span></code> (string) values such as those in the <code class="docutils literal notranslate"><span class="pre">'GMT'</span></code> column into values of a proper date type called ``datetime64<code class="docutils literal notranslate"><span class="pre">,</span></code> just like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">london</span><span class="p">[</span><span class="s1">&#39;GMT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_datetime</span><span class="p">(</span><span class="n">london</span><span class="p">[</span><span class="s1">&#39;GMT&#39;</span><span class="p">])</span>
+
+<span class="c1">#Then display the types of all the columns again so we</span>
+
+<span class="c1">#can check the changes have been made.</span>
+<span class="n">london</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">GMT</span> <span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">]</span>
+<span class="n">Max</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">TemperatureC</span> <span class="n">int64</span>
+<span class="n">Dew</span> <span class="n">PointC</span> <span class="n">int64</span>
+<span class="n">MeanDew</span> <span class="n">PointC</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">DewpointC</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">Humidity</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">Sea</span> <span class="n">Level</span> <span class="n">PressurehPa</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">VisibilityKm</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">VisibilityKm</span> <span class="n">int64</span>
+<span class="n">Min</span> <span class="n">VisibilitykM</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Wind</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">int64</span>
+<span class="n">Mean</span> <span class="n">Wind</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">int64</span>
+<span class="n">Max</span> <span class="n">Gust</span> <span class="n">SpeedKm</span><span class="o">/</span><span class="n">h</span> <span class="n">float64</span>
+<span class="n">Precipitationmm</span> <span class="n">float64</span>
+<span class="n">CloudCover</span> <span class="n">float64</span>
+<span class="n">Events</span> <span class="nb">object</span>
+<span class="n">WindDirDegrees</span> <span class="n">int64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>From the above output, we can confirm that the <code class="docutils literal notranslate"><span class="pre">'WindDirDegrees'</span></code> column type has been changed from <code class="docutils literal notranslate"><span class="pre">object</span></code> to <code class="docutils literal notranslate"><span class="pre">int64</span></code> and that the <code class="docutils literal notranslate"><span class="pre">'GMT'</span></code> column type has been changed from <code class="docutils literal notranslate"><span class="pre">object</span></code> to <code class="docutils literal notranslate"><span class="pre">datetime64</span></code>.</p>
+<p>To make queries such as ‘Return the row where the date is 4 June 2014’ you’ll need to be able to create a <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> value to represent June 4 2014. It cannot be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">london[london['GMT']</span> <span class="pre">==</span> <span class="pre">'2014-1-3']</span></code></p>
+<p>because ‘2014-1-3’ is a string and the values in the ‘GMT’ column are of type <code class="docutils literal notranslate"><span class="pre">datetime64</span></code>. Instead you must create a <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> value using <code class="docutils literal notranslate"><span class="pre">thedatetime()</span></code> function like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">datetime(2014,</span> <span class="pre">6,</span> <span class="pre">4)</span></code></p>
+<p>In the function call above, the first integer argument is the year, the second the month and the third the day.</p>
+<p>First import the <code class="docutils literal notranslate"><span class="pre">datetime()</span></code> function from the similarly named <code class="docutils literal notranslate"><span class="pre">datetime</span></code> package  by running the following line of code:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">datetime</span> <span class="pre">import</span> <span class="pre">datetime</span></code></p>
+<p>Let’s try the function out by executing the code to ‘Return the row where the date is 4 June 2014’:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">london[london['GMT']</span> <span class="pre">==</span> <span class="pre">datetime(2014,</span> <span class="pre">6,</span> <span class="pre">4)]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<p><img alt="The row from the london dataframe where the date is 4 June 2014. Note that only the first few columns are shown due to the limitation of page width. " src="ou_futurelearn_learn_to_code_fig_1009.jpg" /></p>
+<p><strong>Figure 8</strong></p>
+<ul class="simple">
+<li><p>Note that the right side of the table has been cropped to fit on the page. *</p></li>
+</ul>
+<p>You can also now make more complex queries involving dates such as ‘Return all the rows where the date is between 8 December 2014 and 12 December 2014’, like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p>c</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">london</span><span class="p">[(</span><span class="n">london</span><span class="p">[</span><span class="s1">&#39;GMT&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> 
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">london</span><span class="p">[</span><span class="s1">&#39;GMT&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<p><img alt="" src="ou_futurelearn_learn_to_code_fig_1010.jpg" /></p>
+<p><strong>Figure 9</strong></p>
+<p>*Note that the right side of the table has been cropped to fit on the page. *</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 4 Display rows from dataframe</p>
+<p class="rubric">Question</p>
+<p>Now try Exercise 4 in the Exercise notebook 2.</p>
+<p>If you’re using Anaconda instead of CoCalc, remember that to open the notebook you’ll need to navigate to the notebook using Jupyter.</p>
+<p>Once the notebook is open, run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter, watch again the video in <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83247&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4">Week 1 Exercise 1.</a></p>
+<!-- #endregion -->
+</div>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_out_03_05.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4.1 Week 4 glossary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_04_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2 Every picture tells a story</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notice-for-learners-outside-of-the-eu">Important notice for learners outside of the EU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-rogue-spaces">1.1 Removing rogue spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-extra-characters">1.2 Removing extra characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">1.3 Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-value-types-of-columns">1.4 Changing the value types of columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-data-type-of-the-winddirdegrees-column">Changing the data type of the ‘WindDirDegrees’ column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-data-type-of-the-gmt-column">Changing the data type of the ‘GMT’ column</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

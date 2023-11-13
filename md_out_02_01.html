@@ -1,0 +1,1210 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1 Weather data &#8212; Learn to code for data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_out_02_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3 This week’s quiz" href="md_out_02_02.html" />
+    <link rel="prev" title="4 Summary" href="md_out_01_04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Learn to code for data analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Learn to code for data analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1: Having a go at it Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_01.html">1 Install the software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_00_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2: Having a go at it Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_01.html">1 Enter the pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_02.html">2 Writing up the analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_01_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3: Cleaning up our act Part 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1 Weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_02.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_02_03.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_03_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4: Cleaning up our act Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_01.html">1 Loading the weather data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_02.html">2 Every picture tells a story</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_04_05.html">4.1 Week 4 glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5: Combine and transform data Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_01.html">1 Life expectancy project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_05_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6: Combine and transform data Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_01.html">1 Joining left, right and centre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_02.html">2 Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_06_04.html">4 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7: Further techniques Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_01.html">1 I spy with my little eye</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_02.html">2 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_07_03.html">3 Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8: Further techniques Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_01.html">1 The split-apply-combine pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_02.html">2 Pivot tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_03.html">3 This week’s quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_04.html">4 Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_out_08_05.html">Tell us what you think</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ouseful-demos/learn-to-code-jupyterlite" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/md_out_02_01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1 Weather data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-csv-file">1.1 What is a CSV file?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-and-the-dot-notation">2.2 Dataframes and the ‘dot’ notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-displaying-dataframe-rows">1.3 Getting and displaying dataframe rows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iloc-attribute">The iloc attribute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-head-method">The head() method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tail-method">The tail() method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-displaying-dataframe-columns">1.4 Getting and displaying dataframe columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#each-column-in-a-dataframe-is-an-example-of-a-series">Each column in a dataframe is an example of a series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">1.5 Comparison operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators">2.6 Bitwise operators</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="weather-data">
+<h1>1 Weather data<a class="headerlink" href="#weather-data" title="Permalink to this heading">#</a></h1>
+<p>This week you will be looking at investigating historic weather data.</p>
+<p><img alt="An image of filter like diagonal strips across various skies such as an orange sunset, a storm and a clear blue sky." src="ou_futurelearn_learn_to_code_fig_1039.jpg" /></p>
+<p><strong>Figure 1</strong></p>
+<p>Of course, such data is hugely important for research into the large-scale, long-term shift in our planet’s weather patterns and average temperatures – climate change. However, such data is also incredibly useful for more mundane planning purposes. To demonstrate the learning this week, I, Rob Griffiths, will be using historic weather data to try and plan a summer holiday in the UK. You’ll use the data too and get a chance to work on your own project at the end of the week.</p>
+<p>The dataset we’ll use to do this will come from the <a class="reference external" href="http://www.wunderground.com/">Weather Underground</a>, which creates weather forecasts from data sent to them by a worldwide network of over 100,000 weather enthusiasts who have personal weather stations on their house or in their garden.</p>
+<p>In addition to creating weather forecasts from that data, the Weather Underground also keeps that data as historic weather records allowing members of the public to download weather datasets for a particular time period and location. These datasets are downloaded as CSV files, explained in the next step.</p>
+<p>Datasets are rarely ‘clean’ and fit for purpose, so it will be necessary to clean up the data and ‘mould it’ for your purposes. You will then learn how to visualise data by creating graphs using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function.</p>
+<section id="what-is-a-csv-file">
+<h2>1.1 What is a CSV file?<a class="headerlink" href="#what-is-a-csv-file" title="Permalink to this heading">#</a></h2>
+<p>A CSV file is a plain text file that is used to hold tabular data. The acronym CSV is short for ‘comma-separated values’.</p>
+<p><img alt="An image of many pins marking various countries on a globe" src="ou_futurelearn_learn_to_code_fig_1036.jpg" /></p>
+<p><strong>Figure 2</strong></p>
+<p>Take a look at the first few lines of a CSV file that holds the same data as the Excel file ‘WHO POP TB all.xls’ that you encountered in Week 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Country</span><span class="p">,</span><span class="n">Population</span> <span class="p">(</span><span class="mi">1000</span><span class="n">s</span><span class="p">),</span><span class="n">TB</span> <span class="n">deaths</span>
+<span class="n">Afghanistan</span><span class="p">,</span><span class="mi">30552</span><span class="p">,</span><span class="mf">13000.0</span>
+<span class="n">Albania</span><span class="p">,</span><span class="mi">3173</span><span class="p">,</span><span class="mf">20.0</span>
+<span class="n">Algeria</span><span class="p">,</span><span class="mi">39208</span><span class="p">,</span><span class="mf">5100.0</span>
+<span class="n">Andorra</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mf">0.26</span> 
+<span class="n">Angola</span><span class="p">,</span><span class="mi">21472</span><span class="p">,</span><span class="mf">6900.0</span>
+<span class="n">Antigua</span> <span class="ow">and</span> <span class="n">Barbuda</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mf">1.2</span>
+<span class="n">Argentina</span><span class="p">,</span><span class="mi">41446</span><span class="p">,</span><span class="mf">570.0</span> 
+<span class="n">Armenia</span><span class="p">,</span><span class="mi">2977</span><span class="p">,</span><span class="mf">170.0</span>
+</pre></div>
+</div>
+<p>Notice that the first line is a row of column names. The subsequent lines are rows of actual data that correspond to the column names. The row of column names is optional, but it is helpful in understanding the data in the following lines and making sure the right values fall in the right place. In this example, the first value on every row must be a string representing a country’s name, the second value is an integer representing that country’s population (in 1000s) and the third value is a decimal representing the number of deaths due to TB. Note that the third value is a decimal (like 0.26 deaths for Andorra) and not an integer because it is an estimate obtained from statistical processing of collected data.</p>
+<p>Note that each value or column name is separated by a comma but actually any character can be used to separate values in a CSV file, including spaces and tabs etc., hence CSV can also stand for ‘character-separated values’.</p>
+<p>Because CSV files are in plain-text it makes the data easy to import into any spreadsheet program, database or pandas dataframe.</p>
+<p>Before anything can be done with a CSV file with pandas, the following import statement must be executed:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>As you learned in Week 2, the import statement loads into memory all the code in the pandas module.</p>
+<p>To read a CSV file into a dataframe, the pandas function <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> needs to be called.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">read_csv('WHO</span> <span class="pre">POP</span> <span class="pre">TB</span> <span class="pre">all.csv')</span></code></p>
+<p>The above code creates a dataframe from the data in the file <code class="docutils literal notranslate"><span class="pre">WHO</span> <span class="pre">POP</span> <span class="pre">TB````all.csv</span></code> and assigns it to the variable <code class="docutils literal notranslate"><span class="pre">df</span></code>. This is the simplest usage of the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function, just using a single argument, a string that holds the name of the CSV file.</p>
+<p>However the function can take many additional arguments (some of which you’ll use later), which determine how the file is to be read.</p>
+<p>In the next step, find out about dataframes and the ‘dot’ notation.</p>
+</section>
+<section id="dataframes-and-the-dot-notation">
+<h2>2.2 Dataframes and the ‘dot’ notation<a class="headerlink" href="#dataframes-and-the-dot-notation" title="Permalink to this heading">#</a></h2>
+<p>In Week 2 you learned that dataframes have methods, which are like functions, that can only be called in the context of a dataframe.</p>
+<p>For example, because the TB deaths dataframe <code class="docutils literal notranslate"><span class="pre">df </span></code>has a column named ‘Country’, the <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> method can be called like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.sort_values('Country')</span></code></p>
+<p>Because there is variable name, followed by a dot, followed by the method, this is called <strong>dot notation</strong>. Methods are said to be a property of a dataframe. In addition to methods, dataframes have another property – attributes.</p>
+<p><img alt="A multi-coloured image of many different sized circles. " src="ou_futurelearn_learn_to_code_fig_1040.jpg" /></p>
+<p><strong>Figure 3</strong></p>
+<hr class="docutils" />
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
+<p>A dataframe attribute is like a variable that can only be accessed in the context of a dataframe. One such attribute is <code class="docutils literal notranslate"><span class="pre">columns </span></code>which holds a dataframe’s column names.</p>
+<p>So the expression <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> evaluates to the value of the <code class="docutils literal notranslate"><span class="pre">columns</span></code>attribute inside the dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>. The following code will get and display the names of the columns in the dataframe <code class="docutils literal notranslate"><span class="pre">df:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.columns</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Index</span><span class="p">([</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;Population (1000s)&#39;</span><span class="p">,</span> <span class="s1">&#39;TB deaths&#39;</span><span class="p">],</span>
+<span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getting-and-displaying-dataframe-rows">
+<h2>1.3 Getting and displaying dataframe rows<a class="headerlink" href="#getting-and-displaying-dataframe-rows" title="Permalink to this heading">#</a></h2>
+<p>Dataframes can have hundreds or thousands of rows, so it is not practical to display a whole dataframe.</p>
+<p>However, there are a number of dataframe attributes and methods that allow you to get and display either a single row or a number of rows at a time. Three of the most useful methods are:<code class="docutils literal notranslate"><span class="pre"> iloc()</span></code>,<code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code>. Note that to distinguish methods and attributes, we write <code class="docutils literal notranslate"><span class="pre">()</span></code> after a method’s name.</p>
+<p><img alt="An image of a data algorithm" src="ou_futurelearn_learn_to_code_fig_1041.jpg" /></p>
+<p><strong>Figure 4</strong></p>
+<hr class="docutils" />
+<section id="the-iloc-attribute">
+<h3>The iloc attribute<a class="headerlink" href="#the-iloc-attribute" title="Permalink to this heading">#</a></h3>
+<p>A dataframe has a default integer index for its rows, which starts at 0 (zero). You can get and display any single row in a dataframe by using the<code class="docutils literal notranslate"><span class="pre">iloc</span></code> attribute with the index of the row you want to access as its argument. For example, the following code will get and display the first row of data in the dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>, which is at index 0:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.iloc[0]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Country</span> <span class="n">Afghanistan</span>
+<span class="n">Population</span> <span class="p">(</span><span class="mi">1000</span><span class="n">s</span><span class="p">)</span> <span class="mi">30552</span>
+<span class="n">TB</span> <span class="n">deaths</span> <span class="mi">13000</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>Similarly, the following code will get and display the third row of data in the dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>, which is at index 2:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.iloc[2]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Country</span> <span class="n">Algeria</span>
+<span class="n">Population</span> <span class="p">(</span><span class="mi">1000</span><span class="n">s</span><span class="p">)</span> <span class="mi">39208</span>
+<span class="n">TB</span> <span class="n">deaths</span> <span class="mf">5100.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="the-head-method">
+<h3>The head() method<a class="headerlink" href="#the-head-method" title="Permalink to this heading">#</a></h3>
+<p>The first few rows of a dataframe can be printed out with the <code class="docutils literal notranslate"><span class="pre">head()</span></code> method.</p>
+<p>You can tell <code class="docutils literal notranslate"><span class="pre">head()</span></code> is a method, rather than an attribute such as <code class="docutils literal notranslate"><span class="pre">columns</span></code>, because of the parentheses (round brackets) after the property name.</p>
+<p>If you don’t give any argument, i.e. don’t put any number within those parentheses, the default behaviour is to return the first five rows of the dataframe. If you give an argument, it will print that number of rows (starting from the row indexed by 0).</p>
+<p>For example, executing the following code will get and display the first five rows in the dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Country</th>
+<th>Population (1000s)</th>
+<th>TB deaths</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">Afghanistan</td>
+<td class="highlight_" rowspan="" colspan="">30552</td>
+<td class="highlight_" rowspan="" colspan="">13000.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">Albania</td>
+<td class="highlight_" rowspan="" colspan="">3173</td>
+<td class="highlight_" rowspan="" colspan="">20.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">Algeria</td>
+<td class="highlight_" rowspan="" colspan="">39208</td>
+<td class="highlight_" rowspan="" colspan="">5100.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">Andorra</td>
+<td class="highlight_" rowspan="" colspan="">79</td>
+<td class="highlight_" rowspan="" colspan="">0.26</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">Angola</td>
+<td class="highlight_" rowspan="" colspan="">21472</td>
+<td class="highlight_" rowspan="" colspan="">6900.00</td>
+</tr>
+</tbody>
+</table>
+<p>And, executing the following code will get and display the first seven rows in the dataframe <code class="docutils literal notranslate"><span class="pre">df.</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.head(7)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Country</th>
+<th>Population (1000s)</th>
+<th>TB deaths</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">Afghanistan</td>
+<td class="highlight_" rowspan="" colspan="">30552</td>
+<td class="highlight_" rowspan="" colspan="">13000.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">Albania</td>
+<td class="highlight_" rowspan="" colspan="">3173</td>
+<td class="highlight_" rowspan="" colspan="">20.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">Algeria</td>
+<td class="highlight_" rowspan="" colspan="">39208</td>
+<td class="highlight_" rowspan="" colspan="">5100.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">Andorra</td>
+<td class="highlight_" rowspan="" colspan="">79</td>
+<td class="highlight_" rowspan="" colspan="">0.26</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">Angola</td>
+<td class="highlight_" rowspan="" colspan="">21472</td>
+<td class="highlight_" rowspan="" colspan="">6900.00</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">5</td>
+<td class="highlight_" rowspan="" colspan="">Antigua and Barbuda</td>
+<td class="highlight_" rowspan="" colspan="">90</td>
+<td class="highlight_" rowspan="" colspan="">1.20</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">6</td>
+<td class="highlight_" rowspan="" colspan="">Argentina</td>
+<td class="highlight_" rowspan="" colspan="">41446</td>
+<td class="highlight_" rowspan="" colspan="">570.00</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="the-tail-method">
+<h3>The tail() method<a class="headerlink" href="#the-tail-method" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">tail()</span></code> method is similar to the <code class="docutils literal notranslate"><span class="pre">head()</span></code> method.</p>
+<p>If no argument is given, the last five rows of the dataframe are returned, otherwise the number of rows returned is dependent on the argument, just like for the <code class="docutils literal notranslate"><span class="pre">head()</span></code> method.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df.tail()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Country</th>
+<th>Population (1000s)</th>
+<th>TB deaths</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">189</td>
+<td class="highlight_" rowspan="" colspan="">Venezuela (Bolivarian Republic of)</td>
+<td class="highlight_" rowspan="" colspan="">30405</td>
+<td class="highlight_" rowspan="" colspan="">480</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">190</td>
+<td class="highlight_" rowspan="" colspan="">Viet Nam</td>
+<td class="highlight_" rowspan="" colspan="">91680</td>
+<td class="highlight_" rowspan="" colspan="">17000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">191</td>
+<td class="highlight_" rowspan="" colspan="">Yemen</td>
+<td class="highlight_" rowspan="" colspan="">24407</td>
+<td class="highlight_" rowspan="" colspan="">990</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">192</td>
+<td class="highlight_" rowspan="" colspan="">Zambia</td>
+<td class="highlight_" rowspan="" colspan="">14539</td>
+<td class="highlight_" rowspan="" colspan="">3600</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">193</td>
+<td class="highlight_" rowspan="" colspan="">Zimbabwe</td>
+<td class="highlight_" rowspan="" colspan="">14150</td>
+<td class="highlight_" rowspan="" colspan="">5700</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getting-and-displaying-dataframe-columns">
+<h2>1.4 Getting and displaying dataframe columns<a class="headerlink" href="#getting-and-displaying-dataframe-columns" title="Permalink to this heading">#</a></h2>
+<p>You learned in Week 2 that you can get and display a single column of a dataframe by putting the name of the column (in quotes) within square brackets immediately after the dataframe’s name.</p>
+<p>For example, like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df['TB</span> <span class="pre">deaths']</span></code></p>
+<p>You then get output like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">0</span>    <span class="mf">13000.00</span>
+<span class="mi">1</span>       <span class="mf">20.00</span>
+<span class="mi">2</span>     <span class="mf">5100.00</span>
+<span class="mi">3</span>        <span class="mf">0.26</span>
+<span class="mi">4</span>     <span class="mf">6900.00</span>
+<span class="mi">5</span>        <span class="mf">1.20</span>
+<span class="mi">6</span>      <span class="mf">570.00</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Notice that although there is an index, there is no column heading. This is because what is returned is not a new dataframe with a single column but an example of the <code class="docutils literal notranslate"><span class="pre">Series</span></code> data type.</p>
+<p><img alt="An perspective image of the isle between many data storage towers. The floor and the storage units are lit up." src="ou_futurelearn_learn_to_code_fig_1042.jpg" /></p>
+<p><strong>Figure 5</strong></p>
+<hr class="docutils" />
+<section id="each-column-in-a-dataframe-is-an-example-of-a-series">
+<h3>Each column in a dataframe is an example of a series<a class="headerlink" href="#each-column-in-a-dataframe-is-an-example-of-a-series" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Series</span></code> data type is a collection of values with an integer index that starts from zero. In addition, the <code class="docutils literal notranslate"><span class="pre">Series</span></code> data type has many of the same methods and attributes as the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> data type, so you can still execute code like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df['TB</span> <span class="pre">deaths'].head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">0</span>    <span class="mf">13000.00</span>
+<span class="mi">1</span>       <span class="mf">20.00</span>
+<span class="mi">2</span>     <span class="mf">5100.00</span>
+<span class="mi">3</span>        <span class="mf">0.26</span>
+<span class="mi">4</span>     <span class="mf">6900.00</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">TB</span> <span class="n">deaths</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>And</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df['TB</span> <span class="pre">deaths'].iloc[2]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">5100.00</span></code></p>
+<p>However, pandas does provide a mechanism for you to get and display one or more selected columns as a new dataframe in its own right. To do this you need to use a <strong>list</strong>. A list in Python consists of one or more items separated by commas and enclosed within square brackets, for example <code class="docutils literal notranslate"><span class="pre">['Country']</span></code> or<code class="docutils literal notranslate"><span class="pre"> ['Country',</span> <span class="pre">'Population</span> <span class="pre">(1000s)']</span></code>. This list is then put within outer square brackets immediately after the dataframe’s name, like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df[['Country']].head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>__Country__</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">Afghanistan</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">Albania</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">Algeria</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">Andorra</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">Angola</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the column is now named. The expression<code class="docutils literal notranslate"><span class="pre"> df[['Country']]</span></code>(with two square brackets) evaluates to a new dataframe (which happens to have a single column) rather than a series.</p>
+<p>To get a new dataframe with multiple columns you just need to put more column names in the list, like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df[['Country',</span> <span class="pre">'Population</span> <span class="pre">(1000s)']].head()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>__Country__</th>
+<th>__Population (1000s)__</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">0</td>
+<td class="highlight_" rowspan="" colspan="">Afghanistan</td>
+<td class="highlight_" rowspan="" colspan="">30552</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">1</td>
+<td class="highlight_" rowspan="" colspan="">Albania</td>
+<td class="highlight_" rowspan="" colspan="">3173</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">2</td>
+<td class="highlight_" rowspan="" colspan="">Algeria</td>
+<td class="highlight_" rowspan="" colspan="">39208</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">3</td>
+<td class="highlight_" rowspan="" colspan="">Andorra</td>
+<td class="highlight_" rowspan="" colspan="">79</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">4</td>
+<td class="highlight_" rowspan="" colspan="">Angola</td>
+<td class="highlight_" rowspan="" colspan="">21472</td>
+</tr>
+</tbody>
+</table>
+<p>The code has returned a new dataframe with just the <code class="docutils literal notranslate"><span class="pre">'Country'</span></code> and <code class="docutils literal notranslate"><span class="pre">'Population</span> <span class="pre">(1000s)’</span></code> columns.</p>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 1 Dataframes and CSV files</p>
+<p class="rubric">Question</p>
+<p>Now that you’ve learned about CSV files and more about pandas you are ready to complete Exercise 1 in the exercise notebook 2.</p>
+<p>Open the exercise 2 notebook and the data file you used last week WHO POP TB all.csv and save it in the folder you created in Week 1.</p>
+<p>If you’re using Anaconda instead of CoCalc, remember that to open the notebook you’ll need to navigate to the notebook using Jupyter. Once it’s open, run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook. If you need a quick reminder of how to use Jupyter watch again the video in <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83246&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.4">Week 1 Exercise 1.</a></p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comparison-operators">
+<h2>1.5 Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">#</a></h2>
+<p>In <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83246&amp;targetdoc=Week+1%3A+Having+a+go+at+it+Part+1&amp;targetptr=1.5">Expressions,</a> you learned that Python has arithmetic operators: +, /, - and * and that expressions such as 5 + 2 evaluate to a value (in this case the number 7).</p>
+<p><img alt="An illustration of two girls holding up signs. One sign says, 'YES', the other says, 'NO'." src="ou_futurelearn_learn_to_code_fig_1043.jpg" /></p>
+<p><strong>Figure 6</strong></p>
+<p>Python also has what are called comparison operators, these are:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">==</span>    <span class="n">equals</span>
+<span class="o">!=</span>    <span class="ow">not</span> <span class="n">equal</span>
+<span class="o">&lt;</span>     <span class="n">less</span> <span class="n">than</span>
+<span class="o">&gt;</span>     <span class="n">greater</span> <span class="n">than</span>
+<span class="o">&lt;=</span>    <span class="n">less</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> 
+<span class="o">&gt;=</span>    <span class="n">greater</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span>
+</pre></div>
+</div>
+<p>Expressions involving these operators always evaluate to a Boolean value, that is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">2</span> <span class="o">=</span> <span class="o">=</span> <span class="mi">2</span>      <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">True</span>
+<span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="o">=</span> <span class="mi">5</span>  <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">False</span>
+<span class="mi">2</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>   <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">False</span>
+<span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">50</span>      <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">True</span>
+<span class="mi">20</span> <span class="o">&gt;</span> <span class="mi">30</span>      <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">False</span>
+<span class="mi">100</span> <span class="o">&lt;=</span> <span class="mi">100</span>   <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">True</span>
+<span class="mi">101</span> <span class="o">&gt;=</span> <span class="mi">100</span>   <span class="n">evaluates</span> <span class="n">to</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>The comparison operators can be used with other types of data, not just numbers. Used with strings they compare using alphabetical order. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">'aardvark'</span> <span class="pre">&amp;lt;</span> <span class="pre">'zebra'</span> <span class="pre">evaluates</span> <span class="pre">to</span> <span class="pre">True</span></code></p>
+<p>In <a class="reference external" href="https://www.open.edu/openlearn/mod/oucontent/olink.php?id=83246&amp;targetdoc=Week+2%3A+Having+a+go+at+it+Part+2&amp;targetptr=1.6">Calculating over columns</a> you saw that when applied to whole columns, the arithmetic operators did the calculations row by row. Similarly, an expression like <code class="docutils literal notranslate"><span class="pre">df['Country']</span> <span class="pre">&amp;gt;=</span> <span class="pre">'K'</span></code> will compare the country names, row by row, against the string ‘K’ and record whether the result is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> in a series like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">0</span>    <span class="kc">False</span>
+<span class="mi">1</span>    <span class="kc">False</span>
+<span class="mi">2</span>    <span class="kc">False</span>
+<span class="mi">3</span>    <span class="kc">False</span>
+<span class="mi">4</span>    <span class="kc">False</span>
+<span class="mi">5</span>    <span class="kc">False</span>
+<span class="o">...</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Country</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span> 
+</pre></div>
+</div>
+<p>If such an expression is put within square brackets immediately after a dataframe’s name, a new dataframe is obtained with only those rows where the result is <code class="docutils literal notranslate"><span class="pre">True</span></code>. So:</p>
+<p><code class="docutils literal notranslate"><span class="pre">df[df['Country']</span> <span class="pre">&amp;gt;=</span> <span class="pre">'K']</span></code></p>
+<p>returns a new dataframe with all the columns of <code class="docutils literal notranslate"><span class="pre">df </span></code>but with only the rows corresponding to countries starting with K or a letter later in the alphabet.</p>
+<p>As another example, to see the data for countries with over 80 million inhabitants, the following code will return and display a new dataframe with all the columns of <code class="docutils literal notranslate"><span class="pre">df</span></code> but with only the rows where it is <code class="docutils literal notranslate"><span class="pre">True</span></code> that the value in the <code class="docutils literal notranslate"><span class="pre">'Population</span> <span class="pre">(1000s)'</span></code> column is greater than <code class="docutils literal notranslate"><span class="pre">80000:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df[df['Population</span> <span class="pre">(1000s)']</span> <span class="pre">&amp;gt;</span> <span class="pre">80000]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Country</th>
+<th>Population (1000s)</th>
+<th>TB deaths</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">13</td>
+<td class="highlight_" rowspan="" colspan="">Bangladesh</td>
+<td class="highlight_" rowspan="" colspan="">156595</td>
+<td class="highlight_" rowspan="" colspan="">80000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">23</td>
+<td class="highlight_" rowspan="" colspan="">Brazil</td>
+<td class="highlight_" rowspan="" colspan="">200362</td>
+<td class="highlight_" rowspan="" colspan="">4400</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">36</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">1393337</td>
+<td class="highlight_" rowspan="" colspan="">41000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">53</td>
+<td class="highlight_" rowspan="" colspan="">Egypt</td>
+<td class="highlight_" rowspan="" colspan="">82056</td>
+<td class="highlight_" rowspan="" colspan="">550</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">58</td>
+<td class="highlight_" rowspan="" colspan="">Ethiopia</td>
+<td class="highlight_" rowspan="" colspan="">94101</td>
+<td class="highlight_" rowspan="" colspan="">30000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">65</td>
+<td class="highlight_" rowspan="" colspan="">Germany</td>
+<td class="highlight_" rowspan="" colspan="">82727</td>
+<td class="highlight_" rowspan="" colspan="">300</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">77</td>
+<td class="highlight_" rowspan="" colspan="">India</td>
+<td class="highlight_" rowspan="" colspan="">1252140</td>
+<td class="highlight_" rowspan="" colspan="">240000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">78</td>
+<td class="highlight_" rowspan="" colspan="">Indonesia</td>
+<td class="highlight_" rowspan="" colspan="">249866</td>
+<td class="highlight_" rowspan="" colspan="">64000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">85</td>
+<td class="highlight_" rowspan="" colspan="">Japan</td>
+<td class="highlight_" rowspan="" colspan="">127144</td>
+<td class="highlight_" rowspan="" colspan="">2100</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">109</td>
+<td class="highlight_" rowspan="" colspan="">Mexico</td>
+<td class="highlight_" rowspan="" colspan="">122332</td>
+<td class="highlight_" rowspan="" colspan="">2200</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">124</td>
+<td class="highlight_" rowspan="" colspan="">Nigeria</td>
+<td class="highlight_" rowspan="" colspan="">173615</td>
+<td class="highlight_" rowspan="" colspan="">160000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">128</td>
+<td class="highlight_" rowspan="" colspan="">Pakistan</td>
+<td class="highlight_" rowspan="" colspan="">182143</td>
+<td class="highlight_" rowspan="" colspan="">49000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">134</td>
+<td class="highlight_" rowspan="" colspan="">Philippines</td>
+<td class="highlight_" rowspan="" colspan="">98394</td>
+<td class="highlight_" rowspan="" colspan="">27000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">141</td>
+<td class="highlight_" rowspan="" colspan="">Russian Federation</td>
+<td class="highlight_" rowspan="" colspan="">142834</td>
+<td class="highlight_" rowspan="" colspan="">17000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">185</td>
+<td class="highlight_" rowspan="" colspan="">United States of America</td>
+<td class="highlight_" rowspan="" colspan="">320051</td>
+<td class="highlight_" rowspan="" colspan="">490</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">190</td>
+<td class="highlight_" rowspan="" colspan="">Viet Nam</td>
+<td class="highlight_" rowspan="" colspan="">91680</td>
+<td class="highlight_" rowspan="" colspan="">17000</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 2 Comparison operators</p>
+<p class="rubric">Question</p>
+<p>You are ready to complete Exercise 2 in the Exercise notebook 2.</p>
+<p>Remember to run the existing code in the notebook before you start the exercise. When you’ve completed the exercise, save the notebook.</p>
+<!-- #endregion -->
+</div>
+</section>
+<section id="bitwise-operators">
+<h2>2.6 Bitwise operators<a class="headerlink" href="#bitwise-operators" title="Permalink to this heading">#</a></h2>
+<p>To build more complicated expressions involving column comparisons, there are two bitwise operators.</p>
+<p><img alt="An image of someone constructing a building from wooden blocks" src="ou_futurelearn_learn_to_code_fig_1044.jpg" /></p>
+<p><strong>Figure 7</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&amp;amp;</span></code> operator means ‘and’ and the | operator (vertical bar, not uppercase letter ‘i’) means ‘or’. So, for example the expression:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;Latvia&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="s1">&#39;Sweden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will evaluate to a series containing Boolean values where the values are<code class="docutils literal notranslate"><span class="pre">True</span></code> only if the equivalent rows in the dataframe contain the countries ‘<code class="docutils literal notranslate"><span class="pre">Latvia</span></code>’ to ‘<code class="docutils literal notranslate"><span class="pre">Sweden</span></code>’, inclusive. However, the following expression which uses | (or) rather than &amp; (and):</p>
+<p><code class="docutils literal notranslate"><span class="pre">(df['Country']</span> <span class="pre">&amp;gt;=</span> <span class="pre">'Latvia')</span> <span class="pre">|</span> <span class="pre">(df['Country']</span> <span class="pre">&amp;lt;=</span> <span class="pre">'Sweden')</span></code></p>
+<p>will evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> for all countries, because every country comes alphabetically after ‘<code class="docutils literal notranslate"><span class="pre">Latvia</span></code>’ (e.g. the ‘UK’) or before ‘<code class="docutils literal notranslate"><span class="pre">Sweden</span></code>’ (e.g. ‘<code class="docutils literal notranslate"><span class="pre">Brazil</span></code>’).</p>
+<p>Note the round brackets around each comparison. Without them you will get an error.</p>
+<p>The whole expression with multiple comparisons has to be put within <code class="docutils literal notranslate"><span class="pre">df[…]</span></code> to get a dataframe with only those rows that match the condition.</p>
+<p>As a further example, using different columns, it is relatively easy to find the rows in <code class="docutils literal notranslate"><span class="pre">df</span></code> where ‘<code class="docutils literal notranslate"><span class="pre">Population</span> <span class="pre">(1000s)</span></code>’ is greater than <code class="docutils literal notranslate"><span class="pre">80000</span></code> and where ‘<code class="docutils literal notranslate"><span class="pre">TB</span> <span class="pre">deaths</span></code>’ are greater than <code class="docutils literal notranslate"><span class="pre">10000</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">df[(df['Population</span> <span class="pre">(1000s)']</span> <span class="pre">&amp;gt;</span> <span class="pre">80000)</span> <span class="pre">&amp;amp;</span> <span class="pre">(df['TB</span> <span class="pre">deaths']</span> <span class="pre">&amp;gt;</span> <span class="pre">10000)]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[]:</span></code></p>
+<table xmlns:str="http://exslt.org/strings">
+<caption></caption>
+<tbody>
+<tr>
+<th></th>
+<th>Country</th>
+<th>Population (1000s)</th>
+<th>TB deaths</th>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">13</td>
+<td class="highlight_" rowspan="" colspan="">Bangladesh</td>
+<td class="highlight_" rowspan="" colspan="">156595</td>
+<td class="highlight_" rowspan="" colspan="">80000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">36</td>
+<td class="highlight_" rowspan="" colspan="">China</td>
+<td class="highlight_" rowspan="" colspan="">1393337</td>
+<td class="highlight_" rowspan="" colspan="">41000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">58</td>
+<td class="highlight_" rowspan="" colspan="">Ethiopia</td>
+<td class="highlight_" rowspan="" colspan="">94101</td>
+<td class="highlight_" rowspan="" colspan="">30000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">77</td>
+<td class="highlight_" rowspan="" colspan="">India</td>
+<td class="highlight_" rowspan="" colspan="">1252140</td>
+<td class="highlight_" rowspan="" colspan="">240000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">78</td>
+<td class="highlight_" rowspan="" colspan="">Indonesia</td>
+<td class="highlight_" rowspan="" colspan="">249866</td>
+<td class="highlight_" rowspan="" colspan="">64000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">124</td>
+<td class="highlight_" rowspan="" colspan="">Nigeria</td>
+<td class="highlight_" rowspan="" colspan="">173615</td>
+<td class="highlight_" rowspan="" colspan="">160000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">128</td>
+<td class="highlight_" rowspan="" colspan="">Pakistan</td>
+<td class="highlight_" rowspan="" colspan="">182143</td>
+<td class="highlight_" rowspan="" colspan="">49000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">134</td>
+<td class="highlight_" rowspan="" colspan="">Philippines</td>
+<td class="highlight_" rowspan="" colspan="">98394</td>
+<td class="highlight_" rowspan="" colspan="">27000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">141</td>
+<td class="highlight_" rowspan="" colspan="">Russian Federation</td>
+<td class="highlight_" rowspan="" colspan="">142834</td>
+<td class="highlight_" rowspan="" colspan="">17000</td>
+</tr>
+<tr>
+<td class="highlight_" rowspan="" colspan="">190</td>
+<td class="highlight_" rowspan="" colspan="">Viet Nam</td>
+<td class="highlight_" rowspan="" colspan="">91680</td>
+<td class="highlight_" rowspan="" colspan="">17000</td>
+</tr>
+</tbody>
+</table>
+<p>These expressions can get long and complicated, making it easy to miss a crucial round or square bracket. In those cases it is best to break up the expression into small steps. The previous example could also be written as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Population (1000s)&#39;</span><span class="p">]</span> 
+<span class="n">deaths</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TB deaths&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">population</span> <span class="o">&gt;</span> <span class="mi">80000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">deaths</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="admonition-activity-region-tags-style-activity admonition">
+<p class="admonition-title">Activity<!-- #region tags=["style-activity"] --></p>
+<p class="rubric">Exercise 3 Bitwise operators</p>
+<p class="rubric">Question</p>
+<p>Complete Exercise 3 in the Exercise notebook 2.</p>
+<!-- #endregion -->
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-demos/learn-to-code-jupyterlite",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_out_01_04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4 Summary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="md_out_02_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3 This week’s quiz</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-csv-file">1.1 What is a CSV file?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-and-the-dot-notation">2.2 Dataframes and the ‘dot’ notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-displaying-dataframe-rows">1.3 Getting and displaying dataframe rows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iloc-attribute">The iloc attribute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-head-method">The head() method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tail-method">The tail() method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-displaying-dataframe-columns">1.4 Getting and displaying dataframe columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#each-column-in-a-dataframe-is-an-example-of-a-series">Each column in a dataframe is an example of a series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">1.5 Comparison operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators">2.6 Bitwise operators</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By OpenLearn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
